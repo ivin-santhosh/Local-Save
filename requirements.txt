@@ -1,0 +1,41 @@
+# ============================================================
+# LinkSync AI — Dependencies
+# ============================================================
+# Install: pip install -r requirements.txt
+# All dependencies are grouped by their role in the system.
+# ============================================================
+
+# --- Core AI & LLM Framework ---
+langchain>=0.3.0
+langchain-ollama>=0.3.0
+langchain-community>=0.3.0
+langchain-openai>=0.3.0
+langgraph>=0.2.0
+
+# --- Vector Memory (Local Embeddings) ---
+chromadb>=0.5.0
+
+# --- Browser Automation (Headless Scraping) ---
+playwright>=1.45.0
+
+# --- Windows UI Automation ---
+pywinauto>=0.6.8
+
+# --- System Tray Icon ---
+pystray>=0.19.0
+Pillow>=10.0.0
+
+# --- Modern Desktop UI ---
+customtkinter>=5.2.0
+
+# --- Windows Toast Notifications ---
+win10toast-click>=0.1.2
+
+# --- Configuration ---
+python-dotenv>=1.0.0
+
+# --- HTTP Client ---
+requests>=2.31.0
+
+# --- Win32 API (Hotkey, Process Info) ---
+pywin32>=306
