@@ -10,6 +10,12 @@ LinkSync_AI.bat. It orchestrates:
 4. System tray icon
 5. Sync cycle on hotkey press
 
+Ollama Lifecycle:
+  Ollama is NOT kept running 24/7. It starts only when a sync
+  cycle begins (hotkey press → pipeline runs) and stops after
+  dispatch completes. If Ollama was already running (e.g., another
+  AI agent), we don't touch it.
+
 The tray icon runs on the main thread (blocking).
 Everything else runs on daemon threads.
 """
@@ -132,36 +138,45 @@ def _start_sync_cycle() -> None:
 
     def _on_proceed(selected_tabs: list[dict]):
         """Process selected tabs (runs on background thread)."""
+        from src.brain.ollama_manager import ollama_session
         from src.brain.graph import run_sync_pipeline
         from src.dispatch.dispatcher import dispatch_batch
 
         start_time = time.time()
 
-        # Run the pipeline
-        def _progress(index: int, icon: str, text: str):
-            selector.update_tab_status(
-                index, icon, text,
-                title=selected_tabs[index].get("title", ""),
-            )
-            selector.update_progress((index + 1) / len(selected_tabs))
+        # ── Start Ollama only for this sync cycle ──
+        with ollama_session() as ollama_ready:
+            if not ollama_ready:
+                logger.warning("Ollama not available. Will try API fallback.")
 
-        results = run_sync_pipeline(selected_tabs, _progress)
+            # Run the pipeline
+            def _progress(index: int, icon: str, text: str):
+                selector.update_tab_status(
+                    index, icon, text,
+                    title=selected_tabs[index].get("title", ""),
+                )
+                selector.update_progress((index + 1) / len(selected_tabs))
 
-        # Update provider display
-        providers_used = set(r.get("provider_used", "") for r in results)
-        providers_used.discard("none")
-        if providers_used:
-            selector.update_provider(", ".join(providers_used))
+            results = run_sync_pipeline(selected_tabs, _progress)
 
-        # Dispatch to WhatsApp
-        def _dispatch_progress(index: int, status: str):
-            selector.update_tab_status(
-                index, "📤" if "Sent" in status else "❌",
-                status,
-                title=selected_tabs[index].get("title", ""),
-            )
+            # Update provider display
+            providers_used = set(r.get("provider_used", "") for r in results)
+            providers_used.discard("none")
+            if providers_used:
+                selector.update_provider(", ".join(providers_used))
 
-        results = dispatch_batch(results, progress_callback=_dispatch_progress)
+            # Dispatch to WhatsApp
+            def _dispatch_progress(index: int, status: str):
+                selector.update_tab_status(
+                    index, "📤" if "Sent" in status else "❌",
+                    status,
+                    title=selected_tabs[index].get("title", ""),
+                )
+
+            results = dispatch_batch(results, progress_callback=_dispatch_progress)
+
+        # ── Ollama stopped here (if we started it) ──
+        logger.info("Ollama released after sync cycle.")
 
         # Show final report
         elapsed = time.time() - start_time
@@ -208,6 +223,13 @@ def _on_exit() -> None:
 
     from src.hotkey.global_hotkey import stop_listener
     stop_listener()
+
+    # Force-stop Ollama if we started it
+    try:
+        from src.brain.ollama_manager import force_shutdown
+        force_shutdown()
+    except Exception:
+        pass
 
     try:
         from src.scraper.page_scraper import close_browser

@@ -1,5 +1,5 @@
 # LinkSync AI — CODEX (Living Documentation)
-> Last updated: 2026-05-27 | v1.0.0 | 39 files
+> Last updated: 2026-05-27 | v1.0.1 | 40 files
 
 This is the **living documentation** for the LinkSync AI codebase.
 Every file is catalogued with its purpose, key functions, and dependencies.
@@ -92,7 +92,8 @@ User presses Ctrl+Shift+L
 | File | Size | Purpose |
 |------|------|---------|
 | `graph.py` | 10.4 KB | LangGraph StateGraph wiring: Eye→Filter→Summarize→Critic. Conditional edges for abort/retry. `run_sync_pipeline()` |
-| `llm_provider.py` | 6.2 KB | Dual LLM: Ollama local-first → OpenAI/Groq API fallback. Toast notification on every switch |
+| `ollama_manager.py` | 7.5 KB | **On-demand Ollama lifecycle**: starts Ollama only during sync, stops after. Reference-counted, context manager, won't touch externally-started instances. Loosely coupled — reusable by any agent |
+| `llm_provider.py` | 5.7 KB | Dual LLM: Ollama local-first → OpenAI/Groq API fallback. Delegates health checks to ollama_manager. Toast notification on every switch |
 | `eye.py` | 4.2 KB | Node A — Blacklist check, dedup check (SQLite 24h), negative filter (ChromaDB) |
 | `filter_node.py` | 3.7 KB | Node B — Playwright scrape, adaptive summary length (3/6/10 lines by content size) |
 | `critic.py` | 5.2 KB | Node C — Quality gate: length, tone (no 1st person), relevance, format. Up to 2 retries |
@@ -166,13 +167,15 @@ User presses Ctrl+Shift+L
 1. **No hardcoded values** — Everything flows from `config.py` → consumed by modules
 2. **No admin required** — Uses `RegisterHotKey` instead of `keyboard` library
 3. **Local-first** — Ollama is always preferred. API keys are optional fallback only
-4. **Self-healing** — WhatsApp automation tries multiple element patterns, caches what works
-5. **Modular** — Every module is independent. Replace any single module without affecting others
-6. **Privacy** — Blacklisted domains are checked FIRST, before any scraping or API calls
-7. **Transparency** — Provider switches trigger toast notifications. All actions logged
+4. **On-demand Ollama** — Ollama starts only during sync cycles and stops after. Zero RAM usage while idle. If another agent already has Ollama running, we don't interfere
+5. **Loosely coupled Ollama** — `ollama_manager.py` is fully reusable by other AI agents (context manager, reference counting, force shutdown)
+6. **Self-healing** — WhatsApp automation tries multiple element patterns, caches what works
+7. **Modular** — Every module is independent. Replace any single module without affecting others
+8. **Privacy** — Blacklisted domains are checked FIRST, before any scraping or API calls
+9. **Transparency** — Provider switches trigger toast notifications. All actions logged
 
 ## Total Codebase Size
 
-- **39 files** across 10 modules
-- **~180 KB** of Python source code
+- **40 files** across 10 modules
+- **~190 KB** of Python source code
 - **0 hardcoded paths** in non-config files

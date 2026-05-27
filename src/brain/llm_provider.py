@@ -17,7 +17,6 @@ Usage:
 import logging
 from typing import Optional
 
-import requests
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import HumanMessage
 
@@ -42,21 +41,14 @@ def check_ollama_health() -> bool:
     """
     Check if Ollama is running and responsive.
 
-    Pings the Ollama API base URL. A healthy Ollama returns
-    a simple response on GET /.
+    Delegates to ollama_manager for the actual health check,
+    keeping this module decoupled from process management.
 
     Returns:
         True if Ollama is reachable, False otherwise.
     """
-    try:
-        resp = requests.get(OLLAMA_BASE_URL, timeout=5)
-        return resp.status_code == 200
-    except requests.ConnectionError:
-        logger.debug("Ollama not reachable at %s", OLLAMA_BASE_URL)
-        return False
-    except Exception as exc:
-        logger.debug("Ollama health check error: %s", exc)
-        return False
+    from src.brain.ollama_manager import is_running
+    return is_running()
 
 
 def _notify_provider_switch(from_provider: str, to_provider: str) -> None:
