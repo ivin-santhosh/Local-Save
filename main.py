@@ -1,23 +1,19 @@
 """
-LinkSync AI — Main Entry Point
-=================================
-This is the file that runs when the user double-clicks
-LinkSync_AI.bat. It orchestrates:
+LinkSync AI — Main Entry Point (Run-Once Mode)
+=================================================
+The agent runs ONLY when invoked and exits completely after.
 
-1. First-run bootstrap (if needed)
-2. Database & vector store initialization
-3. Global hotkey listener
-4. System tray icon
-5. Sync cycle on hotkey press
+Flow:
+  1. User double-clicks "LinkSync AI" shortcut on desktop
+  2. App launches → immediately captures browser tabs
+  3. Tab selector appears (foreground, topmost)
+  4. User selects tabs → clicks PROCEED
+  5. Ollama starts → pipeline runs → dispatch → Ollama stops
+  6. Final report appears with OK button
+  7. User clicks OK → FULL SHUTDOWN (zero processes left)
 
-Ollama Lifecycle:
-  Ollama is NOT kept running 24/7. It starts only when a sync
-  cycle begins (hotkey press → pipeline runs) and stops after
-  dispatch completes. If Ollama was already running (e.g., another
-  AI agent), we don't touch it.
-
-The tray icon runs on the main thread (blocking).
-Everything else runs on daemon threads.
+No tray icon. No background listeners. No wasted RAM.
+The agent exists ONLY while it's doing work.
 """
 
 import logging
@@ -44,14 +40,14 @@ logging.basicConfig(
     ],
 )
 logger = logging.getLogger(APP_NAME)
-logger.info("Starting %s v%s", APP_NAME, APP_VERSION)
+logger.info("=== %s v%s — Session Start ===", APP_NAME, APP_VERSION)
 
-# ── CustomTkinter root (hidden, for window management) ──
+# ── CustomTkinter root ──
 import customtkinter as ctk
 
 ctk.set_appearance_mode("dark")
 _root = ctk.CTk()
-_root.withdraw()  # Hidden root window — we use CTkToplevels
+_root.withdraw()  # Hidden root — we use CTkToplevels
 
 
 def _run_first_time_setup() -> None:
@@ -59,7 +55,6 @@ def _run_first_time_setup() -> None:
     from src.bootstrap.first_run import is_first_run, run_bootstrap
 
     if not is_first_run():
-        logger.info("Not first run — skipping bootstrap.")
         return
 
     logger.info("First run detected — starting bootstrap...")
@@ -76,8 +71,6 @@ def _run_first_time_setup() -> None:
         progress.complete()
 
     threading.Thread(target=_bootstrap_thread, daemon=True).start()
-
-    # Wait for the progress window to close
     progress.wait_window()
 
 
@@ -86,68 +79,88 @@ def _initialize_storage() -> None:
     try:
         from src.storage.database import init_db
         init_db()
-        logger.info("Database initialized.")
     except Exception as exc:
         logger.error("Database init failed: %s", exc)
 
     try:
         from src.storage.vector_store import init_vector_store
         init_vector_store()
-        logger.info("Vector store initialized.")
     except Exception as exc:
         logger.error("Vector store init failed: %s", exc)
 
 
-def _on_hotkey_pressed() -> None:
+def _full_shutdown(exit_code: int = 0) -> None:
     """
-    Called when the user presses the global hotkey.
-    Runs the full sync cycle: capture → select → process → dispatch.
+    Complete, clean shutdown. Kills EVERYTHING we started.
+    After this call, zero LinkSync processes remain.
     """
-    logger.info("Hotkey pressed! Starting sync cycle...")
+    logger.info("Full shutdown initiated...")
 
-    # Schedule UI work on the main thread
-    _root.after(0, _start_sync_cycle)
+    # Stop Ollama (if we started it)
+    try:
+        from src.brain.ollama_manager import force_shutdown
+        force_shutdown()
+    except Exception:
+        pass
+
+    # Close Playwright browser
+    try:
+        from src.scraper.page_scraper import close_browser
+        close_browser()
+    except Exception:
+        pass
+
+    # Close database
+    try:
+        from src.storage.database import close_db
+        close_db()
+    except Exception:
+        pass
+
+    logger.info("=== %s — Session End ===", APP_NAME)
+
+    # Kill the Tkinter loop and exit the process
+    try:
+        _root.quit()
+        _root.destroy()
+    except Exception:
+        pass
+
+    sys.exit(exit_code)
 
 
 def _start_sync_cycle() -> None:
-    """Start the sync cycle on the main thread (for UI)."""
+    """
+    The main (and only) sync cycle. Captures tabs, shows UI,
+    processes, dispatches, shows report, then exits on OK.
+    """
     from src.capture.tab_capture import capture_tabs
 
-    # Capture tabs
+    # ── Capture tabs from the foreground browser ──
     browser_name, tabs = capture_tabs()
 
     if not tabs:
-        logger.info("No tabs captured. Showing notification.")
-        try:
-            from win10toast import ToastNotifier
-            toaster = ToastNotifier()
-            toaster.show_toast(
-                APP_NAME,
-                "No browser tabs detected. Make sure a browser is in the foreground.",
-                duration=4,
-                threaded=True,
-            )
-        except Exception:
-            pass
+        logger.info("No tabs captured.")
+        _show_no_tabs_dialog()
         return
 
     logger.info("Captured %d tabs from %s.", len(tabs), browser_name)
 
-    # Show tab selector
+    # ── Show tab selector ──
     from src.ui.tab_selector import TabSelectorWindow
 
     def _on_proceed(selected_tabs: list[dict]):
-        """Process selected tabs (runs on background thread)."""
+        """Process selected tabs (background thread)."""
         from src.brain.ollama_manager import ollama_session
         from src.brain.graph import run_sync_pipeline
         from src.dispatch.dispatcher import dispatch_batch
 
         start_time = time.time()
 
-        # ── Start Ollama only for this sync cycle ──
+        # ── Ollama runs ONLY during this block ──
         with ollama_session() as ollama_ready:
             if not ollama_ready:
-                logger.warning("Ollama not available. Will try API fallback.")
+                logger.warning("Ollama unavailable. Trying API fallback.")
 
             # Run the pipeline
             def _progress(index: int, icon: str, text: str):
@@ -175,12 +188,15 @@ def _start_sync_cycle() -> None:
 
             results = dispatch_batch(results, progress_callback=_dispatch_progress)
 
-        # ── Ollama stopped here (if we started it) ──
-        logger.info("Ollama released after sync cycle.")
+        # ── Ollama stopped. RAM freed. ──
+        logger.info("Ollama released.")
 
-        # Show final report
+        # Show final report (OK button triggers full shutdown)
         elapsed = time.time() - start_time
-        selector.show_final_report(results, elapsed)
+        selector.show_final_report(
+            results, elapsed,
+            on_ok=_full_shutdown,  # ← THIS is the key: OK = exit everything
+        )
 
         # Store sync in context
         try:
@@ -189,78 +205,71 @@ def _start_sync_cycle() -> None:
         except Exception:
             pass
 
+    def _on_cancel():
+        """User closed the selector without proceeding."""
+        _full_shutdown()
+
     selector = TabSelectorWindow(
         _root,
         tabs=tabs,
         browser_name=browser_name,
         on_proceed=_on_proceed,
+        on_cancel=_on_cancel,
     )
 
 
-def _on_open_logs() -> None:
-    """Open the logs window from tray menu."""
-    _root.after(0, _show_logs)
+def _show_no_tabs_dialog() -> None:
+    """Show a brief 'no tabs found' message, then exit."""
+    dialog = ctk.CTkToplevel(_root)
+    dialog.title(f"🔗 {APP_NAME}")
+    dialog.geometry("400x200")
+    dialog.resizable(False, False)
+    dialog.attributes("-topmost", True)
+    dialog.configure(fg_color="#0a0e1a")
 
+    # Center on screen
+    dialog.update_idletasks()
+    x = (dialog.winfo_screenwidth() - 400) // 2
+    y = (dialog.winfo_screenheight() - 200) // 2
+    dialog.geometry(f"+{x}+{y}")
 
-def _show_logs() -> None:
-    from src.ui.logs_window import LogsWindow
-    LogsWindow(_root)
+    ctk.CTkLabel(
+        dialog,
+        text="No browser tabs detected",
+        font=("Segoe UI", 18, "bold"),
+        text_color="#00f0ff",
+    ).pack(pady=(30, 10))
 
+    ctk.CTkLabel(
+        dialog,
+        text="Make sure a browser is in the foreground\nbefore launching LinkSync AI.",
+        font=("Segoe UI", 12),
+        text_color="#94a3b8",
+    ).pack(pady=5)
 
-def _on_open_settings() -> None:
-    """Open the settings dialog from tray menu."""
-    _root.after(0, _show_settings)
+    ctk.CTkButton(
+        dialog,
+        text="OK",
+        width=120, height=36,
+        fg_color="#00f0ff",
+        text_color="#0a0e1a",
+        hover_color="#39ff14",
+        font=("Segoe UI", 14, "bold"),
+        command=_full_shutdown,
+    ).pack(pady=20)
 
-
-def _show_settings() -> None:
-    from src.ui.settings_dialog import SettingsDialog
-    SettingsDialog(_root)
-
-
-def _on_exit() -> None:
-    """Clean shutdown."""
-    logger.info("Shutting down %s...", APP_NAME)
-
-    from src.hotkey.global_hotkey import stop_listener
-    stop_listener()
-
-    # Force-stop Ollama if we started it
-    try:
-        from src.brain.ollama_manager import force_shutdown
-        force_shutdown()
-    except Exception:
-        pass
-
-    try:
-        from src.scraper.page_scraper import close_browser
-        close_browser()
-    except Exception:
-        pass
-
-    try:
-        from src.storage.database import close_db
-        close_db()
-    except Exception:
-        pass
-
-    if _tray_icon:
-        _tray_icon.stop()
-
-    _root.quit()
-    logger.info("%s stopped.", APP_NAME)
+    dialog.protocol("WM_DELETE_WINDOW", _full_shutdown)
 
 
 # ============================================================
-# Application Lifecycle
+# Entry Point
 # ============================================================
-
-_tray_icon = None
-
 
 def main() -> None:
-    """Main application entry point."""
-    global _tray_icon
-
+    """
+    Main entry point. Runs the full lifecycle ONCE:
+    bootstrap → capture → select → process → report → exit.
+    """
     try:
         # Phase 1: First-run setup (if needed)
         _run_first_time_setup()
@@ -268,44 +277,19 @@ def main() -> None:
         # Phase 2: Initialize storage
         _initialize_storage()
 
-        # Phase 3: Start hotkey listener
-        from src.hotkey.global_hotkey import start_listener, get_active_hotkey_display
-        start_listener(callback=_on_hotkey_pressed)
-        logger.info("Hotkey listener active: %s", get_active_hotkey_display())
+        # Phase 3: Start the sync cycle immediately
+        #   (scheduled with after() so the Tk mainloop is running)
+        _root.after(100, _start_sync_cycle)
 
-        # Phase 4: Create and run system tray
-        from src.tray.system_tray import create_tray, run_tray
-
-        _tray_icon = create_tray(
-            on_sync=_on_hotkey_pressed,
-            on_logs=_on_open_logs,
-            on_settings=_on_open_settings,
-            on_exit=_on_exit,
-        )
-
-        # Run tray in a separate thread so the Tkinter mainloop can run
-        tray_thread = threading.Thread(target=run_tray, args=(_tray_icon,), daemon=True)
-        tray_thread.start()
-
-        # Show startup notification
-        try:
-            from win10toast import ToastNotifier
-            toaster = ToastNotifier()
-            toaster.show_toast(
-                APP_NAME,
-                f"Ready! Press {get_active_hotkey_display()} to sync.",
-                duration=3,
-                threaded=True,
-            )
-        except Exception:
-            pass
-
-        # Run the Tkinter main loop (keeps windows alive)
+        # Phase 4: Run the Tkinter event loop
+        #   (keeps windows alive until _full_shutdown() is called)
         _root.mainloop()
 
+    except KeyboardInterrupt:
+        _full_shutdown()
     except Exception as exc:
         logger.critical("Fatal error: %s", exc, exc_info=True)
-        sys.exit(1)
+        _full_shutdown(1)
 
 
 if __name__ == "__main__":

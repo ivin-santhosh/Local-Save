@@ -390,7 +390,12 @@ class TabSelectorWindow(ctk.CTkToplevel):
     # Final Report
     # ============================================================
 
-    def show_final_report(self, results: list[dict], elapsed: float = 0) -> None:
+    def show_final_report(
+        self,
+        results: list[dict],
+        elapsed: float = 0,
+        on_ok: Optional[Callable[[], None]] = None,
+    ) -> None:
         """
         Show the completion report after all tabs are processed.
 
@@ -399,12 +404,19 @@ class TabSelectorWindow(ctk.CTkToplevel):
         Args:
             results: List of result dicts from the pipeline.
             elapsed: Total processing time in seconds.
+            on_ok: Callback when user clicks OK. Triggers full app shutdown.
         """
+        self._on_ok = on_ok
+
         def _show():
             for widget in self.winfo_children():
                 widget.destroy()
 
+            # Wire window close to full shutdown too
+            self.protocol("WM_DELETE_WINDOW", self._handle_ok)
+
             summarized = sum(1 for r in results if r.get("status") == "summarized")
+            dispatched = sum(1 for r in results if r.get("dispatched"))
             total = len(results)
 
             # Header
@@ -424,18 +436,33 @@ class TabSelectorWindow(ctk.CTkToplevel):
 
             ctk.CTkLabel(
                 stats_frame,
-                text=f"{summarized}/{total} tabs synced to WhatsApp",
+                text=f"{summarized}/{total} tabs summarized",
                 font=FONT_BODY,
                 text_color=TEXT_PRIMARY,
             ).pack(padx=PAD_LG, pady=(PAD_MD, PAD_SM))
 
+            ctk.CTkLabel(
+                stats_frame,
+                text=f"📤 {dispatched} sent to WhatsApp",
+                font=FONT_BODY_SM,
+                text_color=ACCENT_GREEN if dispatched > 0 else TEXT_MUTED,
+            ).pack(padx=PAD_LG, pady=(0, PAD_SM))
+
             if elapsed > 0:
                 ctk.CTkLabel(
                     stats_frame,
-                    text=f"Time: {elapsed:.1f}s",
+                    text=f"⏱ Completed in {elapsed:.1f}s",
                     font=FONT_CAPTION,
                     text_color=TEXT_SECONDARY,
                 ).pack(padx=PAD_LG, pady=(0, PAD_MD))
+
+            # Hint
+            ctk.CTkLabel(
+                self,
+                text="Press OK to exit. All processes will shut down cleanly.",
+                font=FONT_CAPTION,
+                text_color=TEXT_MUTED,
+            ).pack(padx=PAD_XL, pady=(PAD_SM, 0))
 
             # Buttons
             btn_frame = ctk.CTkFrame(self, fg_color="transparent")
@@ -443,27 +470,40 @@ class TabSelectorWindow(ctk.CTkToplevel):
 
             ctk.CTkButton(
                 btn_frame,
-                text="VIEW LOGS",
-                width=120,
+                text="📋 VIEW LOGS",
+                width=130,
                 fg_color="transparent",
                 border_width=1,
                 border_color=ACCENT_CYAN,
                 text_color=ACCENT_CYAN,
                 hover_color=BG_HOVER,
+                font=FONT_BODY_SM,
                 command=self._open_logs,
             ).pack(side="left", padx=PAD_SM)
 
             ctk.CTkButton(
                 btn_frame,
-                text="CLOSE",
-                width=120,
-                fg_color=ACCENT_CYAN,
+                text="✅  OK",
+                width=140,
+                height=40,
+                fg_color=ACCENT_GREEN,
                 text_color=BG_PRIMARY,
-                hover_color=ACCENT_GREEN,
-                command=self.destroy,
+                hover_color=ACCENT_CYAN,
+                font=FONT_HEADING_SM,
+                command=self._handle_ok,
             ).pack(side="right", padx=PAD_SM)
 
+            # Bind Enter key to OK
+            self.bind("<Return>", lambda e: self._handle_ok())
+
         self.after(0, _show)
+
+    def _handle_ok(self) -> None:
+        """Handle OK button — triggers full app shutdown."""
+        if self._on_ok:
+            self._on_ok()
+        else:
+            self.destroy()
 
     def _open_logs(self) -> None:
         """Open the logs window."""

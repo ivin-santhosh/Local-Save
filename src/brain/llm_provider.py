@@ -37,6 +37,26 @@ _current_provider: str = "none"
 _llm_instance: Optional[BaseChatModel] = None
 
 
+def _get_api_key(provider: str) -> Optional[str]:
+    """
+    Get an API key from the user's saved settings.
+
+    This is checked BEFORE .env, so the user can change keys
+    from the Settings dialog at any time without touching files.
+
+    Args:
+        provider: 'openai' or 'groq'.
+
+    Returns:
+        The API key string, or None if not configured.
+    """
+    try:
+        from src.storage.context_manager import get_value
+        return get_value(f"user_preferences.api_key_{provider}") or get_value("user_preferences.api_key")
+    except Exception:
+        return None
+
+
 def check_ollama_health() -> bool:
     """
     Check if Ollama is running and responsive.
@@ -108,7 +128,9 @@ def get_llm() -> BaseChatModel:
         return _llm_instance
 
     # Try OpenAI fallback
-    if OPENAI_API_KEY:
+    # Check Settings (agent_context.json) first, then .env
+    openai_key = _get_api_key("openai") or OPENAI_API_KEY
+    if openai_key:
         if _current_provider != "openai":
             _notify_provider_switch(
                 _current_provider or "Ollama", "OpenAI API"
@@ -119,13 +141,14 @@ def get_llm() -> BaseChatModel:
         from langchain_openai import ChatOpenAI
         _llm_instance = ChatOpenAI(
             model=OPENAI_MODEL,
-            api_key=OPENAI_API_KEY,
+            api_key=openai_key,
             temperature=0.3,
         )
         return _llm_instance
 
     # Try Groq fallback
-    if GROQ_API_KEY:
+    groq_key = _get_api_key("groq") or GROQ_API_KEY
+    if groq_key:
         if _current_provider != "groq":
             _notify_provider_switch(
                 _current_provider or "Ollama", "Groq API"
@@ -136,14 +159,14 @@ def get_llm() -> BaseChatModel:
         from langchain_openai import ChatOpenAI
         _llm_instance = ChatOpenAI(
             model=GROQ_MODEL,
-            api_key=GROQ_API_KEY,
+            api_key=groq_key,
             base_url="https://api.groq.com/openai/v1",
             temperature=0.3,
         )
         return _llm_instance
 
     raise RuntimeError(
-        "No LLM provider available. Start Ollama or configure an API key in .env"
+        "No LLM provider available. Start Ollama or add an API key in Settings."
     )
 
 
