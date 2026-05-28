@@ -33,7 +33,7 @@ from typing import Optional
 
 import requests
 
-from config import OLLAMA_BASE_URL
+from config import OLLAMA_BASE_URL, OLLAMA_EXE_PATH
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +45,34 @@ _lock = threading.Lock()
 _process: Optional[subprocess.Popen] = None
 _we_started_it: bool = False
 _active_sessions: int = 0  # Reference counter for nested usage
+
+
+def _get_ollama_cmd() -> str:
+    """
+    Resolve the Ollama executable path.
+
+    Checks (in order):
+    1. Config OLLAMA_EXE_PATH (from .env or auto-discovered)
+    2. agent_context.json (cached from previous discovery)
+    3. Falls back to bare 'ollama' (relies on PATH)
+    """
+    import os
+
+    # 1. Config path
+    if OLLAMA_EXE_PATH and os.path.isfile(OLLAMA_EXE_PATH):
+        return OLLAMA_EXE_PATH
+
+    # 2. Cached in agent_context.json
+    try:
+        from src.storage.context_manager import get_value
+        cached = get_value("discovered_apps.ollama.path")
+        if cached and os.path.isfile(cached):
+            return cached
+    except Exception:
+        pass
+
+    # 3. Bare command (hope it's on PATH)
+    return "ollama"
 
 
 def is_running() -> bool:
@@ -94,9 +122,10 @@ def ensure_running(timeout: int = 30) -> bool:
 
         # Try to start it
         logger.info("Starting Ollama for this sync cycle...")
+        ollama_cmd = _get_ollama_cmd()
         try:
             _process = subprocess.Popen(
-                ["ollama", "serve"],
+                [ollama_cmd, "serve"],
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 creationflags=subprocess.CREATE_NO_WINDOW,  # No console window

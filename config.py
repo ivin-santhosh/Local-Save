@@ -49,6 +49,11 @@ HOTKEY_DISPLAY = "Ctrl+Shift+L"
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3")
 OLLAMA_TIMEOUT = 60  # seconds
+# Executable path — auto-discovered or override via .env
+OLLAMA_EXE_PATH = os.getenv(
+    "OLLAMA_EXE_PATH",
+    os.path.join(os.environ.get("LOCALAPPDATA", ""), "Programs", "Ollama", "ollama.exe"),
+)
 
 # API Fallback (only used if Ollama is down AND key is configured)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
