@@ -397,7 +397,12 @@ class TabSelectorWindow(ctk.CTkToplevel):
         on_ok: Optional[Callable[[], None]] = None,
     ) -> None:
         """
-        Show the completion report after all tabs are processed.
+        Show a DETAILED completion report with per-tab summaries.
+
+        Each tab gets a card showing:
+        - Title & domain
+        - Full summary text (what the LLM produced)
+        - Dispatch status (sent/failed/skipped)
 
         Thread-safe: call from any thread.
 
@@ -412,14 +417,19 @@ class TabSelectorWindow(ctk.CTkToplevel):
             for widget in self.winfo_children():
                 widget.destroy()
 
+            # Make window taller for detailed report
+            self.geometry(f"{SELECTOR_WIDTH}x{SELECTOR_HEIGHT + 100}")
+
             # Wire window close to full shutdown too
             self.protocol("WM_DELETE_WINDOW", self._handle_ok)
 
             summarized = sum(1 for r in results if r.get("status") == "summarized")
             dispatched = sum(1 for r in results if r.get("dispatched"))
+            skipped = sum(1 for r in results if r.get("status") in ("aborted", "skipped", "blacklisted"))
+            failed = sum(1 for r in results if r.get("status") == "failed")
             total = len(results)
 
-            # Header
+            # ── Header ──
             header = ctk.CTkFrame(self, fg_color=BG_SECONDARY, corner_radius=0)
             header.pack(fill="x")
 
@@ -428,45 +438,46 @@ class TabSelectorWindow(ctk.CTkToplevel):
                 text=f"{ICON_SUCCESS}  SYNC COMPLETE",
                 font=FONT_HEADING,
                 text_color=ACCENT_GREEN,
-            ).pack(padx=PAD_XL, pady=PAD_LG)
+            ).pack(padx=PAD_XL, pady=(PAD_LG, PAD_SM))
 
-            # Stats
-            stats_frame = ctk.CTkFrame(self, fg_color=BG_TERTIARY, corner_radius=BORDER_RADIUS)
-            stats_frame.pack(fill="x", padx=PAD_XL, pady=PAD_LG)
-
-            ctk.CTkLabel(
-                stats_frame,
-                text=f"{summarized}/{total} tabs summarized",
-                font=FONT_BODY,
-                text_color=TEXT_PRIMARY,
-            ).pack(padx=PAD_LG, pady=(PAD_MD, PAD_SM))
-
-            ctk.CTkLabel(
-                stats_frame,
-                text=f"📤 {dispatched} sent to WhatsApp",
-                font=FONT_BODY_SM,
-                text_color=ACCENT_GREEN if dispatched > 0 else TEXT_MUTED,
-            ).pack(padx=PAD_LG, pady=(0, PAD_SM))
-
+            # Stats row
+            stats_text = f"✅ {summarized} summarized  •  📤 {dispatched} sent"
+            if skipped > 0:
+                stats_text += f"  •  ⏭ {skipped} skipped"
+            if failed > 0:
+                stats_text += f"  •  ❌ {failed} failed"
             if elapsed > 0:
-                ctk.CTkLabel(
-                    stats_frame,
-                    text=f"⏱ Completed in {elapsed:.1f}s",
-                    font=FONT_CAPTION,
-                    text_color=TEXT_SECONDARY,
-                ).pack(padx=PAD_LG, pady=(0, PAD_MD))
+                stats_text += f"  •  ⏱ {elapsed:.1f}s"
 
-            # Hint
+            ctk.CTkLabel(
+                header,
+                text=stats_text,
+                font=FONT_BODY_SM,
+                text_color=TEXT_SECONDARY,
+            ).pack(padx=PAD_XL, pady=(0, PAD_MD))
+
+            # ── Per-Tab Detail Cards (scrollable) ──
+            scroll = ctk.CTkScrollableFrame(
+                self,
+                fg_color=BG_PRIMARY,
+                scrollbar_button_color=ACCENT_CYAN,
+                scrollbar_button_hover_color=ACCENT_GREEN,
+            )
+            scroll.pack(fill="both", expand=True, padx=PAD_LG, pady=PAD_SM)
+
+            for i, result in enumerate(results):
+                self._build_result_card(scroll, i, result)
+
+            # ── Bottom Bar ──
             ctk.CTkLabel(
                 self,
-                text="Press OK to exit. All processes will shut down cleanly.",
+                text="Review your summaries above. Press OK to exit cleanly.",
                 font=FONT_CAPTION,
                 text_color=TEXT_MUTED,
             ).pack(padx=PAD_XL, pady=(PAD_SM, 0))
 
-            # Buttons
             btn_frame = ctk.CTkFrame(self, fg_color="transparent")
-            btn_frame.pack(fill="x", padx=PAD_XL, pady=PAD_XL)
+            btn_frame.pack(fill="x", padx=PAD_XL, pady=(PAD_SM, PAD_LG))
 
             ctk.CTkButton(
                 btn_frame,
@@ -497,6 +508,122 @@ class TabSelectorWindow(ctk.CTkToplevel):
             self.bind("<Return>", lambda e: self._handle_ok())
 
         self.after(0, _show)
+
+    def _build_result_card(
+        self, parent: ctk.CTkScrollableFrame, index: int, result: dict
+    ) -> None:
+        """
+        Build a single tab result card showing title, summary, and status.
+
+        Args:
+            parent: The scrollable frame to add the card to.
+            index: Tab index (for numbering).
+            result: Result dict from the pipeline with keys like
+                    title, url, domain, summary, status, dispatched.
+        """
+        status = result.get("status", "unknown")
+        title = result.get("title", "Untitled")[:60]
+        domain = result.get("domain", "")
+        url = result.get("url", "")
+        summary = result.get("summary", "")
+        browser = result.get("browser", "")
+        dispatched = result.get("dispatched", False)
+
+        # Status icon and color
+        if status == "summarized" and dispatched:
+            icon = "📤"
+            border_color = ACCENT_GREEN
+        elif status == "summarized":
+            icon = ICON_SUCCESS
+            border_color = ACCENT_CYAN
+        elif status in ("aborted", "blacklisted"):
+            icon = ICON_LOCK
+            border_color = TEXT_MUTED
+        elif status == "skipped":
+            icon = "⏭"
+            border_color = ACCENT_YELLOW
+        else:
+            icon = ICON_FAIL
+            border_color = ACCENT_RED
+
+        # Card frame
+        card = ctk.CTkFrame(
+            parent,
+            fg_color=BG_TERTIARY,
+            corner_radius=10,
+            border_width=1,
+            border_color=border_color,
+        )
+        card.pack(fill="x", padx=PAD_SM, pady=4)
+
+        # Title row: icon + title + browser badge
+        title_row = ctk.CTkFrame(card, fg_color="transparent")
+        title_row.pack(fill="x", padx=PAD_MD, pady=(PAD_SM, 0))
+
+        title_text = f"{icon}  {title}"
+        if browser:
+            title_text += f"  [{browser}]"
+
+        ctk.CTkLabel(
+            title_row,
+            text=title_text,
+            font=FONT_BODY_SM,
+            text_color=TEXT_PRIMARY,
+            anchor="w",
+        ).pack(side="left", fill="x", expand=True)
+
+        # Domain/URL
+        if domain or url:
+            display_url = domain or url[:50]
+            ctk.CTkLabel(
+                card,
+                text=f"   🌐 {display_url}",
+                font=FONT_CAPTION,
+                text_color=ACCENT_CYAN,
+                anchor="w",
+            ).pack(fill="x", padx=PAD_MD, pady=(2, 0))
+
+        # Summary text (the key content the user wants to see)
+        if summary:
+            summary_frame = ctk.CTkFrame(
+                card, fg_color=BG_SECONDARY, corner_radius=6,
+            )
+            summary_frame.pack(fill="x", padx=PAD_MD, pady=(PAD_SM, PAD_SM))
+
+            ctk.CTkLabel(
+                summary_frame,
+                text=summary,
+                font=FONT_BODY_SM,
+                text_color=TEXT_SECONDARY,
+                anchor="nw",
+                justify="left",
+                wraplength=SELECTOR_WIDTH - 120,
+            ).pack(padx=PAD_SM, pady=PAD_SM, fill="x")
+        elif status in ("aborted", "blacklisted"):
+            ctk.CTkLabel(
+                card,
+                text="   🔒 Skipped (blacklisted domain)",
+                font=FONT_CAPTION,
+                text_color=TEXT_MUTED,
+                anchor="w",
+            ).pack(fill="x", padx=PAD_MD, pady=(2, PAD_SM))
+        elif status == "skipped":
+            reason = result.get("skip_reason", "Content too short or duplicate")
+            ctk.CTkLabel(
+                card,
+                text=f"   ⏭ Skipped: {reason}",
+                font=FONT_CAPTION,
+                text_color=ACCENT_YELLOW,
+                anchor="w",
+            ).pack(fill="x", padx=PAD_MD, pady=(2, PAD_SM))
+        else:
+            ctk.CTkLabel(
+                card,
+                text=f"   ❌ {status}",
+                font=FONT_CAPTION,
+                text_color=ACCENT_RED,
+                anchor="w",
+            ).pack(fill="x", padx=PAD_MD, pady=(2, PAD_SM))
 
     def _handle_ok(self) -> None:
         """Handle OK button — triggers full app shutdown."""

@@ -39,3 +39,6 @@ requests>=2.31.0
 
 # --- Win32 API (Hotkey, Process Info) ---
 pywin32>=306
+
+# --- Process Scanning (Multi-Browser Detection) ---
+psutil>=5.9.0

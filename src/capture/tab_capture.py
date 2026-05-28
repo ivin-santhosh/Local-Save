@@ -1,9 +1,13 @@
 """
 LinkSync AI — Multi-Browser Tab Capture
 =========================================
-Auto-detects the foreground browser (Chrome, Edge, Brave, Opera,
-DuckDuckGo, Vivaldi, Firefox, or any Chromium-based browser) and
-captures all open tab titles and URLs.
+Auto-detects browsers and captures all open tab titles and URLs.
+
+Two modes:
+  • capture_all_browsers() — scans ALL running browser processes
+    via psutil and collects tabs from every one of them.
+  • capture_tabs() — tries capture_all_browsers() first; falls
+    back to foreground-only detection if nothing is found.
 
 Primary method: Chrome DevTools Protocol (CDP) — gets ALL tabs.
 Fallback method: pywinauto UIA — gets active tab only.
@@ -12,14 +16,17 @@ The BROWSER_REGISTRY in config.py makes this fully extensible:
 add a new browser by adding one dict entry, zero code changes.
 
 Usage:
-    from src.capture.tab_capture import capture_tabs
+    from src.capture.tab_capture import capture_tabs, capture_all_browsers
     browser_name, tabs = capture_tabs()
+    all_tabs = capture_all_browsers()   # list[dict] with 'browser' key
 """
 
 import logging
 import os
 from typing import Optional
 from urllib.parse import urlparse
+
+import psutil
 
 import requests
 import win32gui
@@ -266,20 +273,114 @@ def get_tabs_uia(browser_info: Optional[dict] = None) -> list[dict]:
         return []
 
 
-def capture_tabs() -> tuple[str, list[dict]]:
+def capture_all_browsers() -> list[dict]:
     """
-    Main entry point: auto-detect the browser and capture all tabs.
+    Scan ALL running browser processes and collect tabs from each.
 
     Strategy:
-    1. Detect the foreground browser
-    2. If Chromium-based → try CDP first → fall back to UIA
-    3. If non-Chromium (Firefox) → use UIA directly
-    4. If no browser detected → return empty
+      1. Use psutil.process_iter() to find every running process whose
+         name matches a BROWSER_REGISTRY key.
+      2. For each *Chromium* browser found → try CDP.
+      3. For each *non-Chromium* browser found (Firefox) → try UIA.
+      4. Deduplicate tabs by URL (first occurrence wins).
+      5. Each returned tab dict includes a 'browser' key.
+
+    Returns:
+        List of tab dicts.  Each dict has keys:
+        title, url, domain, browser.
+    """
+    found_browsers: dict[str, dict] = {}  # proc_name → registry entry
+
+    # --- Step 1: discover running browsers -----------------------
+    try:
+        for proc in psutil.process_iter(["name"]):
+            try:
+                pname = (proc.info["name"] or "").lower()
+                if pname in BROWSER_REGISTRY and pname not in found_browsers:
+                    found_browsers[pname] = BROWSER_REGISTRY[pname]
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                continue
+    except Exception as exc:
+        logger.warning("psutil process scan failed: %s", exc)
+        return []
+
+    if not found_browsers:
+        logger.info("capture_all_browsers: no known browser processes running.")
+        return []
+
+    logger.info(
+        "capture_all_browsers: found %d browser(s): %s",
+        len(found_browsers),
+        ", ".join(info["name"] for info in found_browsers.values()),
+    )
+
+    all_tabs: list[dict] = []
+
+    # --- Step 2 & 3: collect tabs from each browser --------------
+    for proc_name, info in found_browsers.items():
+        browser_name = info["name"]
+        is_chromium = info.get("chromium", False)
+        tabs: list[dict] = []
+
+        if is_chromium:
+            tabs = get_all_tabs_cdp()
+            if not tabs:
+                logger.debug(
+                    "CDP returned no tabs for %s; trying UIA.", browser_name
+                )
+                tabs = get_tabs_uia(info)
+        else:
+            # Non-Chromium (e.g. Firefox) — UIA only
+            tabs = get_tabs_uia(info)
+
+        # Tag every tab with its source browser
+        for tab in tabs:
+            tab["browser"] = browser_name
+
+        all_tabs.extend(tabs)
+
+    # --- Step 4: deduplicate by URL (first occurrence wins) ------
+    seen_urls: set[str] = set()
+    unique_tabs: list[dict] = []
+    for tab in all_tabs:
+        url = tab.get("url", "")
+        if url and url in seen_urls:
+            continue
+        if url:
+            seen_urls.add(url)
+        unique_tabs.append(tab)
+
+    logger.info(
+        "capture_all_browsers: %d unique tabs across %d browser(s).",
+        len(unique_tabs),
+        len(found_browsers),
+    )
+    return unique_tabs
+
+
+def capture_tabs() -> tuple[str, list[dict]]:
+    """
+    Main entry point: capture tabs from ALL running browsers.
+
+    Strategy:
+    1. Scan ALL running browsers (multi-browser mode)
+    2. If that fails, fall back to foreground-only detection
+    3. If no browser detected → return empty
 
     Returns:
         Tuple of (browser_name, list_of_tab_dicts).
-        Each tab dict has: title, url, domain.
+        Each tab dict has: title, url, domain, browser.
     """
+    # Strategy 1: Scan all running browsers
+    all_tabs = capture_all_browsers()
+    if all_tabs:
+        browsers_found = {t["browser"] for t in all_tabs if "browser" in t}
+        if len(browsers_found) == 1:
+            return (browsers_found.pop(), all_tabs)
+        return (" + ".join(sorted(browsers_found)), all_tabs)
+
+    # Strategy 2: Foreground-only fallback
+    logger.info("Multi-browser scan found nothing. Trying foreground detection...")
     browser = detect_active_browser()
 
     if browser is None:
@@ -289,15 +390,17 @@ def capture_tabs() -> tuple[str, list[dict]]:
     browser_name = browser.get("name", "Unknown Browser")
     is_chromium = browser.get("chromium", False)
 
-    # Strategy 1: CDP for Chromium browsers
     if is_chromium:
         tabs = get_all_tabs_cdp()
         if tabs:
+            for tab in tabs:
+                tab["browser"] = browser_name
             return (browser_name, tabs)
         logger.info(
             "CDP unavailable for %s. Falling back to UIA.", browser_name
         )
 
-    # Strategy 2: UIA fallback (works for all browsers)
     tabs = get_tabs_uia(browser)
+    for tab in tabs:
+        tab["browser"] = browser_name
     return (browser_name, tabs)
