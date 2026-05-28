@@ -260,6 +260,8 @@ def run_sync_pipeline(
         initial_state: dict = {
             "url": url,
             "title": title,
+            "domain": tab.get("domain", ""),
+            "browser": tab.get("browser", ""),
             "abort": False,
             "abort_reason": None,
             "duplicate": False,
@@ -290,11 +292,9 @@ def run_sync_pipeline(
                 status = "skipped"
                 status_icon = "⏭️"
                 status_text = final_state.get("abort_reason", "Skipped")
-            elif final_state.get("error"):
-                status = "error"
-                status_icon = "❌"
-                status_text = final_state.get("error", "Unknown error")
-            else:
+            elif final_state.get("summary") and final_state["summary"].strip():
+                # Summary exists — mark as summarized even if scraping had
+                # a non-fatal error (e.g., title-only mode, empty URL)
                 status = "summarized"
                 status_icon = "✅"
                 status_text = "Summarized"
@@ -312,6 +312,15 @@ def run_sync_pipeline(
                     )
                 except Exception as exc:
                     logger.warning("Failed to store in vector memory: %s", exc)
+
+            elif final_state.get("error"):
+                status = "error"
+                status_icon = "❌"
+                status_text = final_state.get("error", "Unknown error")
+            else:
+                status = "error"
+                status_icon = "❌"
+                status_text = "No summary generated"
 
             final_state["status"] = status
 

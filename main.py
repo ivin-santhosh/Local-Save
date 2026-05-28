@@ -51,7 +51,13 @@ _root.withdraw()  # Hidden root — we use CTkToplevels
 
 
 def _run_first_time_setup() -> None:
-    """Run the first-time bootstrap with the progress UI."""
+    """
+    Run the first-time bootstrap with the progress UI.
+
+    Runs SYNCHRONOUSLY on the main thread to avoid Python 3.14's
+    strict Tkinter threading rules. Each bootstrap step updates
+    the UI directly via _root.update().
+    """
     from src.bootstrap.first_run import is_first_run, run_bootstrap
 
     if not is_first_run():
@@ -61,17 +67,36 @@ def _run_first_time_setup() -> None:
     from src.ui.progress_window import BootstrapProgressWindow
 
     progress = BootstrapProgressWindow(_root)
+    _root.update()  # Render the window
 
-    def _bootstrap_thread():
-        def _callback(step: int, success: bool, detail: str):
-            progress.update_step(step, success, detail)
-            progress.add_log(f"{'✅' if success else '❌'} Step {step}: {detail}")
+    def _callback(step: int, success: bool, detail: str):
+        """Called by bootstrap for each step — runs on main thread."""
+        icon = '✅' if success else '❌'
+        progress.update_step_direct(step, success, detail)
+        progress.add_log_direct(f"{icon} Step {step}: {detail}")
+        _root.update()  # Process UI events after each step
 
-        run_bootstrap(progress_callback=_callback)
-        progress.complete()
+    run_bootstrap(progress_callback=_callback)
 
-    threading.Thread(target=_bootstrap_thread, daemon=True).start()
-    progress.wait_window()
+    # Show completion
+    progress.add_log_direct("\n✅ Setup complete! LinkSync AI is ready.")
+    progress.protocol("WM_DELETE_WINDOW", progress.destroy)
+    _root.update()
+
+    # Brief pause to let user see completion
+    import time
+    end = time.time() + 2.0
+    while time.time() < end:
+        try:
+            _root.update()
+        except Exception:
+            break
+        time.sleep(0.05)
+
+    try:
+        progress.destroy()
+    except Exception:
+        pass
 
 
 def _initialize_storage() -> None:

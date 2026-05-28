@@ -1,0 +1,392 @@
+2026-05-28 11:04:33,929 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-28 11:04:34,829 [INFO] LinkSync AI: First run detected — starting bootstrap...
+2026-05-28 11:04:35,652 [INFO] src.bootstrap.first_run: Bootstrap step 0: OK — Python 3.14.4
+2026-05-28 11:05:55,127 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-28 11:05:55,616 [INFO] LinkSync AI: First run detected — starting bootstrap...
+2026-05-28 11:05:56,199 [INFO] src.bootstrap.first_run: Bootstrap step 0: OK — Python 3.14.4
+2026-05-28 11:07:51,404 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-28 11:07:52,048 [INFO] LinkSync AI: First run detected — starting bootstrap...
+2026-05-28 11:07:52,618 [INFO] src.bootstrap.first_run: Bootstrap step 0: OK — Python 3.14.4
+2026-05-28 11:07:52,808 [INFO] src.bootstrap.first_run: Bootstrap step 1: OK — All packages installed
+2026-05-28 11:08:31,941 [INFO] src.bootstrap.first_run: Bootstrap step 2: OK — Chromium ready
+2026-05-28 11:08:32,000 [INFO] src.bootstrap.first_run: Bootstrap step 3: OK — Found: Google Chrome, Microsoft Edge
+2026-05-28 11:08:32,009 [INFO] src.bootstrap.first_run: Bootstrap step 4: FAIL — Not found — will search on first sync
+2026-05-28 11:08:35,857 [INFO] src.bootstrap.first_run: Bootstrap step 5: OK — Ollama running
+2026-05-28 11:08:37,792 [INFO] src.storage.context_manager: Context file not found, using defaults: D:\Ivin\AI Projects\Linksync_AI\agent_context.json
+2026-05-28 11:08:37,792 [INFO] src.storage.context_manager: Context file not found, using defaults: D:\Ivin\AI Projects\Linksync_AI\agent_context.json
+2026-05-28 11:08:37,795 [INFO] src.bootstrap.first_run: Bootstrap step 6: OK — Context initialized
+2026-05-28 11:08:38,311 [INFO] src.bootstrap.first_run: Desktop shortcut created: C:\Users\ivsan\Desktop\LinkSync AI.lnk
+2026-05-28 11:08:38,312 [INFO] src.bootstrap.first_run: Bootstrap step 7: OK — Shortcut created
+2026-05-28 11:08:40,432 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 11:08:40,432 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 11:08:41,553 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-28 11:08:41,559 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=0)
+2026-05-28 11:08:41,562 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-28 11:08:41,562 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-28 11:08:41,760 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-05-28 11:08:48,140 [INFO] src.capture.tab_capture: UIA captured 19 tabs.
+2026-05-28 11:08:53,334 [INFO] src.capture.tab_capture: UIA captured 0 tabs.
+2026-05-28 11:08:53,334 [INFO] src.capture.tab_capture: capture_all_browsers: 19 unique tabs across 2 browser(s).
+2026-05-28 11:08:53,334 [INFO] LinkSync AI: Captured 19 tabs from Google Chrome.
+2026-05-28 11:10:33,119 [INFO] src.ui.tab_selector: User selected 13 tabs for sync.
+2026-05-28 11:10:35,763 [INFO] src.brain.ollama_manager: Ollama already running (external process). Will NOT stop it on shutdown.
+2026-05-28 11:10:35,763 [INFO] src.brain.graph: Processing tab 1/13: 3 Exercises That Rewire Your Brain in 11
+2026-05-28 11:10:35,773 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:10:35,777 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:10:35,779 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:10:37,600 [INFO] src.scraper.page_scraper: Playwright headless browser started.
+2026-05-28 11:10:37,775 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:10:37,782 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:10:37,783 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:10:39,838 [INFO] src.brain.llm_provider: Using Ollama (llama3) — local, private.
+2026-05-28 11:11:55,846 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:11:56,732 [INFO] src.brain.graph: Summary generated via ollama (114 chars).
+2026-05-28 11:11:56,733 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:11:56,733 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:11:56,734 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:12:02,254 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:03,082 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:12:03,083 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:12:03,083 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:03,083 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:12:08,439 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:09,909 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:12:09,909 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:12:09,909 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:09,915 [INFO] src.brain.graph: Processing tab 2/13: Fastest way to become an AI Engineer in 
+2026-05-28 11:12:09,921 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:12:09,923 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:12:09,924 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:12:10,093 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:12:10,109 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:12:10,110 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:12:15,635 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:16,652 [INFO] src.brain.graph: Summary generated via ollama (114 chars).
+2026-05-28 11:12:16,653 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:12:16,653 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:16,653 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:12:21,963 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:23,521 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:12:23,522 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:12:23,522 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:23,522 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:12:29,001 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:30,210 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:12:30,210 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:12:30,211 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:30,213 [INFO] src.brain.graph: Processing tab 3/13: 𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us
+2026-05-28 11:12:30,245 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:12:30,247 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:12:30,247 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:12:30,354 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:12:30,359 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:12:30,360 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:12:35,672 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:37,043 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:12:37,044 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:12:37,044 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:37,044 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:12:42,332 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:43,614 [INFO] src.brain.graph: Summary generated via ollama (114 chars).
+2026-05-28 11:12:43,615 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:12:43,615 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:43,616 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:12:48,923 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:50,358 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:12:50,359 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:12:50,359 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:50,376 [INFO] src.brain.graph: Processing tab 4/13: The Global Monetary Reset Has Begun (Hin
+2026-05-28 11:12:50,383 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:12:50,384 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:12:50,385 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:12:50,501 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:12:50,506 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:12:50,507 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:12:55,996 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:12:57,318 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:12:57,318 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:12:57,318 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:12:57,319 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:13:02,540 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:03,349 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:13:03,350 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:13:03,350 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:03,350 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:13:08,573 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:09,505 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:13:09,505 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:13:09,505 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:09,507 [INFO] src.brain.graph: Processing tab 5/13: 5 Ancient Encounters with The Men in Bla
+2026-05-28 11:13:09,511 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:13:09,513 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:13:09,514 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:13:09,620 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:13:09,625 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:13:09,626 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:13:14,891 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:15,862 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:13:15,863 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:13:15,863 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:15,863 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:13:21,132 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:22,092 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:13:22,093 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:13:22,093 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:22,094 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:13:27,355 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:28,314 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:13:28,315 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:13:28,315 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:28,318 [INFO] src.brain.graph: Processing tab 6/13: Why Google Just Gave Away Gemma 4 for Fr
+2026-05-28 11:13:28,324 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:13:28,325 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:13:28,326 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:13:28,437 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:13:28,442 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:13:28,443 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:13:33,679 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:34,462 [INFO] src.brain.graph: Summary generated via ollama (114 chars).
+2026-05-28 11:13:34,463 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:13:34,463 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:34,464 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:13:39,712 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:40,957 [INFO] src.brain.graph: Summary generated via ollama (114 chars).
+2026-05-28 11:13:40,958 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:13:40,958 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:40,959 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:13:46,439 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:47,373 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:13:47,374 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:13:47,374 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:47,377 [INFO] src.brain.graph: Processing tab 7/13: The Forbidden Book That Reveals EXACTLY 
+2026-05-28 11:13:47,383 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:13:47,385 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:13:47,385 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:13:47,598 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:13:47,603 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:13:47,603 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:13:53,079 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:13:53,977 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:13:53,978 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:13:53,978 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:13:53,978 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:13:59,397 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:00,224 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:00,224 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:14:00,224 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:00,225 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:14:05,674 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:06,568 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:06,569 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:14:06,569 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:06,581 [INFO] src.brain.graph: Processing tab 8/13: AI Just Made ADHD an Advantage (2026) - 
+2026-05-28 11:14:06,587 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:14:06,589 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:14:06,590 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:14:06,778 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:14:06,783 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:14:06,784 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:14:12,200 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:13,167 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:13,167 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:14:13,167 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:13,168 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:14:18,581 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:19,438 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:19,438 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:14:19,439 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:19,439 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:14:24,649 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:26,032 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:26,033 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:14:26,033 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:26,037 [INFO] src.brain.graph: Processing tab 9/13: What Happens to Your Brain When You Use 
+2026-05-28 11:14:26,043 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:14:26,045 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:14:26,045 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:14:26,167 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:14:26,173 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:14:26,174 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:14:31,450 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:32,617 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:32,618 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:14:32,618 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:32,618 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:14:37,915 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:39,128 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:39,129 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:14:39,129 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:39,130 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:14:44,450 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:45,842 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:45,843 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:14:45,843 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:45,857 [INFO] src.brain.graph: Processing tab 10/13: How to be a creative thinker | Carnegie 
+2026-05-28 11:14:45,865 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:14:45,867 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:14:45,867 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:14:45,989 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:14:45,995 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:14:45,995 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:14:51,332 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:52,775 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:52,775 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:14:52,776 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:52,776 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:14:58,278 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:14:59,253 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:14:59,254 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:14:59,254 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:14:59,255 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:15:04,770 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:05,566 [INFO] src.brain.graph: Summary generated via ollama (114 chars).
+2026-05-28 11:15:05,567 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:15:05,567 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:05,572 [INFO] src.brain.graph: Processing tab 11/13: If You Have Too Many Interests, You Are 
+2026-05-28 11:15:05,579 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:15:05,580 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:15:05,581 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:15:05,682 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:15:05,688 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:15:05,689 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:15:11,048 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:11,944 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:15:11,945 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:15:11,945 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:11,946 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:15:17,392 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:18,227 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:15:18,228 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:15:18,228 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:18,228 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:15:23,818 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:24,653 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:15:24,654 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:15:24,654 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:24,656 [INFO] src.brain.graph: Processing tab 12/13: Copy This Linkedin Strategy, It'll Blow 
+2026-05-28 11:15:24,672 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:15:24,674 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:15:24,675 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:15:24,802 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:15:24,807 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:15:24,808 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:15:30,079 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:31,184 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:15:31,185 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:15:31,185 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:31,198 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:15:36,401 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:37,408 [INFO] src.brain.graph: Summary generated via ollama (114 chars).
+2026-05-28 11:15:37,409 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:15:37,409 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:37,410 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:15:42,745 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:43,982 [INFO] src.brain.graph: Summary generated via ollama (114 chars).
+2026-05-28 11:15:43,982 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:15:43,982 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:43,997 [INFO] src.brain.graph: Processing tab 13/13: The 1,600-Year-Old Learning System That 
+2026-05-28 11:15:44,005 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:15:44,007 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:15:44,008 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:15:44,113 [ERROR] src.scraper.page_scraper: Scrape error for : Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:15:44,118 [WARNING] src.brain.filter_node: Scraper returned error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "domcontentloaded"
+
+2026-05-28 11:15:44,119 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 1)...
+2026-05-28 11:15:49,339 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:50,381 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:15:50,382 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:15:50,382 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:50,382 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 2)...
+2026-05-28 11:15:55,647 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:15:56,956 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:15:56,956 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 11:15:56,956 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:15:56,957 [INFO] src.brain.graph: Summarizing '' (max 3 lines, attempt 3)...
+2026-05-28 11:16:02,149 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:16:03,084 [INFO] src.brain.graph: Summary generated via ollama (118 chars).
+2026-05-28 11:16:03,084 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 11:16:03,085 [WARNING] src.brain.critic: Critic retries exhausted. Approving with issues: Contains first-person pronouns: I. Use third-person or passive voice.
+2026-05-28 11:16:03,096 [INFO] src.brain.graph: Pipeline complete: 13 tabs processed, 0 summarized.
+2026-05-28 11:16:03,110 [INFO] src.dispatch.dispatcher: Dispatch batch complete: 0/0 sent.
+2026-05-28 11:16:03,112 [INFO] LinkSync AI: Ollama released.
+2026-05-28 11:19:10,351 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-28 11:19:10,666 [INFO] src.scraper.page_scraper: Playwright browser closed.
+2026-05-28 11:19:10,674 [INFO] src.storage.database: SQLite connection closed
+2026-05-28 11:19:10,674 [INFO] LinkSync AI: === LinkSync AI — Session End ===

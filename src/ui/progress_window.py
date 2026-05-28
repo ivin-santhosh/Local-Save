@@ -123,46 +123,79 @@ class BootstrapProgressWindow(ctk.CTkToplevel):
         self, index: int, success: bool, detail: str = ""
     ) -> None:
         """
-        Update a specific step's status. Thread-safe.
+        Update a specific step's status. Thread-safe (uses .after).
 
         Args:
             index: Step index (0-based).
             success: True for ✅, False for ❌.
             detail: Optional detail text to append.
         """
-        def _update():
-            if index < len(self._step_labels):
-                icon = ICON_SUCCESS if success else ICON_FAIL
-                color = ACCENT_GREEN if success else ACCENT_RED
-                step_name = BOOTSTRAP_STEPS[index]
-                text = f"{icon}  {step_name}"
-                if detail:
-                    text += f"  —  {detail}"
-                self._step_labels[index].configure(
-                    text=text, text_color=color,
+        try:
+            self.after(0, lambda: self._apply_step_update(index, success, detail))
+        except RuntimeError:
+            # Fallback: direct update if .after() fails
+            self._apply_step_update(index, success, detail)
+
+    def update_step_direct(
+        self, index: int, success: bool, detail: str = ""
+    ) -> None:
+        """
+        Update a step directly (main thread only, no .after).
+
+        Use this when calling from the main thread where
+        .after() is not needed or may fail.
+        """
+        self._apply_step_update(index, success, detail)
+
+    def _apply_step_update(
+        self, index: int, success: bool, detail: str
+    ) -> None:
+        """Apply the actual step update to widgets."""
+        if index < len(self._step_labels):
+            icon = ICON_SUCCESS if success else ICON_FAIL
+            color = ACCENT_GREEN if success else ACCENT_RED
+            step_name = BOOTSTRAP_STEPS[index]
+            text = f"{icon}  {step_name}"
+            if detail:
+                text += f"  —  {detail}"
+            self._step_labels[index].configure(
+                text=text, text_color=color,
+            )
+            # Mark next step as in-progress
+            if success and index + 1 < len(self._step_labels):
+                next_name = BOOTSTRAP_STEPS[index + 1]
+                self._step_labels[index + 1].configure(
+                    text=f"⏳  {next_name}...",
+                    text_color=ACCENT_CYAN,
                 )
-                # Mark next step as in-progress
-                if success and index + 1 < len(self._step_labels):
-                    next_name = BOOTSTRAP_STEPS[index + 1]
-                    self._step_labels[index + 1].configure(
-                        text=f"⏳  {next_name}...",
-                        text_color=ACCENT_CYAN,
-                    )
-        self.after(0, _update)
 
     def add_log(self, message: str) -> None:
         """Append a message to the log area. Thread-safe."""
-        def _append():
-            self._log_area.configure(state="normal")
-            self._log_area.insert("end", message + "\n")
-            self._log_area.see("end")
-            self._log_area.configure(state="disabled")
-        self.after(0, _append)
+        try:
+            self.after(0, lambda: self._apply_log(message))
+        except RuntimeError:
+            self._apply_log(message)
+
+    def add_log_direct(self, message: str) -> None:
+        """Append to log directly (main thread only)."""
+        self._apply_log(message)
+
+    def _apply_log(self, message: str) -> None:
+        """Apply the actual log append to widgets."""
+        self._log_area.configure(state="normal")
+        self._log_area.insert("end", message + "\n")
+        self._log_area.see("end")
+        self._log_area.configure(state="disabled")
 
     def complete(self) -> None:
         """Mark setup as complete and auto-close after 3 seconds."""
-        def _close():
-            self.add_log("\n✅ Setup complete! LinkSync AI is ready.")
-            self.protocol("WM_DELETE_WINDOW", self.destroy)
-            self.after(3000, self.destroy)
-        self.after(0, _close)
+        try:
+            self.after(0, self._apply_complete)
+        except RuntimeError:
+            self._apply_complete()
+
+    def _apply_complete(self) -> None:
+        """Apply completion state."""
+        self._apply_log("\n✅ Setup complete! LinkSync AI is ready.")
+        self.protocol("WM_DELETE_WINDOW", self.destroy)
+        self.after(3000, self.destroy)

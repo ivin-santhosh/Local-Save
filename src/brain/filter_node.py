@@ -38,8 +38,20 @@ def filter_node(state: dict) -> dict:
         - content_length (int): Character count of body text
         - summary_max_lines (int): Max lines for the summary
     """
-    url = state.get("url", "")
+    url = state.get("url", "").strip()
     logger.info("Filter node scraping: %s", url)
+
+    # ── Handle empty URLs (UIA tabs without URL) ──
+    if not url:
+        logger.info("No URL available — using title-only mode.")
+        return {
+            **state,
+            "content": "",
+            "title_only": True,
+            "page_title": state.get("title", "Unknown"),
+            "content_length": 0,
+            "summary_max_lines": 2,
+        }
 
     # ── Scrape the page ──
     try:
