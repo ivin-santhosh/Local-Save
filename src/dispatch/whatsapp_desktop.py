@@ -177,7 +177,8 @@ def find_group(group_name: Optional[str] = None) -> bool:
         time.sleep(0.5)
 
         # Clear existing text and type group name
-        search_bar.type_keys("^a", with_spaces=True)  # Select all
+        search_bar.type_keys("^a{BACKSPACE}", with_spaces=True)  # Select all and delete
+        time.sleep(0.2)
         search_bar.type_keys(group_name, with_spaces=True)
         time.sleep(2)  # Wait for search results
 
@@ -210,6 +211,9 @@ def send_message(text: str) -> bool:
     """
     Send a message in the currently open WhatsApp chat.
 
+    Uses clipboard copy-paste to send messages quickly and reliably
+    without typing issues or focus losses. Backups and restores the clipboard.
+
     Args:
         text: The message text to send.
 
@@ -221,39 +225,109 @@ def send_message(text: str) -> bool:
         return False
 
     try:
-        # Find the message input field
-        msg_input = _discover_element(window, "Edit", [
+        # Locate search bar first to exclude it
+        search_bar = _discover_element(window, "Edit", [
+            "Search", "Search or start", "Type to search",
+            "Search input", "search",
+        ])
+
+        # Find the message input field (excluding search bar)
+        msg_input = None
+        msg_title_patterns = [
             "Type a message", "Message", "message input",
             "Type a message…", "Write a message",
-        ])
+        ]
+        for pattern in msg_title_patterns:
+            try:
+                el = window.child_window(
+                    title_re=f".*{pattern}.*",
+                    control_type="Edit",
+                )
+                if el.exists(timeout=2):
+                    if search_bar and el == search_bar:
+                        continue
+                    msg_input = el
+                    break
+            except Exception:
+                continue
+
+        # Descendant fallback if title matches fail
+        if not msg_input:
+            try:
+                edits = window.descendants(control_type="Edit")
+                for edit in edits:
+                    if search_bar and edit == search_bar:
+                        continue
+                    msg_input = edit
+                    break
+            except Exception as exc:
+                logger.debug("Failed to find message input via descendants: %s", exc)
+
         if not msg_input:
             logger.error("Cannot find WhatsApp message input.")
             return False
 
+        # Backup clipboard content
+        import win32clipboard
+        import win32con
+        old_text = ""
+        try:
+            win32clipboard.OpenClipboard()
+            if win32clipboard.IsClipboardFormatAvailable(win32clipboard.CF_UNICODETEXT):
+                old_text = win32clipboard.GetClipboardData(win32clipboard.CF_UNICODETEXT)
+            win32clipboard.CloseClipboard()
+        except Exception:
+            try:
+                win32clipboard.CloseClipboard()
+            except Exception:
+                pass
+
+        # Copy message to clipboard
+        try:
+            win32clipboard.OpenClipboard()
+            win32clipboard.EmptyClipboard()
+            win32clipboard.SetClipboardText(text, win32clipboard.CF_UNICODETEXT)
+            win32clipboard.CloseClipboard()
+        except Exception as exc:
+            logger.error("Failed to copy message to clipboard: %s", exc)
+            try:
+                win32clipboard.CloseClipboard()
+            except Exception:
+                pass
+            return False
+
+        # Focus and paste
+        msg_input.set_focus()
+        time.sleep(0.3)
         msg_input.click_input()
+        time.sleep(0.2)
+        msg_input.type_keys("^v", with_spaces=True)
         time.sleep(0.3)
 
-        # Type the message (handle multi-line with Shift+Enter)
-        lines = text.split("\n")
-        for i, line in enumerate(lines):
-            msg_input.type_keys(line, with_spaces=True, pause=0.02)
-            if i < len(lines) - 1:
-                msg_input.type_keys("+{ENTER}", with_spaces=True)
+        # Restore clipboard
+        if old_text:
+            try:
+                win32clipboard.OpenClipboard()
+                win32clipboard.EmptyClipboard()
+                win32clipboard.SetClipboardText(old_text, win32clipboard.CF_UNICODETEXT)
+                win32clipboard.CloseClipboard()
+            except Exception:
+                try:
+                    win32clipboard.CloseClipboard()
+                except Exception:
+                    pass
 
-        time.sleep(0.3)
-
-        # Find and click the Send button
+        # Click send or press Enter
         send_btn = _discover_element(window, "Button", [
             "Send", "send", "Send message",
         ])
         if send_btn:
             send_btn.click_input()
         else:
-            # Fallback: press Enter to send
             msg_input.type_keys("{ENTER}")
 
-        time.sleep(0.5)
-        logger.info("Message sent via WhatsApp Desktop.")
+        time.sleep(1.0)
+        logger.info("Message sent via WhatsApp Desktop UWP (Clipboard Paste).")
         return True
 
     except Exception as exc:
@@ -292,3 +366,11 @@ def send_to_group(
 
     # Send the message
     return send_message(text)
+
+
+def send_to_group_uia(text: str, group_name: str) -> bool:
+    """
+    Send a message to a group via UIA (UI Automation) fallback.
+    Specifically useful for UWP apps already launched.
+    """
+    return send_to_group(text, group_name)

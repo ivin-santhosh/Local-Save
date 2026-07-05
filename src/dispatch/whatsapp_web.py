@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 
 _WHATSAPP_WEB_URL = "https://web.whatsapp.com"
 _CONTEXT_DIR = PROJECT_ROOT / "data" / "whatsapp_web_context"
+_playwright = None
 _browser = None
 _context = None
 _page = None
@@ -27,13 +28,26 @@ _page = None
 
 async def _launch_async() -> bool:
     """Launch WhatsApp Web in a persistent Playwright context."""
-    global _browser, _context, _page
+    global _playwright, _browser, _context, _page
+
+    if _page is not None:
+        try:
+            if not _page.is_closed():
+                logger.info("WhatsApp Web already running, reusing existing page.")
+                return True
+        except Exception:
+            pass
+        # Reset references if page was closed/dead
+        _page = None
+        _context = None
+        _browser = None
 
     try:
         from playwright.async_api import async_playwright
 
-        pw = await async_playwright().start()
-        _browser = await pw.chromium.launch(headless=False)  # Must be visible for QR
+        if _playwright is None:
+            _playwright = await async_playwright().start()
+        _browser = await _playwright.chromium.launch(headless=False)  # Must be visible for QR
         _context = await _browser.new_context(
             storage_state=str(_CONTEXT_DIR / "state.json")
             if (_CONTEXT_DIR / "state.json").exists() else None,
@@ -190,15 +204,29 @@ def send_message(text: str) -> bool:
     return _run_async(_send_message_async(text))
 
 
+_logged_in = False
+
+
 def send_to_group(text: str, group_name: Optional[str] = None) -> bool:
     """Full pipeline: launch → find group → send."""
+    global _logged_in
     if not launch():
         return False
-    if not is_logged_in():
-        logger.info("Please scan the QR code in WhatsApp Web.")
-        time.sleep(30)  # Give user time to scan
+    if not _logged_in:
         if not is_logged_in():
-            return False
+            logger.info("Waiting for WhatsApp Web QR scan... (Time limit: 60s)")
+            # Poll every 2s for up to 60s (30 attempts)
+            for attempt in range(30):
+                time.sleep(2)
+                if is_logged_in():
+                    _logged_in = True
+                    break
+            if not _logged_in:
+                logger.error("WhatsApp Web login timed out or failed.")
+                return False
+        else:
+            _logged_in = True
+
     if not find_group(group_name):
         return False
     return send_message(text)

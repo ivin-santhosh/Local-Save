@@ -26,6 +26,16 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).parent.resolve()
 sys.path.insert(0, str(PROJECT_ROOT))
 
+# ── Fix console encoding (Windows cp1252 → UTF-8) ──
+# Prevents UnicodeEncodeError when logging emoji characters
+try:
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    if hasattr(sys.stderr, 'reconfigure'):
+        sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+except Exception:
+    pass  # Gracefully ignore if reconfiguration fails
+
 # ── Logging setup ──
 from config import APP_NAME, APP_VERSION, DATA_DIR
 
@@ -215,6 +225,35 @@ def _start_sync_cycle() -> None:
 
         # ── Ollama stopped. RAM freed. ──
         logger.info("Ollama released.")
+
+        # Generate combined report and save it locally
+        try:
+            from src.ui.report_generator import generate_report
+            report_path = generate_report(results)
+            logger.info("Sync report generated at: %s", report_path)
+
+            # Send combined report to WhatsApp "ME" group
+            try:
+                from src.dispatch.dispatcher import dispatch_summary
+                report_content = report_path.read_text(encoding="utf-8")
+                max_chars = 4000
+                truncated_content = report_content[:max_chars]
+                if len(report_content) > max_chars:
+                    truncated_content += "\n\n... (Report truncated due to length)"
+                
+                # Send stats-only title card to dispatcher
+                dispatch_summary(url="Local Report Path: " + str(report_path), summary=truncated_content, group_name="ME")
+            except Exception as exc:
+                logger.error("Failed to dispatch combined report to WhatsApp: %s", exc)
+
+            # Open report file locally
+            try:
+                os.startfile(str(report_path))
+            except Exception as exc:
+                logger.error("Failed to open report file locally: %s", exc)
+
+        except Exception as exc:
+            logger.error("Failed during report generation phase: %s", exc)
 
         # Show final report (OK button triggers full shutdown)
         elapsed = time.time() - start_time

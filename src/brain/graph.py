@@ -226,14 +226,19 @@ _compiled_graph = _build_graph().compile()
 # Public API
 # ============================================================
 
+import threading
+db_lock = threading.Lock()
+
+
 def run_sync_pipeline(
     tabs: list[dict],
     progress_callback: Optional[Callable[[int, str, str], None]] = None,
 ) -> list[dict]:
     """
-    Process a list of tabs through the full sync pipeline.
+    Process a list of tabs through the full sync pipeline concurrently.
 
-    Each tab goes through: Eye → Filter → Summarize → Critic.
+    Each tab is submitted to a ThreadPoolExecutor and goes through:
+    Eye → Filter → Summarize → Critic.
     Progress is reported after each tab completes.
 
     Args:
@@ -245,9 +250,14 @@ def run_sync_pipeline(
         List of result dicts, one per tab, with all state fields
         plus a 'status' field ('summarized', 'skipped', 'error').
     """
-    results = []
+    from concurrent.futures import ThreadPoolExecutor
 
-    for i, tab in enumerate(tabs):
+    results = [None] * len(tabs)
+    max_workers = min(5, len(tabs)) if tabs else 1
+
+    logger.info("Starting concurrent sync pipeline with %d worker agents...", max_workers)
+
+    def worker_task(i: int, tab: dict) -> dict:
         url = tab.get("url", "")
         title = tab.get("title", "")
 
@@ -280,7 +290,6 @@ def run_sync_pipeline(
             "provider_used": "none",
         }
 
-        # Run through the graph
         try:
             final_state = _compiled_graph.invoke(
                 initial_state,
@@ -293,23 +302,22 @@ def run_sync_pipeline(
                 status_icon = "⏭️"
                 status_text = final_state.get("abort_reason", "Skipped")
             elif final_state.get("summary") and final_state["summary"].strip():
-                # Summary exists — mark as summarized even if scraping had
-                # a non-fatal error (e.g., title-only mode, empty URL)
                 status = "summarized"
                 status_icon = "✅"
                 status_text = "Summarized"
 
-                # Store in vector memory
+                # Store in vector memory (thread-safe write using db_lock)
                 try:
                     from src.storage.vector_store import add_article
-                    add_article(
-                        url=url,
-                        summary=final_state.get("summary", ""),
-                        metadata={
-                            "title": title,
-                            "provider": final_state.get("provider_used", ""),
-                        },
-                    )
+                    with db_lock:
+                        add_article(
+                            url=url,
+                            summary=final_state.get("summary", ""),
+                            metadata={
+                                "title": title,
+                                "provider": final_state.get("provider_used", ""),
+                            },
+                        )
                 except Exception as exc:
                     logger.warning("Failed to store in vector memory: %s", exc)
 
@@ -337,7 +345,26 @@ def run_sync_pipeline(
         if progress_callback:
             progress_callback(i, status_icon, status_text)
 
-        results.append(final_state)
+        return final_state
+
+    # Submit tasks concurrently to the thread pool (lightweight agents)
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_idx = {
+            executor.submit(worker_task, i, tab): i
+            for i, tab in enumerate(tabs)
+        }
+        for future in future_to_idx:
+            idx = future_to_idx[future]
+            try:
+                results[idx] = future.result()
+            except Exception as exc:
+                logger.error("Tab worker thread %d failed with exception: %s", idx, exc)
+                results[idx] = {
+                    "url": tabs[idx].get("url", ""),
+                    "title": tabs[idx].get("title", ""),
+                    "status": "error",
+                    "error": str(exc),
+                }
 
     logger.info(
         "Pipeline complete: %d tabs processed, %d summarized.",

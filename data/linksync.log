@@ -390,3 +390,1614 @@ Call log:
 2026-05-28 11:19:10,666 [INFO] src.scraper.page_scraper: Playwright browser closed.
 2026-05-28 11:19:10,674 [INFO] src.storage.database: SQLite connection closed
 2026-05-28 11:19:10,674 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-05-28 11:23:16,412 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-28 11:23:18,844 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 11:23:18,844 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 11:23:19,012 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-28 11:23:19,032 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=0)
+2026-05-28 11:23:19,034 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-28 11:23:19,034 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-28 11:23:19,338 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-05-28 11:23:25,121 [INFO] src.capture.tab_capture: UIA captured 19 tabs.
+2026-05-28 11:23:30,258 [INFO] src.capture.tab_capture: UIA captured 0 tabs.
+2026-05-28 11:23:30,259 [INFO] src.capture.tab_capture: capture_all_browsers: 19 unique tabs across 2 browser(s).
+2026-05-28 11:23:30,259 [INFO] LinkSync AI: Captured 19 tabs from Google Chrome.
+2026-05-28 11:23:51,500 [INFO] src.ui.tab_selector: User selected 13 tabs for sync.
+2026-05-28 11:23:54,485 [INFO] src.brain.ollama_manager: Ollama already running (external process). Will NOT stop it on shutdown.
+2026-05-28 11:23:54,485 [INFO] src.brain.graph: Processing tab 1/13: 3 Exercises That Rewire Your Brain in 11
+2026-05-28 11:23:54,493 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:23:54,495 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:23:54,496 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:23:54,497 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:23:54,497 [INFO] src.brain.graph: Summarizing '3 Exercises That Rewire Your Brain in 11' (max 2 lines, attempt 1)...
+2026-05-28 11:23:56,553 [INFO] src.brain.llm_provider: Using Ollama (llama3) — local, private.
+2026-05-28 11:24:08,959 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:24:10,654 [INFO] src.brain.graph: Summary generated via ollama (220 chars).
+2026-05-28 11:24:10,654 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:24:10,655 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:24:15,626 [INFO] httpx: HTTP Request: GET https://chroma-onnx-models.s3.amazonaws.com/all-MiniLM-L6-v2/onnx.tar.gz "HTTP/1.1 200 OK"
+2026-05-28 11:24:35,823 [INFO] src.brain.graph: Processing tab 2/13: Fastest way to become an AI Engineer in 
+2026-05-28 11:24:35,828 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:24:35,829 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:24:35,830 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:24:35,830 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:24:35,831 [INFO] src.brain.graph: Summarizing 'Fastest way to become an AI Engineer in ' (max 2 lines, attempt 1)...
+2026-05-28 11:24:41,403 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:24:43,634 [INFO] src.brain.graph: Summary generated via ollama (312 chars).
+2026-05-28 11:24:43,635 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:24:43,635 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:24:43,928 [INFO] src.brain.graph: Processing tab 3/13: 𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us
+2026-05-28 11:24:43,941 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:24:43,942 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:24:43,942 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:24:43,942 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:24:43,943 [INFO] src.brain.graph: Summarizing '𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us' (max 2 lines, attempt 1)...
+2026-05-28 11:24:49,424 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:24:51,995 [INFO] src.brain.graph: Summary generated via ollama (260 chars).
+2026-05-28 11:24:51,995 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:24:51,995 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:24:52,252 [INFO] src.brain.graph: Processing tab 4/13: The Global Monetary Reset Has Begun (Hin
+2026-05-28 11:24:52,257 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:24:52,258 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:24:52,259 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:24:52,259 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:24:52,259 [INFO] src.brain.graph: Summarizing 'The Global Monetary Reset Has Begun (Hin' (max 2 lines, attempt 1)...
+2026-05-28 11:24:57,751 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:24:59,967 [INFO] src.brain.graph: Summary generated via ollama (258 chars).
+2026-05-28 11:24:59,967 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:24:59,967 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:25:00,220 [INFO] src.brain.graph: Processing tab 5/13: 5 Ancient Encounters with The Men in Bla
+2026-05-28 11:25:00,226 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:25:00,227 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:25:00,228 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:25:00,228 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:25:00,228 [INFO] src.brain.graph: Summarizing '5 Ancient Encounters with The Men in Bla' (max 2 lines, attempt 1)...
+2026-05-28 11:25:05,753 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:25:08,798 [INFO] src.brain.graph: Summary generated via ollama (411 chars).
+2026-05-28 11:25:08,799 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:25:08,799 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:25:09,063 [INFO] src.brain.graph: Processing tab 6/13: Why Google Just Gave Away Gemma 4 for Fr
+2026-05-28 11:25:09,069 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:25:09,070 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:25:09,071 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:25:09,071 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:25:09,071 [INFO] src.brain.graph: Summarizing 'Why Google Just Gave Away Gemma 4 for Fr' (max 2 lines, attempt 1)...
+2026-05-28 11:25:14,558 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:25:17,014 [INFO] src.brain.graph: Summary generated via ollama (318 chars).
+2026-05-28 11:25:17,015 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:25:17,015 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:25:17,307 [INFO] src.brain.graph: Processing tab 7/13: The Forbidden Book That Reveals EXACTLY 
+2026-05-28 11:25:17,312 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:25:17,313 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:25:17,314 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:25:17,314 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:25:17,315 [INFO] src.brain.graph: Summarizing 'The Forbidden Book That Reveals EXACTLY ' (max 2 lines, attempt 1)...
+2026-05-28 11:25:22,753 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:25:25,098 [INFO] src.brain.graph: Summary generated via ollama (317 chars).
+2026-05-28 11:25:25,099 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:25:25,099 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:25:25,361 [INFO] src.brain.graph: Processing tab 8/13: AI Just Made ADHD an Advantage (2026) - 
+2026-05-28 11:25:25,368 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:25:25,369 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:25:25,370 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:25:25,370 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:25:25,371 [INFO] src.brain.graph: Summarizing 'AI Just Made ADHD an Advantage (2026) - ' (max 2 lines, attempt 1)...
+2026-05-28 11:25:30,911 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:25:33,787 [INFO] src.brain.graph: Summary generated via ollama (365 chars).
+2026-05-28 11:25:33,788 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:25:33,788 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:25:34,062 [INFO] src.brain.graph: Processing tab 9/13: What Happens to Your Brain When You Use 
+2026-05-28 11:25:34,069 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:25:34,070 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:25:34,070 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:25:34,071 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:25:34,071 [INFO] src.brain.graph: Summarizing 'What Happens to Your Brain When You Use ' (max 2 lines, attempt 1)...
+2026-05-28 11:25:39,563 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:25:42,278 [INFO] src.brain.graph: Summary generated via ollama (308 chars).
+2026-05-28 11:25:42,279 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:25:42,279 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:25:42,542 [INFO] src.brain.graph: Processing tab 10/13: How to be a creative thinker | Carnegie 
+2026-05-28 11:25:42,549 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:25:42,550 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:25:42,550 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:25:42,551 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:25:42,551 [INFO] src.brain.graph: Summarizing 'How to be a creative thinker | Carnegie ' (max 2 lines, attempt 1)...
+2026-05-28 11:25:47,955 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:25:50,535 [INFO] src.brain.graph: Summary generated via ollama (325 chars).
+2026-05-28 11:25:50,536 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:25:50,537 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:25:50,825 [INFO] src.brain.graph: Processing tab 11/13: If You Have Too Many Interests, You Are 
+2026-05-28 11:25:50,830 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:25:50,831 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:25:50,832 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:25:50,832 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:25:50,833 [INFO] src.brain.graph: Summarizing 'If You Have Too Many Interests, You Are ' (max 2 lines, attempt 1)...
+2026-05-28 11:25:56,324 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:25:58,032 [INFO] src.brain.graph: Summary generated via ollama (221 chars).
+2026-05-28 11:25:58,033 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:25:58,033 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:25:58,304 [INFO] src.brain.graph: Processing tab 12/13: Copy This Linkedin Strategy, It'll Blow 
+2026-05-28 11:25:58,308 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:25:58,309 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:25:58,310 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:25:58,310 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:25:58,311 [INFO] src.brain.graph: Summarizing 'Copy This Linkedin Strategy, It'll Blow ' (max 2 lines, attempt 1)...
+2026-05-28 11:26:03,716 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:26:05,854 [INFO] src.brain.graph: Summary generated via ollama (317 chars).
+2026-05-28 11:26:05,855 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:26:05,855 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:26:06,110 [INFO] src.brain.graph: Processing tab 13/13: The 1,600-Year-Old Learning System That 
+2026-05-28 11:26:06,114 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 11:26:06,115 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 11:26:06,116 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 11:26:06,116 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 11:26:06,116 [INFO] src.brain.graph: Summarizing 'The 1,600-Year-Old Learning System That ' (max 2 lines, attempt 1)...
+2026-05-28 11:26:11,515 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 11:26:14,226 [INFO] src.brain.graph: Summary generated via ollama (368 chars).
+2026-05-28 11:26:14,227 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 11:26:14,227 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 11:26:14,508 [INFO] src.brain.graph: Pipeline complete: 13 tabs processed, 13 summarized.
+2026-05-28 11:26:14,512 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 11:26:14,515 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-28 11:26:14,516 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-28 11:26:14,517 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-28 11:26:14,535 [INFO] src.discovery.app_finder: Scanning C: drive for WhatsApp.exe... (this may take a moment)
+2026-05-28 11:26:57,282 [INFO] src.discovery.app_finder: Scanning D: drive for WhatsApp.exe...
+2026-05-28 11:27:14,356 [INFO] src.discovery.app_finder: WhatsApp not found on this system.
+2026-05-28 11:27:14,357 [INFO] src.dispatch.dispatcher: Desktop unavailable. Trying WhatsApp Web...
+2026-05-28 11:28:08,085 [INFO] src.dispatch.whatsapp_web: WhatsApp Web opened.
+2026-05-28 11:28:08,090 [INFO] src.dispatch.whatsapp_web: Please scan the QR code in WhatsApp Web.
+2026-05-28 11:28:38,094 [INFO] src.dispatch.dispatcher: ❌ All dispatch methods failed. Queued for later.
+2026-05-28 11:28:38,111 [WARNING] src.dispatch.dispatcher: Failed to log dispatch: insert_log() got an unexpected keyword argument 'provider_used'
+2026-05-28 11:28:38,112 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 11:28:38,112 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-28 11:28:38,113 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-28 11:28:38,113 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-28 11:28:38,123 [INFO] src.discovery.app_finder: Scanning C: drive for WhatsApp.exe... (this may take a moment)
+2026-05-28 11:29:17,970 [INFO] src.discovery.app_finder: Scanning D: drive for WhatsApp.exe...
+2026-05-28 11:29:31,508 [INFO] src.discovery.app_finder: WhatsApp not found on this system.
+2026-05-28 11:29:31,508 [INFO] src.dispatch.dispatcher: Desktop unavailable. Trying WhatsApp Web...
+2026-05-28 11:29:35,460 [INFO] src.dispatch.whatsapp_web: WhatsApp Web opened.
+2026-05-28 11:29:35,464 [INFO] src.dispatch.whatsapp_web: Please scan the QR code in WhatsApp Web.
+2026-05-28 11:30:05,468 [INFO] src.dispatch.dispatcher: ❌ All dispatch methods failed. Queued for later.
+2026-05-28 11:30:05,483 [WARNING] src.dispatch.dispatcher: Failed to log dispatch: insert_log() got an unexpected keyword argument 'provider_used'
+2026-05-28 11:30:05,483 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 11:30:05,483 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-28 11:30:05,484 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-28 11:30:05,485 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-28 11:30:05,494 [INFO] src.discovery.app_finder: Scanning C: drive for WhatsApp.exe... (this may take a moment)
+2026-05-28 11:30:34,151 [INFO] src.discovery.app_finder: Scanning D: drive for WhatsApp.exe...
+2026-05-28 11:30:46,359 [INFO] src.discovery.app_finder: WhatsApp not found on this system.
+2026-05-28 11:30:46,359 [INFO] src.dispatch.dispatcher: Desktop unavailable. Trying WhatsApp Web...
+2026-05-28 11:30:50,482 [INFO] src.dispatch.whatsapp_web: WhatsApp Web opened.
+2026-05-28 11:30:50,488 [INFO] src.dispatch.whatsapp_web: Please scan the QR code in WhatsApp Web.
+2026-05-28 11:31:20,492 [INFO] src.dispatch.dispatcher: ❌ All dispatch methods failed. Queued for later.
+2026-05-28 11:31:20,495 [WARNING] src.dispatch.dispatcher: Failed to log dispatch: insert_log() got an unexpected keyword argument 'provider_used'
+2026-05-28 11:31:20,495 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 11:31:20,495 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-28 11:31:20,496 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-28 11:31:20,498 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-28 11:31:20,507 [INFO] src.discovery.app_finder: Scanning C: drive for WhatsApp.exe... (this may take a moment)
+2026-05-28 11:31:47,675 [INFO] src.discovery.app_finder: Scanning D: drive for WhatsApp.exe...
+2026-05-28 11:32:00,038 [INFO] src.discovery.app_finder: WhatsApp not found on this system.
+2026-05-28 11:32:00,038 [INFO] src.dispatch.dispatcher: Desktop unavailable. Trying WhatsApp Web...
+2026-05-28 11:32:05,254 [INFO] src.dispatch.whatsapp_web: WhatsApp Web opened.
+2026-05-28 11:32:05,259 [INFO] src.dispatch.whatsapp_web: Please scan the QR code in WhatsApp Web.
+2026-05-28 11:32:35,263 [INFO] src.dispatch.dispatcher: ❌ All dispatch methods failed. Queued for later.
+2026-05-28 11:32:35,265 [WARNING] src.dispatch.dispatcher: Failed to log dispatch: insert_log() got an unexpected keyword argument 'provider_used'
+2026-05-28 11:32:35,266 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 11:32:35,266 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-28 11:32:35,267 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-28 11:32:35,268 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-28 11:32:35,277 [INFO] src.discovery.app_finder: Scanning C: drive for WhatsApp.exe... (this may take a moment)
+2026-05-28 11:32:44,482 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-28 11:32:44,496 [INFO] src.scraper.page_scraper: Playwright browser closed.
+2026-05-28 11:32:44,502 [INFO] src.storage.database: SQLite connection closed
+2026-05-28 11:32:44,503 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-05-28 13:15:07,548 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-28 13:15:09,931 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 13:15:09,931 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 13:15:11,095 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-28 13:15:11,114 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-05-28 13:15:11,117 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-28 13:15:11,117 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-28 13:15:11,610 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-05-28 13:15:19,353 [INFO] src.capture.tab_capture: UIA captured 98 tabs from 8 windows.
+2026-05-28 13:15:24,598 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-05-28 13:15:24,598 [INFO] src.capture.tab_capture: capture_all_browsers: 98 unique tabs across 2 browser(s).
+2026-05-28 13:15:24,598 [INFO] LinkSync AI: Captured 98 tabs from Google Chrome.
+2026-05-28 13:40:28,951 [INFO] src.ui.tab_selector: User selected 60 tabs for sync.
+2026-05-28 13:40:34,806 [INFO] src.brain.ollama_manager: Ollama already running (external process). Will NOT stop it on shutdown.
+2026-05-28 13:40:34,806 [INFO] src.brain.graph: Processing tab 1/60: 3 Exercises That Rewire Your Brain in 11
+2026-05-28 13:40:34,816 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:40:35,049 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:40:35,051 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:40:35,051 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:40:35,052 [INFO] src.brain.graph: Summarizing '3 Exercises That Rewire Your Brain in 11' (max 2 lines, attempt 1)...
+2026-05-28 13:40:37,115 [INFO] src.brain.llm_provider: Using Ollama (llama3) — local, private.
+2026-05-28 13:40:53,276 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:40:55,144 [INFO] src.brain.graph: Summary generated via ollama (266 chars).
+2026-05-28 13:40:55,145 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:40:55,145 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:40:58,117 [INFO] src.brain.graph: Processing tab 2/60: Fastest way to become an AI Engineer in 
+2026-05-28 13:40:58,123 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:40:58,125 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:40:58,126 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:40:58,126 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:40:58,127 [INFO] src.brain.graph: Summarizing 'Fastest way to become an AI Engineer in ' (max 2 lines, attempt 1)...
+2026-05-28 13:41:03,769 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:41:05,682 [INFO] src.brain.graph: Summary generated via ollama (275 chars).
+2026-05-28 13:41:05,682 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:41:05,683 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:41:06,094 [INFO] src.brain.graph: Processing tab 3/60: 𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us
+2026-05-28 13:41:06,130 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:41:06,132 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:41:06,133 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:41:06,133 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:41:06,133 [INFO] src.brain.graph: Summarizing '𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us' (max 2 lines, attempt 1)...
+2026-05-28 13:41:11,729 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:41:13,247 [INFO] src.brain.graph: Summary generated via ollama (208 chars).
+2026-05-28 13:41:13,248 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:41:13,249 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Summary doesn't reference the page topic. Include key terms from: '𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory usage - 244 MB'
+2026-05-28 13:41:13,250 [INFO] src.brain.graph: Summarizing '𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us' (max 2 lines, attempt 2)...
+2026-05-28 13:41:18,685 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:41:20,683 [INFO] src.brain.graph: Summary generated via ollama (254 chars).
+2026-05-28 13:41:20,685 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 13:41:20,685 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Summary doesn't reference the page topic. Include key terms from: '𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory usage - 244 MB'
+2026-05-28 13:41:20,687 [INFO] src.brain.graph: Summarizing '𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us' (max 2 lines, attempt 3)...
+2026-05-28 13:41:26,073 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:41:28,212 [INFO] src.brain.graph: Summary generated via ollama (299 chars).
+2026-05-28 13:41:28,212 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 13:41:28,213 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:41:28,497 [INFO] src.brain.graph: Processing tab 4/60: The Global Monetary Reset Has Begun (Hin
+2026-05-28 13:41:28,503 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:41:28,505 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:41:28,505 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:41:28,506 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:41:28,506 [INFO] src.brain.graph: Summarizing 'The Global Monetary Reset Has Begun (Hin' (max 2 lines, attempt 1)...
+2026-05-28 13:41:33,953 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:41:35,349 [INFO] src.brain.graph: Summary generated via ollama (221 chars).
+2026-05-28 13:41:35,350 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:41:35,350 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:41:35,636 [INFO] src.brain.graph: Processing tab 5/60: 5 Ancient Encounters with The Men in Bla
+2026-05-28 13:41:35,642 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:41:35,643 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:41:35,644 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:41:35,644 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:41:35,645 [INFO] src.brain.graph: Summarizing '5 Ancient Encounters with The Men in Bla' (max 2 lines, attempt 1)...
+2026-05-28 13:41:41,089 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:41:43,015 [INFO] src.brain.graph: Summary generated via ollama (297 chars).
+2026-05-28 13:41:43,016 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:41:43,017 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:41:43,312 [INFO] src.brain.graph: Processing tab 6/60: Why Google Just Gave Away Gemma 4 for Fr
+2026-05-28 13:41:43,317 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:41:43,319 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:41:43,320 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:41:43,320 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:41:43,320 [INFO] src.brain.graph: Summarizing 'Why Google Just Gave Away Gemma 4 for Fr' (max 2 lines, attempt 1)...
+2026-05-28 13:41:48,775 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:41:50,980 [INFO] src.brain.graph: Summary generated via ollama (299 chars).
+2026-05-28 13:41:50,981 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:41:50,982 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:41:51,315 [INFO] src.brain.graph: Processing tab 7/60: The Forbidden Book That Reveals EXACTLY 
+2026-05-28 13:41:51,322 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:41:51,323 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:41:51,324 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:41:51,324 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:41:51,325 [INFO] src.brain.graph: Summarizing 'The Forbidden Book That Reveals EXACTLY ' (max 2 lines, attempt 1)...
+2026-05-28 13:41:56,902 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:41:58,894 [INFO] src.brain.graph: Summary generated via ollama (308 chars).
+2026-05-28 13:41:58,895 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:41:58,895 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:41:59,214 [INFO] src.brain.graph: Processing tab 8/60: AI Just Made ADHD an Advantage (2026) - 
+2026-05-28 13:41:59,221 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:41:59,222 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:41:59,223 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:41:59,223 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:41:59,224 [INFO] src.brain.graph: Summarizing 'AI Just Made ADHD an Advantage (2026) - ' (max 2 lines, attempt 1)...
+2026-05-28 13:42:04,530 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:42:06,649 [INFO] src.brain.graph: Summary generated via ollama (351 chars).
+2026-05-28 13:42:06,649 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:42:06,650 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:42:06,945 [INFO] src.brain.graph: Processing tab 9/60: What Happens to Your Brain When You Use 
+2026-05-28 13:42:06,950 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:42:06,953 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:42:06,954 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:42:06,954 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:42:06,955 [INFO] src.brain.graph: Summarizing 'What Happens to Your Brain When You Use ' (max 2 lines, attempt 1)...
+2026-05-28 13:42:12,504 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:42:14,273 [INFO] src.brain.graph: Summary generated via ollama (235 chars).
+2026-05-28 13:42:14,274 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:42:14,275 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:42:14,590 [INFO] src.brain.graph: Processing tab 10/60: How to be a creative thinker | Carnegie 
+2026-05-28 13:42:14,599 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:42:14,601 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:42:14,602 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:42:14,602 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:42:14,603 [INFO] src.brain.graph: Summarizing 'How to be a creative thinker | Carnegie ' (max 2 lines, attempt 1)...
+2026-05-28 13:42:20,155 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:42:21,571 [INFO] src.brain.graph: Summary generated via ollama (235 chars).
+2026-05-28 13:42:21,572 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:42:21,572 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:42:21,882 [INFO] src.brain.graph: Processing tab 11/60: If You Have Too Many Interests, You Are 
+2026-05-28 13:42:21,889 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:42:21,890 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:42:21,891 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:42:21,891 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:42:21,892 [INFO] src.brain.graph: Summarizing 'If You Have Too Many Interests, You Are ' (max 2 lines, attempt 1)...
+2026-05-28 13:42:27,495 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:42:29,349 [INFO] src.brain.graph: Summary generated via ollama (244 chars).
+2026-05-28 13:42:29,350 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:42:29,350 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:42:29,646 [INFO] src.brain.graph: Processing tab 12/60: Copy This Linkedin Strategy, It'll Blow 
+2026-05-28 13:42:29,653 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:42:29,654 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:42:29,655 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:42:29,655 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:42:29,655 [INFO] src.brain.graph: Summarizing 'Copy This Linkedin Strategy, It'll Blow ' (max 2 lines, attempt 1)...
+2026-05-28 13:42:35,369 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:42:36,995 [INFO] src.brain.graph: Summary generated via ollama (243 chars).
+2026-05-28 13:42:36,995 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:42:36,995 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:42:37,311 [INFO] src.brain.graph: Processing tab 13/60: The 1,600-Year-Old Learning System That 
+2026-05-28 13:42:37,315 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:42:37,317 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:42:37,318 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:42:37,318 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:42:37,319 [INFO] src.brain.graph: Summarizing 'The 1,600-Year-Old Learning System That ' (max 2 lines, attempt 1)...
+2026-05-28 13:42:42,879 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:42:44,459 [INFO] src.brain.graph: Summary generated via ollama (257 chars).
+2026-05-28 13:42:44,459 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:42:44,459 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:42:44,770 [INFO] src.brain.graph: Processing tab 14/60: (646) How to learn Machine Learning like
+2026-05-28 13:42:44,776 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:42:44,777 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:42:44,778 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:42:44,778 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:42:44,779 [INFO] src.brain.graph: Summarizing '(646) How to learn Machine Learning like' (max 2 lines, attempt 1)...
+2026-05-28 13:42:50,292 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:42:51,860 [INFO] src.brain.graph: Summary generated via ollama (239 chars).
+2026-05-28 13:42:51,860 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:42:51,861 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:42:52,154 [INFO] src.brain.graph: Processing tab 15/60: (647) Everything You See Is Just Vibrati
+2026-05-28 13:42:52,159 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:42:52,163 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:42:52,164 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:42:52,164 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:42:52,164 [INFO] src.brain.graph: Summarizing '(647) Everything You See Is Just Vibrati' (max 2 lines, attempt 1)...
+2026-05-28 13:42:57,826 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:42:59,701 [INFO] src.brain.graph: Summary generated via ollama (260 chars).
+2026-05-28 13:42:59,702 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:42:59,702 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:43:00,006 [INFO] src.brain.graph: Processing tab 16/60: (647) Researchers at MIT, Stanford, and 
+2026-05-28 13:43:00,012 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:43:00,014 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:43:00,015 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:43:00,015 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:43:00,015 [INFO] src.brain.graph: Summarizing '(647) Researchers at MIT, Stanford, and ' (max 2 lines, attempt 1)...
+2026-05-28 13:43:05,653 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:43:07,539 [INFO] src.brain.graph: Summary generated via ollama (303 chars).
+2026-05-28 13:43:07,540 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:43:07,540 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:43:07,843 [INFO] src.brain.graph: Processing tab 17/60: How LangChain Works to Create AI Agents 
+2026-05-28 13:43:07,849 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:43:07,850 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:43:07,851 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:43:07,851 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:43:07,852 [INFO] src.brain.graph: Summarizing 'How LangChain Works to Create AI Agents ' (max 2 lines, attempt 1)...
+2026-05-28 13:43:13,452 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:43:15,675 [INFO] src.brain.graph: Summary generated via ollama (326 chars).
+2026-05-28 13:43:15,676 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:43:15,676 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:43:15,991 [INFO] src.brain.graph: Processing tab 18/60: Perplexity Just Released Their Secret Se
+2026-05-28 13:43:15,997 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:43:15,999 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:43:16,000 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:43:16,000 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:43:16,000 [INFO] src.brain.graph: Summarizing 'Perplexity Just Released Their Secret Se' (max 2 lines, attempt 1)...
+2026-05-28 13:43:21,640 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:43:23,303 [INFO] src.brain.graph: Summary generated via ollama (236 chars).
+2026-05-28 13:43:23,304 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:43:23,304 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:43:23,624 [INFO] src.brain.graph: Processing tab 19/60: (647) The Sumerian Tablet That Lists 10 
+2026-05-28 13:43:23,631 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:43:23,632 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:43:23,634 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:43:23,634 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:43:23,634 [INFO] src.brain.graph: Summarizing '(647) The Sumerian Tablet That Lists 10 ' (max 2 lines, attempt 1)...
+2026-05-28 13:43:29,231 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:43:31,172 [INFO] src.brain.graph: Summary generated via ollama (285 chars).
+2026-05-28 13:43:31,173 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:43:31,173 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:43:31,487 [INFO] src.brain.graph: Processing tab 20/60: n8n - Ollama - Inactive tab - 91.4 MB fr
+2026-05-28 13:43:31,495 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:43:31,497 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:43:31,498 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:43:31,498 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:43:31,498 [INFO] src.brain.graph: Summarizing 'n8n - Ollama - Inactive tab - 91.4 MB fr' (max 2 lines, attempt 1)...
+2026-05-28 13:43:37,166 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:43:39,583 [INFO] src.brain.graph: Summary generated via ollama (280 chars).
+2026-05-28 13:43:39,584 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:43:39,584 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:43:39,885 [INFO] src.brain.graph: Processing tab 21/60: Ray Dalio's Research and Findings of the
+2026-05-28 13:43:39,891 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:43:39,893 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:43:39,894 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:43:39,894 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:43:39,894 [INFO] src.brain.graph: Summarizing 'Ray Dalio's Research and Findings of the' (max 2 lines, attempt 1)...
+2026-05-28 13:43:45,461 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:43:47,960 [INFO] src.brain.graph: Summary generated via ollama (337 chars).
+2026-05-28 13:43:47,961 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:43:47,961 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:43:48,269 [INFO] src.brain.graph: Processing tab 22/60: (652) ML Foundations for AI Engineers (i
+2026-05-28 13:43:48,275 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:43:48,276 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:43:48,277 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:43:48,277 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:43:48,278 [INFO] src.brain.graph: Summarizing '(652) ML Foundations for AI Engineers (i' (max 2 lines, attempt 1)...
+2026-05-28 13:43:53,867 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:43:56,078 [INFO] src.brain.graph: Summary generated via ollama (291 chars).
+2026-05-28 13:43:56,079 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:43:56,079 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:43:56,409 [INFO] src.brain.graph: Processing tab 23/60: (648) What They Found Sealed Inside the 
+2026-05-28 13:43:56,415 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:43:56,417 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:43:56,418 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:43:56,418 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:43:56,419 [INFO] src.brain.graph: Summarizing '(648) What They Found Sealed Inside the ' (max 2 lines, attempt 1)...
+2026-05-28 13:44:02,057 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:44:03,940 [INFO] src.brain.graph: Summary generated via ollama (239 chars).
+2026-05-28 13:44:03,941 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:44:03,941 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:44:04,234 [INFO] src.brain.graph: Processing tab 24/60: (663) People Covered Their Mirrors Every
+2026-05-28 13:44:04,240 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:44:04,242 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:44:04,243 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:44:04,243 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:44:04,243 [INFO] src.brain.graph: Summarizing '(663) People Covered Their Mirrors Every' (max 2 lines, attempt 1)...
+2026-05-28 13:44:09,875 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:44:11,979 [INFO] src.brain.graph: Summary generated via ollama (293 chars).
+2026-05-28 13:44:11,980 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:44:11,980 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:44:12,302 [INFO] src.brain.graph: Processing tab 25/60: (615) 3 Python AI Projects for Beginners
+2026-05-28 13:44:12,309 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:44:12,310 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:44:12,311 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:44:12,311 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:44:12,311 [INFO] src.brain.graph: Summarizing '(615) 3 Python AI Projects for Beginners' (max 2 lines, attempt 1)...
+2026-05-28 13:44:17,806 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:44:20,235 [INFO] src.brain.graph: Summary generated via ollama (351 chars).
+2026-05-28 13:44:20,236 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:44:20,236 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:44:20,530 [INFO] src.brain.graph: Processing tab 26/60: Claytronics Explained: The Shape-Shiftin
+2026-05-28 13:44:20,537 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:44:20,538 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:44:20,539 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:44:20,540 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:44:20,540 [INFO] src.brain.graph: Summarizing 'Claytronics Explained: The Shape-Shiftin' (max 2 lines, attempt 1)...
+2026-05-28 13:44:26,057 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:44:28,386 [INFO] src.brain.graph: Summary generated via ollama (317 chars).
+2026-05-28 13:44:28,387 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:44:28,387 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:44:28,704 [INFO] src.brain.graph: Processing tab 27/60: This Ratio Appears Everywhere and Nobody
+2026-05-28 13:44:28,710 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:44:28,712 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:44:28,712 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:44:28,713 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:44:28,713 [INFO] src.brain.graph: Summarizing 'This Ratio Appears Everywhere and Nobody' (max 2 lines, attempt 1)...
+2026-05-28 13:44:34,271 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:44:36,171 [INFO] src.brain.graph: Summary generated via ollama (277 chars).
+2026-05-28 13:44:36,172 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:44:36,172 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:44:36,463 [INFO] src.brain.graph: Processing tab 28/60: 3 Brain Exercises That Make You Think Sm
+2026-05-28 13:44:36,469 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:44:36,473 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:44:36,474 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:44:36,474 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:44:36,475 [INFO] src.brain.graph: Summarizing '3 Brain Exercises That Make You Think Sm' (max 2 lines, attempt 1)...
+2026-05-28 13:44:42,073 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:44:43,789 [INFO] src.brain.graph: Summary generated via ollama (239 chars).
+2026-05-28 13:44:43,791 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:44:43,791 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:44:44,108 [INFO] src.brain.graph: Processing tab 29/60: (637) Silence reveals the thoughts shapi
+2026-05-28 13:44:44,114 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:44:44,116 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:44:44,117 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:44:44,117 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:44:44,118 [INFO] src.brain.graph: Summarizing '(637) Silence reveals the thoughts shapi' (max 2 lines, attempt 1)...
+2026-05-28 13:44:49,642 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:44:51,727 [INFO] src.brain.graph: Summary generated via ollama (263 chars).
+2026-05-28 13:44:51,728 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:44:51,729 [INFO] src.brain.critic: Critic REJECTED (retry 1/2): Contains first-person pronouns: our. Use third-person or passive voice.
+2026-05-28 13:44:51,730 [INFO] src.brain.graph: Summarizing '(637) Silence reveals the thoughts shapi' (max 2 lines, attempt 2)...
+2026-05-28 13:44:57,089 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:44:59,243 [INFO] src.brain.graph: Summary generated via ollama (292 chars).
+2026-05-28 13:44:59,244 [INFO] src.brain.critic: Critic evaluating summary (attempt 2)...
+2026-05-28 13:44:59,244 [INFO] src.brain.critic: Critic REJECTED (retry 2/2): Contains first-person pronouns: our. Use third-person or passive voice.
+2026-05-28 13:44:59,244 [INFO] src.brain.graph: Summarizing '(637) Silence reveals the thoughts shapi' (max 2 lines, attempt 3)...
+2026-05-28 13:45:04,583 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:45:06,360 [INFO] src.brain.graph: Summary generated via ollama (240 chars).
+2026-05-28 13:45:06,361 [INFO] src.brain.critic: Critic evaluating summary (attempt 3)...
+2026-05-28 13:45:06,361 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:45:06,699 [INFO] src.brain.graph: Processing tab 30/60: Stop paying for AI NVIDIA made every top
+2026-05-28 13:45:06,705 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:45:06,706 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:45:06,707 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:45:06,707 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:45:06,708 [INFO] src.brain.graph: Summarizing 'Stop paying for AI NVIDIA made every top' (max 2 lines, attempt 1)...
+2026-05-28 13:45:12,205 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:45:14,134 [INFO] src.brain.graph: Summary generated via ollama (237 chars).
+2026-05-28 13:45:14,135 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:45:14,135 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:45:14,433 [INFO] src.brain.graph: Processing tab 31/60: Everything is energy ,vibration , freque
+2026-05-28 13:45:14,440 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:45:14,442 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:45:14,442 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:45:14,443 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:45:14,443 [INFO] src.brain.graph: Summarizing 'Everything is energy ,vibration , freque' (max 2 lines, attempt 1)...
+2026-05-28 13:45:20,025 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:45:22,272 [INFO] src.brain.graph: Summary generated via ollama (296 chars).
+2026-05-28 13:45:22,272 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:45:22,273 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:45:22,583 [INFO] src.brain.graph: Processing tab 32/60: Turning Radioactive Waste Into Power ⚠️🔋
+2026-05-28 13:45:22,592 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:45:22,594 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:45:22,594 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:45:22,595 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:45:22,595 [INFO] src.brain.graph: Summarizing 'Turning Radioactive Waste Into Power ⚠️🔋' (max 2 lines, attempt 1)...
+2026-05-28 13:45:28,350 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:45:31,292 [INFO] src.brain.graph: Summary generated via ollama (325 chars).
+2026-05-28 13:45:31,293 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:45:31,293 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:45:31,620 [INFO] src.brain.graph: Processing tab 33/60: Kafka: Building Reliable Real-Time Event
+2026-05-28 13:45:31,626 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:45:31,627 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:45:31,628 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:45:31,629 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:45:31,629 [INFO] src.brain.graph: Summarizing 'Kafka: Building Reliable Real-Time Event' (max 2 lines, attempt 1)...
+2026-05-28 13:45:37,216 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:45:38,927 [INFO] src.brain.graph: Summary generated via ollama (298 chars).
+2026-05-28 13:45:38,928 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:45:38,928 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:45:39,234 [INFO] src.brain.graph: Processing tab 34/60: Trust Engineering for AI: Essential Trai
+2026-05-28 13:45:39,241 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:45:39,242 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:45:39,243 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:45:39,243 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:45:39,244 [INFO] src.brain.graph: Summarizing 'Trust Engineering for AI: Essential Trai' (max 2 lines, attempt 1)...
+2026-05-28 13:45:44,814 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:45:46,775 [INFO] src.brain.graph: Summary generated via ollama (295 chars).
+2026-05-28 13:45:46,776 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:45:46,776 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:45:47,095 [INFO] src.brain.graph: Processing tab 35/60: Excel: PivotTables for Beginners | Linke
+2026-05-28 13:45:47,102 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:45:47,103 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:45:47,104 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:45:47,104 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:45:47,105 [INFO] src.brain.graph: Summarizing 'Excel: PivotTables for Beginners | Linke' (max 2 lines, attempt 1)...
+2026-05-28 13:45:52,641 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:45:54,483 [INFO] src.brain.graph: Summary generated via ollama (210 chars).
+2026-05-28 13:45:54,483 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:45:54,484 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:45:54,802 [INFO] src.brain.graph: Processing tab 36/60: Build AI Agents with Model Context Proto
+2026-05-28 13:45:54,809 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:45:54,811 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:45:54,811 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:45:54,811 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:45:54,812 [INFO] src.brain.graph: Summarizing 'Build AI Agents with Model Context Proto' (max 2 lines, attempt 1)...
+2026-05-28 13:46:00,399 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:46:02,074 [INFO] src.brain.graph: Summary generated via ollama (228 chars).
+2026-05-28 13:46:02,075 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:46:02,075 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:46:02,393 [INFO] src.brain.graph: Processing tab 37/60: Forward Deployed Engineering in the Age 
+2026-05-28 13:46:02,401 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:46:02,402 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:46:02,403 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:46:02,403 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:46:02,403 [INFO] src.brain.graph: Summarizing 'Forward Deployed Engineering in the Age ' (max 2 lines, attempt 1)...
+2026-05-28 13:46:08,028 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:46:10,131 [INFO] src.brain.graph: Summary generated via ollama (351 chars).
+2026-05-28 13:46:10,132 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:46:10,132 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:46:10,445 [INFO] src.brain.graph: Processing tab 38/60: Exploratory Data Analysis (EDA) with Hex
+2026-05-28 13:46:10,451 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:46:10,452 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:46:10,453 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:46:10,453 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:46:10,454 [INFO] src.brain.graph: Summarizing 'Exploratory Data Analysis (EDA) with Hex' (max 2 lines, attempt 1)...
+2026-05-28 13:46:16,015 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:46:18,221 [INFO] src.brain.graph: Summary generated via ollama (332 chars).
+2026-05-28 13:46:18,221 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:46:18,222 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:46:18,550 [INFO] src.brain.graph: Processing tab 39/60: Software Engineering Principles by Pears
+2026-05-28 13:46:18,557 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:46:18,559 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:46:18,559 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:46:18,560 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:46:18,560 [INFO] src.brain.graph: Summarizing 'Software Engineering Principles by Pears' (max 2 lines, attempt 1)...
+2026-05-28 13:46:24,041 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:46:26,378 [INFO] src.brain.graph: Summary generated via ollama (363 chars).
+2026-05-28 13:46:26,379 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:46:26,380 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:46:26,672 [INFO] src.brain.graph: Processing tab 40/60: Cybersecurity: Online Courses, Training 
+2026-05-28 13:46:26,679 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:46:26,680 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:46:26,681 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:46:26,681 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:46:26,682 [INFO] src.brain.graph: Summarizing 'Cybersecurity: Online Courses, Training ' (max 2 lines, attempt 1)...
+2026-05-28 13:46:32,233 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:46:34,287 [INFO] src.brain.graph: Summary generated via ollama (317 chars).
+2026-05-28 13:46:34,288 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:46:34,288 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:46:34,598 [INFO] src.brain.graph: Processing tab 41/60: Hands-On Tech: Online Courses, Training 
+2026-05-28 13:46:34,601 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:46:34,602 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:46:34,603 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:46:34,603 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:46:34,603 [INFO] src.brain.graph: Summarizing 'Hands-On Tech: Online Courses, Training ' (max 2 lines, attempt 1)...
+2026-05-28 13:46:40,203 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:46:42,721 [INFO] src.brain.graph: Summary generated via ollama (343 chars).
+2026-05-28 13:46:42,722 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:46:42,722 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:46:43,050 [INFO] src.brain.graph: Processing tab 42/60: Your In Progress Content | LinkedIn Lear
+2026-05-28 13:46:43,057 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:46:43,059 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:46:43,059 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:46:43,059 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:46:43,060 [INFO] src.brain.graph: Summarizing 'Your In Progress Content | LinkedIn Lear' (max 2 lines, attempt 1)...
+2026-05-28 13:46:48,599 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:46:50,918 [INFO] src.brain.graph: Summary generated via ollama (314 chars).
+2026-05-28 13:46:50,919 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:46:50,919 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:46:51,230 [INFO] src.brain.graph: Processing tab 43/60: Power BI Data Dashboards | LinkedIn Lear
+2026-05-28 13:46:51,235 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:46:51,237 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:46:51,238 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:46:51,238 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:46:51,238 [INFO] src.brain.graph: Summarizing 'Power BI Data Dashboards | LinkedIn Lear' (max 2 lines, attempt 1)...
+2026-05-28 13:46:56,849 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:46:58,317 [INFO] src.brain.graph: Summary generated via ollama (243 chars).
+2026-05-28 13:46:58,318 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:46:58,318 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:46:58,614 [INFO] src.brain.graph: Processing tab 44/60: Advanced RAG Applications with Vector Da
+2026-05-28 13:46:58,620 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:46:58,621 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:46:58,622 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:46:58,622 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:46:58,622 [INFO] src.brain.graph: Summarizing 'Advanced RAG Applications with Vector Da' (max 2 lines, attempt 1)...
+2026-05-28 13:47:04,278 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:47:07,369 [INFO] src.brain.graph: Summary generated via ollama (296 chars).
+2026-05-28 13:47:07,369 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:47:07,370 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:47:07,681 [INFO] src.brain.graph: Processing tab 45/60: (21) Artificial Intelligence, Deep & Mac
+2026-05-28 13:47:07,689 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:47:07,691 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:47:07,692 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:47:07,692 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:47:07,693 [INFO] src.brain.graph: Summarizing '(21) Artificial Intelligence, Deep & Mac' (max 2 lines, attempt 1)...
+2026-05-28 13:47:13,209 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:47:15,557 [INFO] src.brain.graph: Summary generated via ollama (335 chars).
+2026-05-28 13:47:15,558 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:47:15,558 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:47:15,827 [INFO] src.brain.graph: Processing tab 46/60: (21) Artificial Intelligence, Deep Learn
+2026-05-28 13:47:15,834 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:47:15,835 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:47:15,836 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:47:15,836 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:47:15,837 [INFO] src.brain.graph: Summarizing '(21) Artificial Intelligence, Deep Learn' (max 2 lines, attempt 1)...
+2026-05-28 13:47:21,391 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:47:23,489 [INFO] src.brain.graph: Summary generated via ollama (299 chars).
+2026-05-28 13:47:23,490 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:47:23,490 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:47:23,777 [INFO] src.brain.graph: Processing tab 47/60: (21) 🦾 Machine Learning, Artificial Inte
+2026-05-28 13:47:23,789 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:47:23,790 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:47:23,791 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:47:23,791 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:47:23,792 [INFO] src.brain.graph: Summarizing '(21) 🦾 Machine Learning, Artificial Inte' (max 2 lines, attempt 1)...
+2026-05-28 13:47:29,406 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:47:31,964 [INFO] src.brain.graph: Summary generated via ollama (327 chars).
+2026-05-28 13:47:31,964 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:47:31,965 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:47:32,255 [INFO] src.brain.graph: Processing tab 48/60: National Informatics Centre - Inactive t
+2026-05-28 13:47:32,261 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:47:32,262 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:47:32,263 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:47:32,263 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:47:32,263 [INFO] src.brain.graph: Summarizing 'National Informatics Centre - Inactive t' (max 2 lines, attempt 1)...
+2026-05-28 13:47:37,808 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:47:39,589 [INFO] src.brain.graph: Summary generated via ollama (222 chars).
+2026-05-28 13:47:39,590 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:47:39,590 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:47:39,855 [INFO] src.brain.graph: Processing tab 49/60: Microsoft Word - Draft advt as on 7.4.20
+2026-05-28 13:47:39,861 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:47:39,862 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:47:39,863 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:47:39,863 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:47:39,863 [INFO] src.brain.graph: Summarizing 'Microsoft Word - Draft advt as on 7.4.20' (max 2 lines, attempt 1)...
+2026-05-28 13:47:45,386 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:47:46,640 [INFO] src.brain.graph: Summary generated via ollama (154 chars).
+2026-05-28 13:47:46,641 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:47:46,641 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:47:46,940 [INFO] src.brain.graph: Processing tab 50/60: 1,000 Clerk, Government Office, Contract
+2026-05-28 13:47:46,947 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:47:46,949 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:47:46,949 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:47:46,950 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:47:46,950 [INFO] src.brain.graph: Summarizing '1,000 Clerk, Government Office, Contract' (max 2 lines, attempt 1)...
+2026-05-28 13:47:52,617 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:47:54,940 [INFO] src.brain.graph: Summary generated via ollama (281 chars).
+2026-05-28 13:47:54,941 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:47:54,941 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:47:55,313 [INFO] src.brain.graph: Processing tab 51/60: Job Search India | Indeed - Inactive tab
+2026-05-28 13:47:55,318 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:47:55,320 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:47:55,320 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:47:55,320 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:47:55,321 [INFO] src.brain.graph: Summarizing 'Job Search India | Indeed - Inactive tab' (max 2 lines, attempt 1)...
+2026-05-28 13:48:00,800 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:48:03,551 [INFO] src.brain.graph: Summary generated via ollama (369 chars).
+2026-05-28 13:48:03,552 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:48:03,552 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:48:03,865 [INFO] src.brain.graph: Processing tab 52/60: Job Search India | Indeed - Inactive tab
+2026-05-28 13:48:03,870 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:48:03,872 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:48:03,873 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:48:03,873 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:48:03,873 [INFO] src.brain.graph: Summarizing 'Job Search India | Indeed - Inactive tab' (max 2 lines, attempt 1)...
+2026-05-28 13:48:09,369 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:48:11,849 [INFO] src.brain.graph: Summary generated via ollama (340 chars).
+2026-05-28 13:48:11,850 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:48:11,850 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:48:12,138 [INFO] src.brain.graph: Processing tab 53/60: AI/ML Engineer - Bangalore City, Bengalu
+2026-05-28 13:48:12,144 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:48:12,145 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:48:12,146 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:48:12,146 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:48:12,147 [INFO] src.brain.graph: Summarizing 'AI/ML Engineer - Bangalore City, Bengalu' (max 2 lines, attempt 1)...
+2026-05-28 13:48:17,843 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:48:19,823 [INFO] src.brain.graph: Summary generated via ollama (267 chars).
+2026-05-28 13:48:19,824 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:48:19,824 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:48:20,089 [INFO] src.brain.graph: Processing tab 54/60: 3,000 Ai Ml Engineer Job Vacancies in Ba
+2026-05-28 13:48:20,095 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:48:20,097 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:48:20,097 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:48:20,098 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:48:20,098 [INFO] src.brain.graph: Summarizing '3,000 Ai Ml Engineer Job Vacancies in Ba' (max 2 lines, attempt 1)...
+2026-05-28 13:48:25,591 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:48:27,793 [INFO] src.brain.graph: Summary generated via ollama (231 chars).
+2026-05-28 13:48:27,794 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:48:27,794 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:48:28,081 [INFO] src.brain.graph: Processing tab 55/60: 1,000 Aiml Engineer Job Vacancies in Ban
+2026-05-28 13:48:28,087 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:48:28,089 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:48:28,090 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:48:28,090 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:48:28,091 [INFO] src.brain.graph: Summarizing '1,000 Aiml Engineer Job Vacancies in Ban' (max 2 lines, attempt 1)...
+2026-05-28 13:48:33,579 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:48:35,629 [INFO] src.brain.graph: Summary generated via ollama (285 chars).
+2026-05-28 13:48:35,630 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:48:35,630 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:48:35,898 [INFO] src.brain.graph: Processing tab 56/60: Qualcomm Jobs and Careers | Indeed.com -
+2026-05-28 13:48:35,904 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:48:35,906 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:48:35,907 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:48:35,907 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:48:35,907 [INFO] src.brain.graph: Summarizing 'Qualcomm Jobs and Careers | Indeed.com -' (max 2 lines, attempt 1)...
+2026-05-28 13:48:41,566 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:48:44,330 [INFO] src.brain.graph: Summary generated via ollama (375 chars).
+2026-05-28 13:48:44,331 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:48:44,331 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:48:44,616 [INFO] src.brain.graph: Processing tab 57/60: Careers at Qualcomm | Qualcomm - Memory 
+2026-05-28 13:48:44,621 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:48:44,623 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:48:44,624 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:48:44,624 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:48:44,625 [INFO] src.brain.graph: Summarizing 'Careers at Qualcomm | Qualcomm - Memory ' (max 2 lines, attempt 1)...
+2026-05-28 13:48:50,136 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:48:52,021 [INFO] src.brain.graph: Summary generated via ollama (260 chars).
+2026-05-28 13:48:52,022 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:48:52,022 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:48:52,320 [INFO] src.brain.graph: Processing tab 58/60: Profile | Qualcomm
+2026-05-28 13:48:52,326 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:48:52,327 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:48:52,328 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:48:52,328 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:48:52,329 [INFO] src.brain.graph: Summarizing 'Profile | Qualcomm' (max 2 lines, attempt 1)...
+2026-05-28 13:48:57,800 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:49:00,086 [INFO] src.brain.graph: Summary generated via ollama (294 chars).
+2026-05-28 13:49:00,087 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:49:00,087 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:49:00,352 [INFO] src.brain.graph: Processing tab 59/60: Google Jobs in india | Indeed.com - Inac
+2026-05-28 13:49:00,359 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:49:00,362 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:49:00,362 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:49:00,363 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:49:00,363 [INFO] src.brain.graph: Summarizing 'Google Jobs in india | Indeed.com - Inac' (max 2 lines, attempt 1)...
+2026-05-28 13:49:05,774 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:49:07,887 [INFO] src.brain.graph: Summary generated via ollama (300 chars).
+2026-05-28 13:49:07,888 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:49:07,888 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:49:08,157 [INFO] src.brain.graph: Processing tab 60/60: Google Jobs and Careers | Indeed.com - I
+2026-05-28 13:49:08,162 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 13:49:08,164 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 13:49:08,165 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 13:49:08,165 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 13:49:08,165 [INFO] src.brain.graph: Summarizing 'Google Jobs and Careers | Indeed.com - I' (max 2 lines, attempt 1)...
+2026-05-28 13:49:13,699 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 13:49:16,268 [INFO] src.brain.graph: Summary generated via ollama (343 chars).
+2026-05-28 13:49:16,269 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 13:49:16,269 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 13:49:16,569 [INFO] src.brain.graph: Pipeline complete: 60 tabs processed, 60 summarized.
+2026-05-28 13:49:16,580 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 13:49:16,609 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-28 13:49:16,610 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-28 13:49:16,615 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-28 13:49:16,641 [INFO] src.discovery.app_finder: Searching UWP/Store apps for WhatsApp...
+2026-05-28 13:49:18,749 [INFO] src.discovery.app_finder: Found UWP app: 5319275A.WhatsAppDesktop (family=5319275A.WhatsAppDesktop_cv1g1gvanyjgm)
+2026-05-28 13:49:18,750 [INFO] src.discovery.app_finder: Found WhatsApp as UWP app: 5319275A.WhatsAppDesktop
+2026-05-28 13:49:18,753 [INFO] src.discovery.app_finder: Cached discovery: whatsapp → uwp:shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-28 13:49:18,753 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-28 13:49:34,246 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-05-28 13:50:01,036 [INFO] src.dispatch.whatsapp_desktop: Message sent via WhatsApp Desktop.
+2026-05-28 13:50:01,036 [INFO] src.dispatch.dispatcher: [OK] Sent via WhatsApp Desktop
+2026-05-28 13:50:02,054 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 13:50:02,054 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-28 13:50:13,695 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-05-28 13:50:34,453 [INFO] src.dispatch.whatsapp_desktop: Message sent via WhatsApp Desktop.
+2026-05-28 13:50:34,453 [INFO] src.dispatch.dispatcher: [OK] Sent via WhatsApp Desktop
+2026-05-28 13:50:35,455 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 13:50:35,455 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-28 13:50:39,011 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-28 13:50:39,035 [INFO] src.scraper.page_scraper: Playwright browser closed.
+2026-05-28 13:50:39,048 [INFO] src.storage.database: SQLite connection closed
+2026-05-28 13:50:39,048 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-05-28 14:15:37,172 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-28 14:15:40,355 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 14:15:40,357 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 14:15:41,475 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-28 14:15:41,503 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-05-28 14:15:41,507 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-28 14:15:41,507 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-28 14:15:41,846 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-05-28 14:15:48,540 [INFO] src.capture.tab_capture: UIA captured 98 tabs from 8 windows.
+2026-05-28 14:15:53,718 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-05-28 14:15:53,719 [INFO] src.capture.tab_capture: capture_all_browsers: 98 unique tabs across 2 browser(s).
+2026-05-28 14:15:53,719 [INFO] LinkSync AI: Captured 98 tabs from Google Chrome.
+2026-05-28 14:20:07,272 [INFO] src.ui.tab_selector: User selected 31 tabs for sync.
+2026-05-28 14:20:10,759 [INFO] src.brain.ollama_manager: Ollama already running (external process). Will NOT stop it on shutdown.
+2026-05-28 14:20:10,759 [INFO] src.brain.graph: Starting concurrent sync pipeline with 5 worker agents...
+2026-05-28 14:20:10,760 [INFO] src.brain.graph: Processing tab 1/31: 3 Exercises That Rewire Your Brain in 11
+2026-05-28 14:20:10,761 [INFO] src.brain.graph: Processing tab 2/31: Fastest way to become an AI Engineer in 
+2026-05-28 14:20:10,761 [INFO] src.brain.graph: Processing tab 3/31: 𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us
+2026-05-28 14:20:10,762 [INFO] src.brain.graph: Processing tab 4/31: The Global Monetary Reset Has Begun (Hin
+2026-05-28 14:20:10,762 [INFO] src.brain.graph: Processing tab 5/31: 5 Ancient Encounters with The Men in Bla
+2026-05-28 14:20:10,769 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,770 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,771 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,774 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,774 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,775 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,780 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,781 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,782 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,783 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,783 [INFO] src.brain.graph: Processing tab 7/31: The Forbidden Book That Reveals EXACTLY 
+2026-05-28 14:20:10,782 [INFO] src.brain.graph: Processing tab 6/31: Why Google Just Gave Away Gemma 4 for Fr
+2026-05-28 14:20:10,783 [INFO] src.brain.graph: Processing tab 8/31: AI Just Made ADHD an Advantage (2026) - 
+2026-05-28 14:20:10,790 [INFO] src.brain.graph: Processing tab 9/31: What Happens to Your Brain When You Use 
+2026-05-28 14:20:10,790 [INFO] src.brain.graph: Processing tab 10/31: How to be a creative thinker | Carnegie 
+2026-05-28 14:20:10,795 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,797 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,796 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,797 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,798 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,798 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,800 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,801 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,802 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,802 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,808 [INFO] src.brain.graph: Processing tab 11/31: If You Have Too Many Interests, You Are 
+2026-05-28 14:20:10,809 [INFO] src.brain.graph: Processing tab 12/31: Copy This Linkedin Strategy, It'll Blow 
+2026-05-28 14:20:10,809 [INFO] src.brain.graph: Processing tab 13/31: The 1,600-Year-Old Learning System That 
+2026-05-28 14:20:10,809 [INFO] src.brain.graph: Processing tab 14/31: (646) How to learn Machine Learning like
+2026-05-28 14:20:10,810 [INFO] src.brain.graph: Processing tab 15/31: (647) Everything You See Is Just Vibrati
+2026-05-28 14:20:10,812 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,811 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,813 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,814 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,816 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,816 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,816 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,816 [WARNING] src.brain.eye: Dedup check failed (continuing): 'NoneType' object is not subscriptable
+2026-05-28 14:20:10,819 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 14:20:10,819 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 14:20:10,820 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 14:20:10,820 [INFO] src.brain.graph: Summarizing '(646) How to learn Machine Learning like' (max 2 lines, attempt 1)...
+2026-05-28 14:20:10,837 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,837 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,838 [INFO] src.brain.graph: Processing tab 16/31: (647) Researchers at MIT, Stanford, and 
+2026-05-28 14:20:10,838 [INFO] src.brain.graph: Processing tab 17/31: How LangChain Works to Create AI Agents 
+2026-05-28 14:20:10,838 [INFO] src.brain.graph: Processing tab 18/31: Perplexity Just Released Their Secret Se
+2026-05-28 14:20:10,845 [INFO] src.brain.graph: Processing tab 19/31: (647) The Sumerian Tablet That Lists 10 
+2026-05-28 14:20:10,846 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,848 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,850 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,850 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,851 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,851 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,858 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,858 [INFO] src.brain.graph: Processing tab 20/31: (652) ML Foundations for AI Engineers (i
+2026-05-28 14:20:10,858 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,862 [INFO] src.brain.graph: Processing tab 21/31: (648) What They Found Sealed Inside the 
+2026-05-28 14:20:10,862 [INFO] src.brain.graph: Processing tab 22/31: (663) People Covered Their Mirrors Every
+2026-05-28 14:20:10,864 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,864 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,868 [INFO] src.brain.graph: Processing tab 23/31: Google Search - Inactive tab - 183 MB fr
+2026-05-28 14:20:10,869 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,869 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,873 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,873 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,873 [INFO] src.brain.graph: Processing tab 24/31: (615) 3 Python AI Projects for Beginners
+2026-05-28 14:20:10,878 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,878 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,878 [INFO] src.brain.graph: Processing tab 25/31: Claytronics Explained: The Shape-Shiftin
+2026-05-28 14:20:10,879 [INFO] src.brain.graph: Processing tab 26/31: This Ratio Appears Everywhere and Nobody
+2026-05-28 14:20:10,880 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,881 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,882 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,883 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,883 [INFO] src.brain.graph: Processing tab 27/31: 3 Brain Exercises That Make You Think Sm
+2026-05-28 14:20:10,884 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,885 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,895 [INFO] src.brain.graph: Processing tab 28/31: (637) Silence reveals the thoughts shapi
+2026-05-28 14:20:10,895 [INFO] src.brain.graph: Processing tab 29/31: Stop paying for AI NVIDIA made every top
+2026-05-28 14:20:10,896 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,896 [INFO] src.brain.graph: Processing tab 30/31: Everything is energy ,vibration , freque
+2026-05-28 14:20:10,896 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,902 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,904 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,904 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,904 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,906 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,906 [INFO] src.brain.graph: Processing tab 31/31: Turning Radioactive Waste Into Power ⚠️🔋
+2026-05-28 14:20:10,907 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:10,912 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:20:10,912 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:20:12,869 [INFO] src.brain.llm_provider: Using Ollama (llama3) — local, private.
+2026-05-28 14:20:26,370 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 14:20:27,850 [INFO] src.brain.graph: Summary generated via ollama (223 chars).
+2026-05-28 14:20:27,851 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 14:20:27,851 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 14:20:29,042 [INFO] src.brain.graph: Pipeline complete: 31 tabs processed, 1 summarized.
+2026-05-28 14:20:29,044 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 14:20:29,050 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-28 14:20:29,051 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-28 14:20:29,053 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-28 14:20:29,072 [INFO] src.discovery.app_finder: Searching UWP/Store apps for WhatsApp...
+2026-05-28 14:20:30,776 [INFO] src.discovery.app_finder: Found UWP app: 5319275A.WhatsAppDesktop (family=5319275A.WhatsAppDesktop_cv1g1gvanyjgm)
+2026-05-28 14:20:30,776 [INFO] src.discovery.app_finder: Found WhatsApp as UWP app: 5319275A.WhatsAppDesktop
+2026-05-28 14:20:30,778 [INFO] src.discovery.app_finder: Cached discovery: whatsapp → uwp:shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-28 14:20:30,778 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-28 14:20:44,860 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-05-28 14:20:57,616 [ERROR] src.dispatch.whatsapp_desktop: Cannot find WhatsApp message input.
+2026-05-28 14:20:57,616 [INFO] src.dispatch.dispatcher: Desktop unavailable. Trying WhatsApp Web...
+2026-05-28 14:21:05,030 [INFO] src.dispatch.whatsapp_web: WhatsApp Web opened.
+2026-05-28 14:21:05,036 [INFO] src.dispatch.whatsapp_web: Waiting for WhatsApp Web QR scan... (Time limit: 60s)
+2026-05-28 14:21:10,984 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-28 14:21:10,990 [INFO] src.storage.database: SQLite connection closed
+2026-05-28 14:21:10,990 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-05-28 14:21:45,246 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-28 14:21:47,527 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 14:21:47,527 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-28 14:21:47,673 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-28 14:21:47,706 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-05-28 14:21:47,709 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-28 14:21:47,709 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-28 14:21:48,063 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-05-28 14:21:54,360 [INFO] src.capture.tab_capture: UIA captured 98 tabs from 8 windows.
+2026-05-28 14:21:59,418 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-05-28 14:21:59,418 [INFO] src.capture.tab_capture: capture_all_browsers: 98 unique tabs across 2 browser(s).
+2026-05-28 14:21:59,418 [INFO] LinkSync AI: Captured 98 tabs from Google Chrome.
+2026-05-28 14:22:27,207 [INFO] src.ui.tab_selector: User selected 63 tabs for sync.
+2026-05-28 14:22:30,706 [INFO] src.brain.ollama_manager: Ollama already running (external process). Will NOT stop it on shutdown.
+2026-05-28 14:22:30,706 [INFO] src.brain.graph: Starting concurrent sync pipeline with 5 worker agents...
+2026-05-28 14:22:30,707 [INFO] src.brain.graph: Processing tab 1/63: Untitled document - Google Docs - Inacti
+2026-05-28 14:22:30,708 [INFO] src.brain.graph: Processing tab 2/63: Gemini - Google Drive - Memory usage - 6
+2026-05-28 14:22:30,711 [INFO] src.brain.graph: Processing tab 3/63: Gemini - Google Drive - Memory usage - 5
+2026-05-28 14:22:30,713 [INFO] src.brain.graph: Processing tab 4/63: (37) YouTube - High memory usage - 3.4 G
+2026-05-28 14:22:30,717 [INFO] src.brain.graph: Processing tab 5/63: 3 Exercises That Rewire Your Brain in 11
+2026-05-28 14:22:30,720 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,722 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,723 [WARNING] src.brain.eye: Dedup check failed (continuing): 'NoneType' object is not subscriptable
+2026-05-28 14:22:30,723 [WARNING] src.brain.eye: Dedup check failed (continuing): bad parameter or other API misuse
+2026-05-28 14:22:30,725 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 14:22:30,726 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 14:22:30,727 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 14:22:30,728 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 14:22:30,728 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 14:22:30,728 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 14:22:30,729 [INFO] src.brain.graph: Summarizing 'Gemini - Google Drive - Memory usage - 6' (max 2 lines, attempt 1)...
+2026-05-28 14:22:30,730 [INFO] src.brain.graph: Summarizing 'Untitled document - Google Docs - Inacti' (max 2 lines, attempt 1)...
+2026-05-28 14:22:30,736 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,737 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,738 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,738 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,742 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,743 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,745 [INFO] src.brain.graph: Processing tab 6/63: Fastest way to become an AI Engineer in 
+2026-05-28 14:22:30,745 [INFO] src.brain.graph: Processing tab 7/63: 𝐓𝐡𝐢𝐧𝐤 𝐓𝐨 𝐃𝐨𝐦𝐢𝐧𝐚𝐭𝐞. - YouTube - Memory us
+2026-05-28 14:22:30,747 [INFO] src.brain.graph: Processing tab 8/63: The Global Monetary Reset Has Begun (Hin
+2026-05-28 14:22:30,750 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,751 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,752 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,752 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,759 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,759 [INFO] src.brain.graph: Processing tab 9/63: 5 Ancient Encounters with The Men in Bla
+2026-05-28 14:22:30,759 [INFO] src.brain.graph: Processing tab 10/63: Why Google Just Gave Away Gemma 4 for Fr
+2026-05-28 14:22:30,759 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,764 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,764 [INFO] src.brain.graph: Processing tab 11/63: The Forbidden Book That Reveals EXACTLY 
+2026-05-28 14:22:30,766 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,765 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,767 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,775 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,775 [INFO] src.brain.graph: Processing tab 12/63: AI Just Made ADHD an Advantage (2026) - 
+2026-05-28 14:22:30,775 [INFO] src.brain.graph: Processing tab 13/63: What Happens to Your Brain When You Use 
+2026-05-28 14:22:30,776 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,781 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,782 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,783 [INFO] src.brain.graph: Processing tab 14/63: How to be a creative thinker | Carnegie 
+2026-05-28 14:22:30,783 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,784 [WARNING] src.brain.eye: Dedup check failed (continuing): 'NoneType' object is not subscriptable
+2026-05-28 14:22:30,785 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 14:22:30,786 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 14:22:30,786 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 14:22:30,786 [INFO] src.brain.graph: Summarizing 'AI Just Made ADHD an Advantage (2026) - ' (max 2 lines, attempt 1)...
+2026-05-28 14:22:30,791 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,791 [INFO] src.brain.graph: Processing tab 15/63: If You Have Too Many Interests, You Are 
+2026-05-28 14:22:30,792 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,795 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,795 [INFO] src.brain.graph: Processing tab 16/63: Copy This Linkedin Strategy, It'll Blow 
+2026-05-28 14:22:30,796 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,799 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,799 [INFO] src.brain.graph: Processing tab 17/63: The 1,600-Year-Old Learning System That 
+2026-05-28 14:22:30,800 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,804 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,805 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,806 [INFO] src.brain.graph: Processing tab 18/63: Netprobe - Project Documentation - Googl
+2026-05-28 14:22:30,807 [INFO] src.brain.graph: Processing tab 19/63: Goal Chart🙏⭐ - Google Docs - Inactive ta
+2026-05-28 14:22:30,810 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,810 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,813 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,813 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,816 [INFO] src.brain.graph: Processing tab 20/63: (646) How to learn Machine Learning like
+2026-05-28 14:22:30,818 [INFO] src.brain.graph: Processing tab 21/63: (647) Everything You See Is Just Vibrati
+2026-05-28 14:22:30,821 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,821 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,824 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,824 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,826 [INFO] src.brain.graph: Processing tab 22/63: (647) Researchers at MIT, Stanford, and 
+2026-05-28 14:22:30,828 [INFO] src.brain.graph: Processing tab 23/63: How LangChain Works to Create AI Agents 
+2026-05-28 14:22:30,830 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,831 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,834 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,834 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,836 [INFO] src.brain.graph: Processing tab 24/63: Perplexity Just Released Their Secret Se
+2026-05-28 14:22:30,837 [INFO] src.brain.graph: Processing tab 25/63: (647) The Sumerian Tablet That Lists 10 
+2026-05-28 14:22:30,853 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,854 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,857 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,857 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,859 [INFO] src.brain.graph: Processing tab 26/63: (652) YouTube - Memory usage - 451 MB
+2026-05-28 14:22:30,862 [INFO] src.brain.graph: Processing tab 27/63: (652) ML Foundations for AI Engineers (i
+2026-05-28 14:22:30,865 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,865 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,867 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,868 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,870 [INFO] src.brain.graph: Processing tab 28/63: (648) What They Found Sealed Inside the 
+2026-05-28 14:22:30,870 [INFO] src.brain.graph: Processing tab 29/63: (663) People Covered Their Mirrors Every
+2026-05-28 14:22:30,873 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,874 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,874 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,874 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,896 [INFO] src.brain.graph: Processing tab 30/63: Google Search - Inactive tab - 183 MB fr
+2026-05-28 14:22:30,897 [INFO] src.brain.graph: Processing tab 31/63: (615) 3 Python AI Projects for Beginners
+2026-05-28 14:22:30,902 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,903 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,903 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,903 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,911 [INFO] src.brain.graph: Processing tab 32/63: Claytronics Explained: The Shape-Shiftin
+2026-05-28 14:22:30,911 [INFO] src.brain.graph: Processing tab 33/63: This Ratio Appears Everywhere and Nobody
+2026-05-28 14:22:30,915 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,916 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,917 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,917 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,920 [INFO] src.brain.graph: Processing tab 34/63: 3 Brain Exercises That Make You Think Sm
+2026-05-28 14:22:30,920 [INFO] src.brain.graph: Processing tab 35/63: (637) Silence reveals the thoughts shapi
+2026-05-28 14:22:30,937 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,938 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,939 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,940 [WARNING] src.brain.eye: Dedup check failed (continuing): '>' not supported between instances of 'NoneType' and 'int'
+2026-05-28 14:22:30,941 [INFO] src.brain.eye: Eye approved: 
+2026-05-28 14:22:30,942 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-05-28 14:22:30,942 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-05-28 14:22:30,943 [INFO] src.brain.graph: Summarizing '(637) Silence reveals the thoughts shapi' (max 2 lines, attempt 1)...
+2026-05-28 14:22:30,946 [INFO] src.brain.graph: Processing tab 36/63: Win FREE Certificates. Swags & Ticket to
+2026-05-28 14:22:30,957 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,958 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,964 [INFO] src.brain.graph: Processing tab 37/63: Stop paying for AI NVIDIA made every top
+2026-05-28 14:22:30,970 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,970 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,974 [INFO] src.brain.graph: Processing tab 38/63: Everything is energy ,vibration , freque
+2026-05-28 14:22:30,978 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,978 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,983 [INFO] src.brain.graph: Processing tab 39/63: Turning Radioactive Waste Into Power ⚠️🔋
+2026-05-28 14:22:30,991 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:30,992 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:30,997 [INFO] src.brain.graph: Processing tab 40/63: government job opportunities after pg - 
+2026-05-28 14:22:31,005 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,005 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,009 [INFO] src.brain.graph: Processing tab 41/63: Latest Post Graduation govt jobs 2026 Ap
+2026-05-28 14:22:31,012 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,012 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,018 [INFO] src.brain.graph: Processing tab 42/63: Latest Master Degree govt jobs 2026 Appl
+2026-05-28 14:22:31,021 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,021 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,024 [INFO] src.brain.graph: Processing tab 43/63: Govt. Job Opportunities After PG - Inact
+2026-05-28 14:22:31,027 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,027 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,036 [INFO] src.brain.graph: Processing tab 44/63: (22) Groups | LinkedIn - High memory usa
+2026-05-28 14:22:31,043 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,044 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,051 [INFO] src.brain.graph: Processing tab 45/63: LinkedIn Learning: Online Courses for Cr
+2026-05-28 14:22:31,054 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,055 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,057 [INFO] src.brain.graph: Processing tab 46/63: Career Journey | LinkedIn Learning - Mem
+2026-05-28 14:22:31,063 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,063 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,065 [INFO] src.brain.graph: Processing tab 47/63: Learning Premiere Pro | LinkedIn Learnin
+2026-05-28 14:22:31,071 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,071 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,073 [INFO] src.brain.graph: Processing tab 48/63: Kafka: Building Reliable Real-Time Event
+2026-05-28 14:22:31,081 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,082 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,084 [INFO] src.brain.graph: Processing tab 49/63: Trust Engineering for AI: Essential Trai
+2026-05-28 14:22:31,088 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,089 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,094 [INFO] src.brain.graph: Processing tab 50/63: Excel: PivotTables for Beginners | Linke
+2026-05-28 14:22:31,097 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,098 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,103 [INFO] src.brain.graph: Processing tab 51/63: Build AI Agents with Model Context Proto
+2026-05-28 14:22:31,109 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,110 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,112 [INFO] src.brain.graph: Processing tab 52/63: Forward Deployed Engineering in the Age 
+2026-05-28 14:22:31,116 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,117 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,119 [INFO] src.brain.graph: Processing tab 53/63: Exploratory Data Analysis (EDA) with Hex
+2026-05-28 14:22:31,121 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,122 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,126 [INFO] src.brain.graph: Processing tab 54/63: Software Engineering Principles by Pears
+2026-05-28 14:22:31,129 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,129 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,135 [INFO] src.brain.graph: Processing tab 55/63: Cybersecurity: Online Courses, Training 
+2026-05-28 14:22:31,141 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,141 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,143 [INFO] src.brain.graph: Processing tab 56/63: Browse Certifications | LinkedIn Learnin
+2026-05-28 14:22:31,147 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,148 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,152 [INFO] src.brain.graph: Processing tab 57/63: Hands-On Tech: Online Courses, Training 
+2026-05-28 14:22:31,157 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,157 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,159 [INFO] src.brain.graph: Processing tab 58/63: Your In Progress Content | LinkedIn Lear
+2026-05-28 14:22:31,163 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,164 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,170 [INFO] src.brain.graph: Processing tab 59/63: Power BI Data Dashboards | LinkedIn Lear
+2026-05-28 14:22:31,173 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,173 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,175 [INFO] src.brain.graph: Processing tab 60/63: Advanced RAG Applications with Vector Da
+2026-05-28 14:22:31,177 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,177 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,184 [INFO] src.brain.graph: Processing tab 61/63: (21) Artificial Intelligence, Deep & Mac
+2026-05-28 14:22:31,189 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,189 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,191 [INFO] src.brain.graph: Processing tab 62/63: (21) Artificial Intelligence, Deep Learn
+2026-05-28 14:22:31,195 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,195 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:31,203 [INFO] src.brain.graph: Processing tab 63/63: (21) 🦾 Machine Learning, Artificial Inte
+2026-05-28 14:22:31,206 [INFO] src.brain.eye: Eye examining: 
+2026-05-28 14:22:31,206 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-28 14:22:32,910 [INFO] src.brain.llm_provider: Using Ollama (llama3) — local, private.
+2026-05-28 14:22:37,571 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 14:22:39,106 [INFO] src.brain.graph: Summary generated via ollama (213 chars).
+2026-05-28 14:22:39,107 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 14:22:39,107 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 14:22:39,246 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 14:22:41,246 [INFO] src.brain.graph: Summary generated via ollama (267 chars).
+2026-05-28 14:22:41,247 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 14:22:41,247 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 14:22:41,468 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 14:22:43,741 [INFO] src.brain.graph: Summary generated via ollama (306 chars).
+2026-05-28 14:22:43,742 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 14:22:43,742 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 14:22:44,000 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-05-28 14:22:45,967 [INFO] src.brain.graph: Summary generated via ollama (295 chars).
+2026-05-28 14:22:45,967 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-05-28 14:22:45,968 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-05-28 14:22:46,228 [INFO] src.brain.graph: Pipeline complete: 63 tabs processed, 4 summarized.
+2026-05-28 14:22:46,232 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-28 14:22:46,235 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-28 14:22:46,236 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-28 14:22:46,237 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-28 14:22:46,245 [INFO] src.discovery.app_finder: Searching UWP/Store apps for WhatsApp...
+2026-05-28 14:22:47,019 [INFO] src.discovery.app_finder: Found UWP app: 5319275A.WhatsAppDesktop (family=5319275A.WhatsAppDesktop_cv1g1gvanyjgm)
+2026-05-28 14:22:47,019 [INFO] src.discovery.app_finder: Found WhatsApp as UWP app: 5319275A.WhatsAppDesktop
+2026-05-28 14:22:47,021 [INFO] src.discovery.app_finder: Cached discovery: whatsapp → uwp:shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-28 14:22:47,021 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-28 14:22:59,992 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-05-28 14:23:07,784 [ERROR] src.dispatch.whatsapp_desktop: Cannot find WhatsApp message input.
+2026-05-28 14:23:07,784 [INFO] src.dispatch.dispatcher: Desktop unavailable. Trying WhatsApp Web...
+2026-05-28 14:23:14,472 [INFO] src.dispatch.whatsapp_web: WhatsApp Web opened.
+2026-05-28 14:23:14,478 [INFO] src.dispatch.whatsapp_web: Waiting for WhatsApp Web QR scan... (Time limit: 60s)
+2026-05-28 14:23:16,920 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-28 14:23:16,926 [INFO] src.storage.database: SQLite connection closed
+2026-05-28 14:23:16,926 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-05-29 08:14:53,009 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-29 08:14:58,939 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-29 08:14:58,940 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-29 08:15:00,156 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-29 08:15:00,187 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-05-29 08:15:00,190 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-29 08:15:00,190 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-29 08:15:00,602 [INFO] src.capture.tab_capture: capture_all_browsers: found 1 browser(s): Microsoft Edge
+2026-05-29 08:15:07,472 [INFO] src.capture.tab_capture: UIA captured 32 tabs from 1 windows.
+2026-05-29 08:15:07,473 [INFO] src.capture.tab_capture: capture_all_browsers: 32 unique tabs across 1 browser(s).
+2026-05-29 08:15:07,473 [INFO] LinkSync AI: Captured 32 tabs from Microsoft Edge.
+2026-05-29 08:15:46,994 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-29 08:15:47,001 [INFO] src.storage.database: SQLite connection closed
+2026-05-29 08:15:47,001 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-05-29 08:22:46,733 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-29 08:22:49,719 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-29 08:22:49,720 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-29 08:22:50,899 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-29 08:22:50,933 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-05-29 08:22:50,936 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-29 08:22:50,936 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-29 08:22:51,320 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-05-29 08:22:56,819 [WARNING] src.capture.tab_capture: No browser window found via UIA.
+2026-05-29 08:23:01,820 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-05-29 08:23:01,820 [INFO] src.capture.tab_capture: capture_all_browsers: 0 unique tabs across 2 browser(s).
+2026-05-29 08:23:01,820 [INFO] src.capture.tab_capture: Multi-browser scan found nothing. Trying foreground detection...
+2026-05-29 08:23:01,820 [INFO] src.capture.tab_capture: Foreground window 'CTk' (pythonw.exe) is not a known browser.
+2026-05-29 08:23:01,820 [INFO] src.capture.tab_capture: No browser detected in foreground.
+2026-05-29 08:23:01,820 [INFO] LinkSync AI: No tabs captured.
+2026-05-29 08:23:09,088 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-29 08:23:09,095 [INFO] src.storage.database: SQLite connection closed
+2026-05-29 08:23:09,095 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-05-29 08:23:19,294 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-29 08:23:20,796 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-29 08:23:20,796 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-29 08:23:20,898 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-29 08:23:20,916 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-05-29 08:23:20,918 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-29 08:23:20,919 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-29 08:23:21,152 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-05-29 08:23:26,288 [WARNING] src.capture.tab_capture: No browser window found via UIA.
+2026-05-29 08:23:31,399 [INFO] src.capture.tab_capture: UIA captured 34 tabs from 1 windows.
+2026-05-29 08:23:31,399 [INFO] src.capture.tab_capture: capture_all_browsers: 34 unique tabs across 2 browser(s).
+2026-05-29 08:23:31,399 [INFO] LinkSync AI: Captured 34 tabs from Microsoft Edge.
+2026-05-29 08:23:48,213 [INFO] src.ui.tab_selector: User selected 34 tabs for sync.
+2026-05-29 08:23:52,606 [INFO] src.brain.ollama_manager: Ollama already running (external process). Will NOT stop it on shutdown.
+2026-05-29 08:23:52,606 [INFO] src.brain.graph: Starting concurrent sync pipeline with 5 worker agents...
+2026-05-29 08:23:52,607 [INFO] src.brain.graph: Processing tab 1/34: Top AI models showing disturbing behavio
+2026-05-29 08:23:52,607 [INFO] src.brain.graph: Processing tab 2/34: A single dose of psilocybin eased depres
+2026-05-29 08:23:52,607 [INFO] src.brain.graph: Processing tab 3/34: A Chinese lab just gave a humanoid robot
+2026-05-29 08:23:52,608 [INFO] src.brain.graph: Processing tab 4/34: Tiny on-chip circuit could power next-ge
+2026-05-29 08:23:52,608 [INFO] src.brain.graph: Processing tab 5/34: Laser-driven spintronic memory device sw
+2026-05-29 08:23:52,615 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,617 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,618 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,620 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,620 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,621 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,623 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,624 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,624 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,625 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,625 [INFO] src.brain.graph: Processing tab 6/34: Scientists just debunked every myth abou
+2026-05-29 08:23:52,625 [INFO] src.brain.graph: Processing tab 7/34: Scientists just debunked every myth abou
+2026-05-29 08:23:52,626 [INFO] src.brain.graph: Processing tab 8/34: 🧠 Here is the first living 3D neural net
+2026-05-29 08:23:52,626 [INFO] src.brain.graph: Processing tab 9/34: How deep sea water is now drinkable | Wa
+2026-05-29 08:23:52,633 [INFO] src.brain.graph: Processing tab 10/34: Scientists found the DNA 'switch' that m
+2026-05-29 08:23:52,635 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,636 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,636 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,638 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,637 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,639 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,639 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,641 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,641 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,641 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,650 [INFO] src.brain.graph: Processing tab 11/34: AI makes a major breakthrough in a math 
+2026-05-29 08:23:52,652 [INFO] src.brain.graph: Processing tab 12/34: MIT releases first AI model built to mak
+2026-05-29 08:23:52,653 [INFO] src.brain.graph: Processing tab 13/34: Scientists have just unlocked a 3,500-ye
+2026-05-29 08:23:52,653 [INFO] src.brain.graph: Processing tab 15/34: Top AI models showing disturbing behavio
+2026-05-29 08:23:52,653 [INFO] src.brain.graph: Processing tab 14/34: A single dose of psilocybin eased depres
+2026-05-29 08:23:52,658 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,658 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,660 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,660 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,661 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,661 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,665 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,666 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,666 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,668 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,671 [INFO] src.brain.graph: Processing tab 16/34: He won math’s highest honor then disappe
+2026-05-29 08:23:52,671 [INFO] src.brain.graph: Processing tab 18/34: A bionic brain implant may soon replace 
+2026-05-29 08:23:52,671 [INFO] src.brain.graph: Processing tab 17/34: A bionic brain implant may soon replace 
+2026-05-29 08:23:52,671 [INFO] src.brain.graph: Processing tab 19/34: Only have 15 minutes a week for exercise
+2026-05-29 08:23:52,674 [INFO] src.brain.graph: Processing tab 20/34: Scientists discover over 1,700 'dark' pr
+2026-05-29 08:23:52,677 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,678 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,678 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,678 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,682 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,683 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,684 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,684 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,685 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,685 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,688 [INFO] src.brain.graph: Processing tab 21/34: MSN
+2026-05-29 08:23:52,688 [INFO] src.brain.graph: Processing tab 22/34: Quantum’s “ChatGPT moment” is coming - a
+2026-05-29 08:23:52,691 [INFO] src.brain.graph: Processing tab 23/34: The universal grammar of intelligence, w
+2026-05-29 08:23:52,692 [INFO] src.brain.graph: Processing tab 25/34: Scientists trained an AI model using a q
+2026-05-29 08:23:52,691 [INFO] src.brain.graph: Processing tab 24/34: Neuroscientists discover the brain’s mem
+2026-05-29 08:23:52,696 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,697 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,697 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,698 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,701 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,702 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,703 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,704 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,704 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,705 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,705 [INFO] src.brain.graph: Processing tab 26/34: A DNA 'on-off' switch? Light and redox c
+2026-05-29 08:23:52,705 [INFO] src.brain.graph: Processing tab 27/34: Humans are still evolving. Natural selec
+2026-05-29 08:23:52,705 [INFO] src.brain.graph: Processing tab 28/34: Quantum handshake: How orbital overlap d
+2026-05-29 08:23:52,706 [INFO] src.brain.graph: Processing tab 29/34: Inexpensive material compresses light, p
+2026-05-29 08:23:52,706 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,707 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,706 [INFO] src.brain.graph: Processing tab 30/34: Inexpensive material compresses light, p
+2026-05-29 08:23:52,708 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,709 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,707 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,709 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,723 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,723 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,724 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,725 [INFO] src.brain.graph: Processing tab 31/34: AI discovers hidden physics rules inside
+2026-05-29 08:23:52,725 [INFO] src.brain.graph: Processing tab 32/34: Is AI already conscious? Richard Dawkins
+2026-05-29 08:23:52,725 [INFO] src.brain.graph: Processing tab 33/34: Scientists solve difficult quantum probl
+2026-05-29 08:23:52,725 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,732 [INFO] src.brain.graph: Processing tab 34/34: Hourglass nanographenes unlock strong, r
+2026-05-29 08:23:52,734 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,735 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,735 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,736 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,739 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,739 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,742 [INFO] src.brain.eye: Eye examining: 
+2026-05-29 08:23:52,743 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-05-29 08:23:52,769 [INFO] src.brain.graph: Pipeline complete: 34 tabs processed, 0 summarized.
+2026-05-29 08:23:52,770 [INFO] src.dispatch.dispatcher: Dispatch batch complete: 0/0 sent.
+2026-05-29 08:23:52,770 [INFO] LinkSync AI: Ollama released.
+2026-05-29 08:23:52,774 [INFO] src.ui.report_generator: Report saved to D:\Ivin\AI Projects\Linksync_AI\data\reports\report_2026-05-29_082352.md
+2026-05-29 08:23:52,775 [INFO] LinkSync AI: Sync report generated at: D:\Ivin\AI Projects\Linksync_AI\data\reports\report_2026-05-29_082352.md
+2026-05-29 08:23:52,775 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-05-29 08:23:52,778 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-05-29 08:23:52,779 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-05-29 08:23:52,780 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-05-29 08:23:52,789 [INFO] src.discovery.app_finder: Searching UWP/Store apps for WhatsApp...
+2026-05-29 08:23:56,262 [INFO] src.discovery.app_finder: Found UWP app: 5319275A.WhatsAppDesktop (family=5319275A.WhatsAppDesktop_cv1g1gvanyjgm)
+2026-05-29 08:23:56,263 [INFO] src.discovery.app_finder: Found WhatsApp as UWP app: 5319275A.WhatsAppDesktop
+2026-05-29 08:23:56,264 [INFO] src.discovery.app_finder: Cached discovery: whatsapp → uwp:shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-29 08:23:56,264 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-05-29 08:24:09,090 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-05-29 08:24:32,444 [INFO] src.dispatch.whatsapp_desktop: Message sent via WhatsApp Desktop UWP (Clipboard Paste).
+2026-05-29 08:24:32,444 [INFO] src.dispatch.dispatcher: [OK] Sent via WhatsApp Desktop
+2026-05-29 08:24:32,448 [ERROR] LinkSync AI: Failed to open report file locally: name 'os' is not defined
+2026-05-29 08:25:22,391 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-29 08:25:22,396 [INFO] src.storage.database: SQLite connection closed
+2026-05-29 08:25:22,397 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-05-30 17:21:21,510 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-05-30 17:21:28,340 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-30 17:21:28,340 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-05-30 17:21:32,473 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-05-30 17:21:32,508 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-05-30 17:21:32,512 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-05-30 17:21:32,512 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-05-30 17:21:33,449 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Microsoft Edge, Google Chrome
+2026-05-30 17:21:38,991 [INFO] src.capture.tab_capture: UIA captured 1 tabs from 1 windows.
+2026-05-30 17:21:44,234 [INFO] src.capture.tab_capture: UIA captured 24 tabs from 3 windows.
+2026-05-30 17:21:44,234 [INFO] src.capture.tab_capture: capture_all_browsers: 25 unique tabs across 2 browser(s).
+2026-05-30 17:21:44,234 [INFO] LinkSync AI: Captured 25 tabs from Google Chrome + Microsoft Edge.
+2026-05-30 17:21:50,425 [INFO] LinkSync AI: Full shutdown initiated...
+2026-05-30 17:21:50,450 [INFO] src.storage.database: SQLite connection closed
+2026-05-30 17:21:50,450 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-06-26 21:26:10,119 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-06-26 21:26:18,214 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-06-26 21:26:18,215 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-06-26 21:26:23,164 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-06-26 21:26:23,194 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-06-26 21:26:23,196 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-06-26 21:26:23,196 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-06-26 21:26:24,107 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-06-26 21:26:30,546 [INFO] src.capture.tab_capture: UIA captured 55 tabs from 4 windows.
+2026-06-26 21:26:35,590 [INFO] src.capture.tab_capture: UIA captured 1 tabs from 1 windows.
+2026-06-26 21:26:35,590 [INFO] src.capture.tab_capture: capture_all_browsers: 56 unique tabs across 2 browser(s).
+2026-06-26 21:26:35,590 [INFO] LinkSync AI: Captured 56 tabs from Google Chrome + Microsoft Edge.
+2026-06-26 21:27:10,044 [INFO] LinkSync AI: Full shutdown initiated...
+2026-06-26 21:27:10,065 [INFO] src.storage.database: SQLite connection closed
+2026-06-26 21:27:10,065 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-06-26 21:29:49,158 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-06-26 21:29:50,862 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-06-26 21:29:50,862 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-06-26 21:29:50,988 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-06-26 21:29:51,007 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-06-26 21:29:51,009 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-06-26 21:29:51,009 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-06-26 21:29:51,234 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-06-26 21:29:56,722 [INFO] src.capture.tab_capture: UIA captured 55 tabs from 4 windows.
+2026-06-26 21:30:01,796 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-06-26 21:30:01,810 [INFO] src.capture.tab_capture: capture_all_browsers: 55 unique tabs across 2 browser(s).
+2026-06-26 21:30:01,810 [INFO] LinkSync AI: Captured 55 tabs from Google Chrome.
+2026-06-26 21:30:38,586 [INFO] src.ui.tab_selector: User selected 1 tabs for sync.
+2026-06-26 21:30:46,481 [INFO] src.brain.ollama_manager: Starting Ollama for this sync cycle...
+2026-06-26 21:31:20,739 [ERROR] src.brain.ollama_manager: Ollama did not become ready within 30s.
+2026-06-26 21:31:20,739 [WARNING] LinkSync AI: Ollama unavailable. Trying API fallback.
+2026-06-26 21:31:20,739 [INFO] src.brain.graph: Starting concurrent sync pipeline with 1 worker agents...
+2026-06-26 21:31:20,740 [INFO] src.brain.graph: Processing tab 1/1: Verified sender
+2026-06-26 21:31:20,762 [INFO] src.brain.eye: Eye examining: 
+2026-06-26 21:31:20,766 [INFO] src.brain.eye: Eye approved: 
+2026-06-26 21:31:20,766 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-06-26 21:31:20,767 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-06-26 21:31:20,767 [INFO] src.brain.graph: Summarizing 'Verified sender' (max 2 lines, attempt 1)...
+2026-06-26 21:31:24,420 [INFO] src.brain.llm_provider: Using Ollama (llama3) — local, private.
+2026-06-26 21:32:35,502 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-06-26 21:32:39,606 [INFO] src.brain.graph: Summary generated via ollama (200 chars).
+2026-06-26 21:32:39,607 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-06-26 21:32:39,607 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-06-26 21:32:41,268 [INFO] src.brain.graph: Pipeline complete: 1 tabs processed, 1 summarized.
+2026-06-26 21:32:41,271 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-06-26 21:32:41,275 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-06-26 21:32:41,275 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-06-26 21:32:41,276 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-06-26 21:32:41,288 [INFO] src.discovery.app_finder: Searching UWP/Store apps for WhatsApp...
+2026-06-26 21:32:44,086 [INFO] src.discovery.app_finder: Found UWP app: 5319275A.WhatsAppDesktop (family=5319275A.WhatsAppDesktop_cv1g1gvanyjgm)
+2026-06-26 21:32:44,087 [INFO] src.discovery.app_finder: Found WhatsApp as UWP app: 5319275A.WhatsAppDesktop
+2026-06-26 21:32:44,090 [INFO] src.discovery.app_finder: Cached discovery: whatsapp → uwp:shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-06-26 21:32:44,090 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-06-26 21:32:56,598 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-06-26 21:33:17,877 [INFO] src.dispatch.whatsapp_desktop: Message sent via WhatsApp Desktop UWP (Clipboard Paste).
+2026-06-26 21:33:17,878 [INFO] src.dispatch.dispatcher: [OK] Sent via WhatsApp Desktop
+2026-06-26 21:33:18,898 [INFO] src.dispatch.dispatcher: Dispatch batch complete: 1/1 sent.
+2026-06-26 21:33:18,898 [INFO] src.brain.ollama_manager: Stopping Ollama (we started it, sync cycle complete).
+2026-06-26 21:33:18,928 [INFO] LinkSync AI: Ollama released.
+2026-06-26 21:33:18,932 [INFO] src.ui.report_generator: Report saved to D:\Ivin\AI Projects\Linksync_AI\data\reports\report_2026-06-26_213318.md
+2026-06-26 21:33:18,932 [INFO] LinkSync AI: Sync report generated at: D:\Ivin\AI Projects\Linksync_AI\data\reports\report_2026-06-26_213318.md
+2026-06-26 21:33:18,933 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-06-26 21:33:18,933 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-06-26 21:33:32,302 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-06-26 21:33:39,396 [INFO] LinkSync AI: Full shutdown initiated...
+2026-06-26 21:33:39,401 [INFO] src.storage.database: SQLite connection closed
+2026-06-26 21:33:39,402 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-07-05 21:27:09,383 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-07-05 21:27:16,681 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-07-05 21:27:16,681 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-07-05 21:27:21,421 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-07-05 21:27:21,449 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-07-05 21:27:21,452 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=0)
+2026-07-05 21:27:21,452 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-07-05 21:27:22,014 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-07-05 21:27:27,697 [INFO] src.capture.tab_capture: UIA captured 8 tabs from 1 windows.
+2026-07-05 21:27:32,669 [INFO] src.capture.tab_capture: UIA captured 1 tabs from 1 windows.
+2026-07-05 21:27:32,670 [INFO] src.capture.tab_capture: capture_all_browsers: 9 unique tabs across 2 browser(s).
+2026-07-05 21:27:32,670 [INFO] LinkSync AI: Captured 9 tabs from Google Chrome + Microsoft Edge.
+2026-07-05 21:27:43,165 [INFO] src.ui.tab_selector: User selected 1 tabs for sync.
+2026-07-05 21:27:49,332 [INFO] src.brain.ollama_manager: Starting Ollama for this sync cycle...
+2026-07-05 21:28:23,488 [ERROR] src.brain.ollama_manager: Ollama did not become ready within 30s.
+2026-07-05 21:28:23,488 [WARNING] LinkSync AI: Ollama unavailable. Trying API fallback.
+2026-07-05 21:28:23,488 [INFO] src.brain.graph: Starting concurrent sync pipeline with 1 worker agents...
+2026-07-05 21:28:23,489 [INFO] src.brain.graph: Processing tab 1/1: Scientists engineer human cells to funct
+2026-07-05 21:28:23,497 [INFO] src.brain.eye: Eye examining: 
+2026-07-05 21:28:23,501 [INFO] src.brain.eye: Eye approved: 
+2026-07-05 21:28:23,502 [INFO] src.brain.filter_node: Filter node scraping: 
+2026-07-05 21:28:23,502 [INFO] src.brain.filter_node: No URL available — using title-only mode.
+2026-07-05 21:28:23,503 [INFO] src.brain.graph: Summarizing 'Scientists engineer human cells to funct' (max 2 lines, attempt 1)...
+2026-07-05 21:28:28,553 [INFO] src.brain.llm_provider: Ollama unavailable. Using OpenAI (gpt-4o-mini).
+2026-07-05 21:28:36,225 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-05 21:28:36,226 [INFO] openai._base_client: Retrying request to /chat/completions in 0.493723 seconds
+2026-07-05 21:28:37,141 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-05 21:28:37,142 [INFO] openai._base_client: Retrying request to /chat/completions in 0.826515 seconds
+2026-07-05 21:28:38,415 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-07-05 21:28:38,417 [WARNING] src.brain.llm_provider: LLM invocation failed with openai: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2026-07-05 21:28:40,470 [INFO] src.brain.llm_provider: Using Ollama (llama3) — local, private.
+2026-07-05 21:28:57,330 [INFO] httpx: HTTP Request: POST http://localhost:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-05 21:28:58,602 [INFO] src.brain.graph: Summary generated via ollama (393 chars).
+2026-07-05 21:28:58,602 [INFO] src.brain.critic: Critic evaluating summary (attempt 1)...
+2026-07-05 21:28:58,602 [INFO] src.brain.critic: Critic APPROVED summary.
+2026-07-05 21:29:01,157 [INFO] src.brain.graph: Pipeline complete: 1 tabs processed, 1 summarized.
+2026-07-05 21:29:01,158 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-07-05 21:29:01,163 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-07-05 21:29:01,164 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-07-05 21:29:01,165 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-07-05 21:29:01,174 [INFO] src.discovery.app_finder: Searching UWP/Store apps for WhatsApp...
+2026-07-05 21:29:03,385 [INFO] src.discovery.app_finder: Found UWP app: 5319275A.WhatsAppDesktop (family=5319275A.WhatsAppDesktop_cv1g1gvanyjgm)
+2026-07-05 21:29:03,385 [INFO] src.discovery.app_finder: Found WhatsApp as UWP app: 5319275A.WhatsAppDesktop
+2026-07-05 21:29:03,388 [INFO] src.discovery.app_finder: Cached discovery: whatsapp → uwp:shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-07-05 21:29:03,388 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-07-05 21:29:17,892 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-07-05 21:29:41,330 [INFO] src.dispatch.whatsapp_desktop: Message sent via WhatsApp Desktop UWP (Clipboard Paste).
+2026-07-05 21:29:41,331 [INFO] src.dispatch.dispatcher: [OK] Sent via WhatsApp Desktop
+2026-07-05 21:29:42,335 [INFO] src.dispatch.dispatcher: Dispatch batch complete: 1/1 sent.
+2026-07-05 21:29:42,335 [INFO] src.brain.ollama_manager: Stopping Ollama (we started it, sync cycle complete).
+2026-07-05 21:29:42,352 [INFO] LinkSync AI: Ollama released.
+2026-07-05 21:29:42,355 [INFO] src.ui.report_generator: Report saved to D:\Ivin\AI Projects\Linksync_AI\data\reports\report_2026-07-05_212942.md
+2026-07-05 21:29:42,355 [INFO] LinkSync AI: Sync report generated at: D:\Ivin\AI Projects\Linksync_AI\data\reports\report_2026-07-05_212942.md
+2026-07-05 21:29:42,355 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-07-05 21:29:42,355 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-07-05 21:29:54,931 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-07-05 21:30:15,765 [INFO] src.dispatch.whatsapp_desktop: Message sent via WhatsApp Desktop UWP (Clipboard Paste).
+2026-07-05 21:30:15,765 [INFO] src.dispatch.dispatcher: [OK] Sent via WhatsApp Desktop
+2026-07-05 21:30:15,766 [ERROR] LinkSync AI: Failed to open report file locally: name 'os' is not defined
+2026-07-05 21:30:45,081 [INFO] src.storage.database: Log id=2 marked as irrelevant
+2026-07-05 21:30:45,456 [INFO] src.storage.vector_store: Added to negative filter: 
+2026-07-05 21:30:45,456 [INFO] src.ui.logs_window: Marked as irrelevant: 
+2026-07-05 21:31:03,349 [INFO] LinkSync AI: Full shutdown initiated...
+2026-07-05 21:31:03,358 [INFO] src.storage.database: SQLite connection closed
+2026-07-05 21:31:03,358 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-07-05 21:31:13,383 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-07-05 21:31:15,405 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-07-05 21:31:15,406 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-07-05 21:31:15,523 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-07-05 21:31:15,559 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-07-05 21:31:15,570 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-07-05 21:31:15,570 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-07-05 21:31:15,893 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-07-05 21:31:21,144 [INFO] src.capture.tab_capture: UIA captured 8 tabs from 1 windows.
+2026-07-05 21:31:26,032 [INFO] src.capture.tab_capture: UIA captured 1 tabs from 1 windows.
+2026-07-05 21:31:26,033 [INFO] src.capture.tab_capture: capture_all_browsers: 9 unique tabs across 2 browser(s).
+2026-07-05 21:31:26,033 [INFO] LinkSync AI: Captured 9 tabs from Google Chrome + Microsoft Edge.
+2026-07-05 21:31:32,849 [INFO] src.ui.tab_selector: User selected 1 tabs for sync.
+2026-07-05 21:31:37,775 [INFO] src.brain.ollama_manager: Starting Ollama for this sync cycle...
+2026-07-05 21:31:51,263 [INFO] src.brain.ollama_manager: Ollama ready in 13.1s.
+2026-07-05 21:31:51,264 [INFO] src.brain.graph: Starting concurrent sync pipeline with 1 worker agents...
+2026-07-05 21:31:51,265 [INFO] src.brain.graph: Processing tab 1/1: Scientists engineer human cells to funct
+2026-07-05 21:31:51,274 [INFO] src.brain.eye: Eye examining: 
+2026-07-05 21:31:51,275 [INFO] src.brain.eye: SKIP — URL already processed recently: 
+2026-07-05 21:31:51,279 [INFO] src.brain.graph: Pipeline complete: 1 tabs processed, 0 summarized.
+2026-07-05 21:31:51,280 [INFO] src.dispatch.dispatcher: Dispatch batch complete: 0/0 sent.
+2026-07-05 21:31:51,280 [INFO] src.brain.ollama_manager: Stopping Ollama (we started it, sync cycle complete).
+2026-07-05 21:31:51,299 [INFO] LinkSync AI: Ollama released.
+2026-07-05 21:31:51,302 [INFO] src.ui.report_generator: Report saved to D:\Ivin\AI Projects\Linksync_AI\data\reports\report_2026-07-05_213151.md
+2026-07-05 21:31:51,302 [INFO] LinkSync AI: Sync report generated at: D:\Ivin\AI Projects\Linksync_AI\data\reports\report_2026-07-05_213151.md
+2026-07-05 21:31:51,302 [INFO] src.dispatch.dispatcher: Trying WhatsApp Desktop...
+2026-07-05 21:31:51,305 [INFO] src.discovery.app_finder: Checking cached path for WhatsApp...
+2026-07-05 21:31:51,305 [INFO] src.discovery.app_finder: Searching known locations for WhatsApp...
+2026-07-05 21:31:51,307 [INFO] src.discovery.app_finder: Searching Windows Registry for WhatsApp...
+2026-07-05 21:31:51,317 [INFO] src.discovery.app_finder: Searching UWP/Store apps for WhatsApp...
+2026-07-05 21:31:53,719 [INFO] src.discovery.app_finder: Found UWP app: 5319275A.WhatsAppDesktop (family=5319275A.WhatsAppDesktop_cv1g1gvanyjgm)
+2026-07-05 21:31:53,719 [INFO] src.discovery.app_finder: Found WhatsApp as UWP app: 5319275A.WhatsAppDesktop
+2026-07-05 21:31:53,720 [INFO] src.discovery.app_finder: Cached discovery: whatsapp → uwp:shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-07-05 21:31:53,720 [INFO] src.dispatch.dispatcher: Launching WhatsApp UWP via: shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+2026-07-05 21:32:05,785 [INFO] src.dispatch.whatsapp_desktop: Selected first search result for: ME
+2026-07-05 21:32:26,234 [INFO] src.dispatch.whatsapp_desktop: Message sent via WhatsApp Desktop UWP (Clipboard Paste).
+2026-07-05 21:32:26,234 [INFO] src.dispatch.dispatcher: [OK] Sent via WhatsApp Desktop
+2026-07-05 21:32:26,237 [ERROR] LinkSync AI: Failed to open report file locally: name 'os' is not defined
+2026-07-05 21:32:41,571 [INFO] LinkSync AI: Full shutdown initiated...
+2026-07-05 21:32:41,580 [INFO] src.storage.database: SQLite connection closed
+2026-07-05 21:32:41,580 [INFO] LinkSync AI: === LinkSync AI — Session End ===

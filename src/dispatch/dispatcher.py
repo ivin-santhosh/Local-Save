@@ -4,14 +4,20 @@ LinkSync AI — Dispatch Orchestrator
 Central dispatch controller that routes messages through
 the best available channel:
 
-1. WhatsApp Desktop (primary — native, fast)
+1. WhatsApp Desktop / UWP (primary — native, fast)
 2. WhatsApp Web (fallback — if Desktop unavailable)
 3. Queue (last resort — saved for later)
 
 Handles discovery, fallback popups, and result logging.
+
+STRICT SAFETY RULES (non-negotiable):
+- ONLY sends to "ME" WhatsApp group. Any other group = abort.
+- ONLY action: send messages. No reads, no deletes.
+- WhatsApp Web browser is NEVER closed by the agent.
 """
 
 import logging
+import os
 import time
 from typing import Callable, Optional
 
@@ -25,6 +31,9 @@ from config import (
 
 logger = logging.getLogger(__name__)
 
+# ── Session-level cache (avoids repeated drive scanning) ──
+_whatsapp_cache: dict = {}   # {"path": str|None, "searched": bool}
+
 
 def dispatch_summary(
     url: str,
@@ -35,11 +44,7 @@ def dispatch_summary(
     """
     Dispatch a summary to WhatsApp using the best available method.
 
-    Flow:
-    1. Format the message
-    2. Try WhatsApp Desktop
-    3. If failed → try WhatsApp Web
-    4. If failed → queue for later
+    SAFETY: Only sends to "ME" group. Any other group is rejected.
 
     Args:
         url: The original URL.
@@ -52,10 +57,24 @@ def dispatch_summary(
     """
     group_name = group_name or _get_group_name()
 
+    # ── SAFETY CHECK: ME group only ──
+    if group_name.upper().strip() != "ME":
+        logger.warning(
+            "SAFETY: Blocked dispatch to non-ME group '%s'. "
+            "Only 'ME' group is allowed.", group_name
+        )
+        return {
+            "success": False,
+            "method": "blocked",
+            "error": f"Safety: Only 'ME' group is allowed, got '{group_name}'.",
+        }
+
     def _report(msg: str) -> None:
-        logger.info(msg)
+        # Use ASCII-safe alternatives for console logging
+        safe_msg = msg.replace("✅", "[OK]").replace("❌", "[FAIL]")
+        logger.info(safe_msg)
         if progress_callback:
-            progress_callback(msg)
+            progress_callback(msg)  # Keep emoji for UI
 
     # Format the message
     message = WHATSAPP_MESSAGE_TEMPLATE.format(
@@ -63,25 +82,25 @@ def dispatch_summary(
         url=url,
     )
 
-    # ── Try WhatsApp Desktop ──
+    # ── Try WhatsApp Desktop / UWP ──
     _report("Trying WhatsApp Desktop...")
     desktop_result = _try_desktop(message, group_name)
     if desktop_result:
-        _report("✅ Sent via WhatsApp Desktop")
-        _log_dispatch(url, summary, "sent", "desktop")
+        _report("[OK] Sent via WhatsApp Desktop")
+        _log_dispatch(url, summary, "sent")
         return {"success": True, "method": "desktop", "error": None}
 
     # ── Try WhatsApp Web ──
     _report("Desktop unavailable. Trying WhatsApp Web...")
     web_result = _try_web(message, group_name)
     if web_result:
-        _report("✅ Sent via WhatsApp Web")
-        _log_dispatch(url, summary, "sent", "web")
+        _report("[OK] Sent via WhatsApp Web")
+        _log_dispatch(url, summary, "sent")
         return {"success": True, "method": "web", "error": None}
 
     # ── Queue for later ──
-    _report("❌ All dispatch methods failed. Queued for later.")
-    _log_dispatch(url, summary, "failed", "none")
+    _report("[FAIL] All dispatch methods failed. Queued for later.")
+    _log_dispatch(url, summary, "failed")
     return {
         "success": False,
         "method": "none",
@@ -126,7 +145,7 @@ def dispatch_batch(
             dispatched_count += 1
 
         if progress_callback:
-            status = "📤 Sent" if dispatch_result["success"] else "❌ Failed"
+            status = "Sent" if dispatch_result["success"] else "Failed"
             progress_callback(i, status)
 
         # Small delay between messages to avoid rate limiting
@@ -142,12 +161,21 @@ def dispatch_batch(
 
 
 def _try_desktop(message: str, group_name: str) -> bool:
-    """Attempt to send via WhatsApp Desktop."""
+    """Attempt to send via WhatsApp Desktop (traditional or UWP)."""
     try:
-        # Discover WhatsApp path
         whatsapp_path = _discover_whatsapp()
         if not whatsapp_path:
             return False
+
+        # Handle UWP apps (path starts with "uwp:")
+        if whatsapp_path.startswith("uwp:"):
+            launch_uri = whatsapp_path[4:]  # Remove "uwp:" prefix
+            logger.info("Launching WhatsApp UWP via: %s", launch_uri)
+            os.startfile(launch_uri)
+            time.sleep(3)  # Wait for UWP app to open
+            # UWP apps use UI automation for message sending
+            from src.dispatch.whatsapp_desktop import send_to_group_uia
+            return send_to_group_uia(message, group_name)
 
         from src.dispatch.whatsapp_desktop import send_to_group
         return send_to_group(message, group_name, whatsapp_path)
@@ -167,17 +195,29 @@ def _try_web(message: str, group_name: str) -> bool:
 
 
 def _discover_whatsapp() -> Optional[str]:
-    """Find WhatsApp Desktop using the app discovery system."""
+    """
+    Find WhatsApp Desktop using the app discovery system.
+    Results are cached per session to avoid repeated drive scanning.
+    """
+    global _whatsapp_cache
+
+    # Return cached result if available
+    if _whatsapp_cache.get("searched"):
+        return _whatsapp_cache.get("path")
+
     try:
         from src.discovery.app_finder import find_app
-        return find_app(
+        path = find_app(
             app_name="WhatsApp",
             exe_name="WhatsApp.exe",
             known_paths=WHATSAPP_KNOWN_PATHS,
             context_key="whatsapp",
         )
+        _whatsapp_cache = {"path": path, "searched": True}
+        return path
     except Exception as exc:
         logger.error("WhatsApp discovery failed: %s", exc)
+        _whatsapp_cache = {"path": None, "searched": True}
         return None
 
 
@@ -190,7 +230,7 @@ def _get_group_name() -> str:
         return WHATSAPP_GROUP
 
 
-def _log_dispatch(url: str, summary: str, status: str, method: str) -> None:
+def _log_dispatch(url: str, summary: str, status: str) -> None:
     """Log a dispatch result to the database."""
     try:
         from src.storage.database import insert_log
@@ -199,7 +239,6 @@ def _log_dispatch(url: str, summary: str, status: str, method: str) -> None:
             title="",
             summary=summary,
             status=status,
-            provider_used=method,
         )
     except Exception as exc:
         logger.warning("Failed to log dispatch: %s", exc)

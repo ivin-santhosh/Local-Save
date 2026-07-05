@@ -96,7 +96,7 @@ class TabSelectorWindow(ctk.CTkToplevel):
         self._build_selection_view()
 
     def _build_selection_view(self) -> None:
-        """Build the tab selection interface with checkboxes."""
+        """Build the tab selection interface with checkboxes grouped by browser+window."""
         # Header
         header_frame = ctk.CTkFrame(self, fg_color=BG_SECONDARY, corner_radius=0)
         header_frame.pack(fill="x", padx=0, pady=0)
@@ -126,9 +126,63 @@ class TabSelectorWindow(ctk.CTkToplevel):
         )
         self._scroll_frame.pack(fill="both", expand=True, padx=PAD_LG, pady=PAD_SM)
 
-        # Create checkboxes
+        # Group tabs by browser + window
+        groups = {}
         for tab in self.tabs:
-            self._add_tab_checkbox(tab)
+            browser = tab.get("browser", self.browser_name)
+            window_idx = tab.get("window_index")
+            if window_idx:
+                key = f"{browser} — Window {window_idx}"
+            else:
+                key = browser
+            
+            if key not in groups:
+                groups[key] = []
+            groups[key].append(tab)
+
+        # Create checkboxes grouped under section headers with master checkboxes
+        for group_title, group_tabs in groups.items():
+            group_header_frame = ctk.CTkFrame(
+                self._scroll_frame,
+                fg_color="transparent",
+            )
+            group_header_frame.pack(fill="x", padx=PAD_SM, pady=(PAD_MD, 2))
+
+            group_vars = []
+            group_var = ctk.BooleanVar(value=True)
+
+            def make_toggle_cmd(g_var, g_vars):
+                def toggle():
+                    val = g_var.get()
+                    for v in g_vars:
+                        v.set(val)
+                    self._update_counter()
+                return toggle
+
+            group_cb = ctk.CTkCheckBox(
+                group_header_frame,
+                text=f"📂 {group_title.upper()} ({len(group_tabs)} TABS)",
+                variable=group_var,
+                font=FONT_HEADING_SM,
+                text_color=ACCENT_CYAN,
+                fg_color=ACCENT_CYAN,
+                hover_color=ACCENT_GREEN,
+                checkmark_color=BG_PRIMARY,
+                border_color=ACCENT_CYAN,
+                command=make_toggle_cmd(group_var, group_vars),
+            )
+            group_cb.pack(side="left", padx=PAD_SM)
+
+            for tab in group_tabs:
+                var = self._add_tab_checkbox(tab)
+                domain = tab.get("domain", "")
+                url = tab.get("url", "")
+                if not self._is_blacklisted(url, domain):
+                    group_vars.append(var)
+
+            # Sync initial master checkbox value
+            all_checked = all(v.get() for v in group_vars) if group_vars else False
+            group_var.set(all_checked)
 
         # Bottom bar
         bottom_frame = ctk.CTkFrame(self, fg_color=BG_SECONDARY, corner_radius=0)
@@ -173,8 +227,8 @@ class TabSelectorWindow(ctk.CTkToplevel):
         )
         self._proceed_btn.pack(side="right", padx=PAD_LG, pady=PAD_MD)
 
-    def _add_tab_checkbox(self, tab: dict) -> None:
-        """Add a single tab checkbox to the scrollable frame."""
+    def _add_tab_checkbox(self, tab: dict) -> ctk.BooleanVar:
+        """Add a single tab checkbox to the scrollable frame and return its variable."""
         domain = tab.get("domain", "")
         title = tab.get("title", "Untitled")
         url = tab.get("url", "")
@@ -217,6 +271,7 @@ class TabSelectorWindow(ctk.CTkToplevel):
             var.set(False)
 
         self._checkboxes.append((cb, var, tab))
+        return var
 
     def _is_blacklisted(self, url: str, domain: str) -> bool:
         """Check if a URL/domain matches the blacklist."""

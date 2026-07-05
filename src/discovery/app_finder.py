@@ -98,6 +98,16 @@ def find_app(
         cache_discovery(context_key, reg_path)
         return reg_path
 
+    # ── Step 3.5: Check UWP / Microsoft Store apps ──
+    _report(f"Searching UWP/Store apps for {app_name}...")
+    uwp_result = _search_uwp(app_name)
+    if uwp_result:
+        launch_uri = uwp_result["launch_uri"]
+        _report(f"Found {app_name} as UWP app: {uwp_result['name']}")
+        # Cache with a special "uwp:" prefix so callers know it's a launch URI
+        cache_discovery(context_key, f"uwp:{launch_uri}")
+        return f"uwp:{launch_uri}"
+
     # ── Step 4: Scan C: drive ──
     _report(f"Scanning C: drive for {exe_name}... (this may take a moment)")
     c_result = search_drive("C:\\", exe_name, progress_callback)
@@ -213,6 +223,60 @@ def _search_registry(app_name: str, exe_name: str) -> Optional[str]:
             continue
 
     return None
+
+
+def _search_uwp(app_name: str) -> Optional[dict]:
+    """
+    Search for a UWP/Microsoft Store app via PowerShell Get-AppxPackage.
+
+    Args:
+        app_name: Application name to search for (e.g., "WhatsApp").
+
+    Returns:
+        Dict with 'name', 'family_name', 'launch_uri' if found, else None.
+    """
+    try:
+        result = subprocess.run(
+            [
+                "powershell", "-NoProfile", "-Command",
+                f"Get-AppxPackage *{app_name}* | "
+                "Select-Object -First 1 Name, PackageFamilyName | "
+                "ConvertTo-Json",
+            ],
+            capture_output=True, text=True, timeout=15,
+        )
+        if result.returncode != 0 or not result.stdout.strip():
+            return None
+
+        import json
+        data = json.loads(result.stdout.strip())
+        if not data:
+            return None
+
+        # Handle both single object and array
+        if isinstance(data, list):
+            data = data[0]
+
+        name = data.get("Name", "")
+        family = data.get("PackageFamilyName", "")
+        if not family:
+            return None
+
+        launch_uri = f"shell:AppsFolder\\{family}!App"
+        logger.info("Found UWP app: %s (family=%s)", name, family)
+
+        return {
+            "name": name,
+            "family_name": family,
+            "launch_uri": launch_uri,
+        }
+
+    except subprocess.TimeoutExpired:
+        logger.warning("UWP search timed out.")
+        return None
+    except Exception as exc:
+        logger.debug("UWP search failed: %s", exc)
+        return None
 
 
 def search_drive(

@@ -189,17 +189,13 @@ def get_all_tabs_cdp() -> list[dict]:
 def get_tabs_uia(browser_info: Optional[dict] = None) -> list[dict]:
     """
     Get tab information using pywinauto UI Automation (fallback).
-
-    This method reads the address bar for the active tab URL and
-    attempts to enumerate TabItem controls for all tab titles.
-    Works for all browsers including Firefox.
+    Enumerates all windows for the browser.
 
     Args:
         browser_info: Optional browser info dict with 'title_pattern'.
 
     Returns:
-        List of dicts with 'title' and 'url' keys.
-        May return only the active tab if full enumeration fails.
+        List of dicts with 'title', 'url', 'window_index', 'window_title' keys.
     """
     try:
         from pywinauto import Desktop
@@ -208,7 +204,6 @@ def get_tabs_uia(browser_info: Optional[dict] = None) -> list[dict]:
 
         # Find the browser window
         if browser_info and "title_pattern" in browser_info:
-            import re
             pattern = browser_info["title_pattern"]
             windows = desktop.windows(title_re=pattern)
         else:
@@ -221,49 +216,59 @@ def get_tabs_uia(browser_info: Optional[dict] = None) -> list[dict]:
             logger.warning("No browser window found via UIA.")
             return []
 
-        browser_window = windows[0]
-        tabs = []
+        all_tabs = []
+        for win_idx, browser_window in enumerate(windows, start=1):
+            try:
+                window_title = browser_window.window_text()
+                tabs = []
 
-        # Try to enumerate all tab items
-        try:
-            tab_items = browser_window.descendants(control_type="TabItem")
-            for tab_item in tab_items:
-                tab_title = tab_item.window_text()
-                if tab_title and tab_title not in ("New Tab", ""):
-                    tabs.append({
-                        "title": tab_title,
-                        "url": "",  # UIA can't get URL for inactive tabs
-                        "domain": "",
-                    })
-        except Exception as exc:
-            logger.debug("Could not enumerate tab items: %s", exc)
+                # Try to enumerate all tab items
+                try:
+                    tab_items = browser_window.descendants(control_type="TabItem")
+                    for tab_item in tab_items:
+                        tab_title = tab_item.window_text()
+                        if tab_title and tab_title not in ("New Tab", ""):
+                            tabs.append({
+                                "title": tab_title,
+                                "url": "",  # UIA can't get URL for inactive tabs
+                                "domain": "",
+                                "window_index": win_idx,
+                                "window_title": window_title,
+                            })
+                except Exception as exc:
+                    logger.debug("Could not enumerate tab items for window %d: %s", win_idx, exc)
 
-        # Get the active tab's URL from the address bar
-        try:
-            address_bar = browser_window.child_window(
-                title="Address and search bar", control_type="Edit"
-            )
-            active_url = address_bar.get_value()
-            if active_url:
-                # If we didn't get tabs, at least return the active one
-                if not tabs:
-                    active_title = browser_window.window_text()
-                    # Browser titles usually end with " - Browser Name"
-                    page_title = active_title.rsplit(" - ", 1)[0] if " - " in active_title else active_title
-                    tabs.append({
-                        "title": page_title,
-                        "url": active_url,
-                        "domain": urlparse(active_url).netloc,
-                    })
-                else:
-                    # Attach URL to the last tab (usually the active one)
-                    tabs[-1]["url"] = active_url
-                    tabs[-1]["domain"] = urlparse(active_url).netloc
-        except Exception as exc:
-            logger.debug("Could not read address bar: %s", exc)
+                # Get the active tab's URL from the address bar
+                try:
+                    address_bar = browser_window.child_window(
+                        title="Address and search bar", control_type="Edit"
+                    )
+                    active_url = address_bar.get_value()
+                    if active_url:
+                        # If we didn't get tabs, at least return the active one
+                        if not tabs:
+                            # Browser titles usually end with " - Browser Name"
+                            page_title = window_title.rsplit(" - ", 1)[0] if " - " in window_title else window_title
+                            tabs.append({
+                                "title": page_title,
+                                "url": active_url,
+                                "domain": urlparse(active_url).netloc,
+                                "window_index": win_idx,
+                                "window_title": window_title,
+                            })
+                        else:
+                            # Attach URL to the last tab (usually the active one)
+                            tabs[-1]["url"] = active_url
+                            tabs[-1]["domain"] = urlparse(active_url).netloc
+                except Exception as exc:
+                    logger.debug("Could not read address bar for window %d: %s", win_idx, exc)
 
-        logger.info("UIA captured %d tabs.", len(tabs))
-        return tabs
+                all_tabs.extend(tabs)
+            except Exception as exc:
+                logger.error("Error processing window %d: %s", win_idx, exc)
+
+        logger.info("UIA captured %d tabs from %d windows.", len(all_tabs), len(windows))
+        return all_tabs
 
     except ImportError:
         logger.error("pywinauto not installed. Cannot use UIA fallback.")

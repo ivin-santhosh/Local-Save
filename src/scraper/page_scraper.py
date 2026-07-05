@@ -30,6 +30,21 @@ _context = None
 _playwright = None
 _lock = threading.Lock()
 _loop: Optional[asyncio.AbstractEventLoop] = None
+_loop_thread: Optional[threading.Thread] = None
+_launching = False
+
+
+def _start_loop_thread():
+    """Start a dedicated background thread for running async scraping coroutines."""
+    global _loop, _loop_thread
+    if _loop is None or _loop.is_closed():
+        _loop = asyncio.new_event_loop()
+        def run_loop(loop):
+            asyncio.set_event_loop(loop)
+            loop.run_forever()
+        _loop_thread = threading.Thread(target=run_loop, args=(_loop,), daemon=True)
+        _loop_thread.start()
+        logger.debug("Scraper background event loop started.")
 
 
 async def _ensure_browser():
@@ -39,23 +54,33 @@ async def _ensure_browser():
     Uses Playwright's async API. The browser instance is reused
     across all scrape calls for performance.
     """
-    global _browser, _context, _playwright
+    global _browser, _context, _playwright, _launching
 
     if _browser is not None:
         return
 
-    from playwright.async_api import async_playwright
-    _playwright = await async_playwright().start()
-    _browser = await _playwright.chromium.launch(headless=True)
-    _context = await _browser.new_context(
-        user_agent=(
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/120.0.0.0 Safari/537.36"
-        ),
-        viewport={"width": 1280, "height": 720},
-    )
-    logger.info("Playwright headless browser started.")
+    # Wait if another worker is already launching it
+    while _launching:
+        await asyncio.sleep(0.1)
+        if _browser is not None:
+            return
+
+    _launching = True
+    try:
+        from playwright.async_api import async_playwright
+        _playwright = await async_playwright().start()
+        _browser = await _playwright.chromium.launch(headless=True)
+        _context = await _browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/120.0.0.0 Safari/537.36"
+            ),
+            viewport={"width": 1280, "height": 720},
+        )
+        logger.info("Playwright headless browser started.")
+    finally:
+        _launching = False
 
 
 async def _scrape_page_async(url: str) -> dict:
@@ -141,76 +166,49 @@ async def _close_browser_async():
     logger.info("Playwright browser closed.")
 
 
-def _get_or_create_loop() -> asyncio.AbstractEventLoop:
-    """
-    Get or create an event loop for running async Playwright code.
-
-    Handles the common issue of 'no running event loop' in threaded
-    contexts by creating a dedicated loop.
-
-    Returns:
-        An asyncio event loop.
-    """
-    global _loop
-
-    if _loop is not None and not _loop.is_closed():
-        return _loop
-
-    _loop = asyncio.new_event_loop()
-    return _loop
-
-
 def scrape_page(url: str) -> dict:
     """
     Scrape a web page and extract its title and body text.
 
-    This is the synchronous wrapper around the async Playwright
-    scraper. It manages the event loop automatically.
+    Submits the scraping coroutine to the background async event loop
+    so that multiple threads can scrape concurrently.
 
     Args:
         url: The URL to scrape.
 
     Returns:
-        Dict with keys:
-        - title (str): HTML page title
-        - content (str): Full body text (cleaned)
-        - content_length (int): Character count
-        - error (str|None): Error message if scraping failed
+        Dict with title, content, content_length, and error keys.
     """
     with _lock:
-        loop = _get_or_create_loop()
-        try:
-            return loop.run_until_complete(_scrape_page_async(url))
-        except RuntimeError as exc:
-            if "This event loop is already running" in str(exc):
-                # We're inside an existing async context — use nest_asyncio
-                try:
-                    import nest_asyncio
-                    nest_asyncio.apply(loop)
-                    return loop.run_until_complete(_scrape_page_async(url))
-                except ImportError:
-                    logger.error(
-                        "Cannot run async scraper in existing event loop. "
-                        "Install nest_asyncio: pip install nest_asyncio"
-                    )
-                    return {
-                        "title": "",
-                        "content": "",
-                        "content_length": 0,
-                        "error": str(exc),
-                    }
-            raise
+        _start_loop_thread()
+
+    future = asyncio.run_coroutine_threadsafe(_scrape_page_async(url), _loop)
+    try:
+        return future.result(timeout=SCRAPER_TIMEOUT / 1000 + 5.0)
+    except Exception as exc:
+        logger.error("Scraping thread future timed out or failed: %s", exc)
+        return {
+            "title": "",
+            "content": "",
+            "content_length": 0,
+            "error": str(exc),
+        }
 
 
 def close_browser() -> None:
     """
-    Close the Playwright browser and release resources.
-
-    Called during application shutdown.
+    Close the Playwright browser and stop the background event loop thread.
     """
+    global _loop, _loop_thread
     with _lock:
-        loop = _get_or_create_loop()
-        try:
-            loop.run_until_complete(_close_browser_async())
-        except Exception as exc:
-            logger.debug("Error closing browser: %s", exc)
+        if _loop is not None and not _loop.is_closed():
+            future = asyncio.run_coroutine_threadsafe(_close_browser_async(), _loop)
+            try:
+                future.result(timeout=10)
+            except Exception:
+                pass
+            _loop.call_soon_threadsafe(_loop.stop)
+            if _loop_thread:
+                _loop_thread.join(timeout=5)
+                _loop_thread = None
+            _loop = None
