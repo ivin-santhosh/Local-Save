@@ -25,7 +25,7 @@ LinkSync AI is a **privacy-first**, **local-first** Windows desktop agent that:
 
 1. **Captures** all open tabs from any running browser (Chrome, Edge, Brave, Firefox, Opera, Vivaldi, DuckDuckGo)
 2. **Scrapes** and **summarizes** each page using a local LLM (Ollama) through a multi-stage AI pipeline
-3. **Dispatches** the formatted summaries to your **WhatsApp "ME" group** — your personal knowledge inbox
+3. **Dispatches** the formatted summaries to a specific **WhatsApp group "ME"**(sample group) — your personal knowledge inbox
 
 No cloud APIs required. No data leaves your machine. Your browser history stays private.
 
