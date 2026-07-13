@@ -2,7 +2,7 @@
   <img src="assets/icon.png" width="128" height="128" alt="LinkSync AI Icon" />
 </p>
 
-<h1 align="center">🔗 LinkSync AI</h1>
+<h1 align="center">[🔗 LinkSync AI](https://github.com/ivin-santhosh/Local-Save)</h1>
 
 <p align="center">
   <strong>Autonomous Browser-to-WhatsApp Sync Agent</strong><br/>
