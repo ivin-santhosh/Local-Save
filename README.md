@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icon.png" width="128" height="128" alt="LinkSync AI Icon" />
+  <a href="https://github.com/ivin-santhosh/Local-Save"><img src="assets/icon.png" width="128" height="128" alt="LinkSync AI Icon" /></a>
 </p>
 
 <h1 align="center"><a href="https://github.com/ivin-santhosh/Local-Save">🔗 LinkSync AI</a></h1>
