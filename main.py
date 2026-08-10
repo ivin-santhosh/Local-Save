@@ -287,7 +287,7 @@ def _show_no_tabs_dialog() -> None:
     dialog = ctk.CTkToplevel(_root)
     dialog.title(f"🔗 {APP_NAME}")
     dialog.geometry("400x200")
-    dialog.resizable(False, False)
+    #dialog.resizable(False, False)
     dialog.attributes("-topmost", True)
     dialog.configure(fg_color="#0a0e1a")
 

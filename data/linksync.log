@@ -2001,3 +2001,135 @@ Call log:
 2026-07-05 21:32:41,571 [INFO] LinkSync AI: Full shutdown initiated...
 2026-07-05 21:32:41,580 [INFO] src.storage.database: SQLite connection closed
 2026-07-05 21:32:41,580 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-03 15:49:52,054 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-03 15:49:57,631 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-08-03 15:49:57,631 [INFO] src.storage.database: Database initialized at D:\Ivin\AI Projects\Linksync_AI\data\linksync.db
+2026-08-03 15:50:01,363 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI Projects\Linksync_AI\data\chroma
+2026-08-03 15:50:01,384 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-03 15:50:01,390 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-03 15:50:01,391 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-03 15:50:02,614 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-03 15:50:08,200 [INFO] src.capture.tab_capture: UIA captured 20 tabs from 3 windows.
+2026-08-03 15:50:13,193 [INFO] src.capture.tab_capture: UIA captured 5 tabs from 1 windows.
+2026-08-03 15:50:13,194 [INFO] src.capture.tab_capture: capture_all_browsers: 25 unique tabs across 2 browser(s).
+2026-08-03 15:50:13,194 [INFO] LinkSync AI: Captured 25 tabs from Google Chrome + Microsoft Edge.
+2026-08-03 15:50:19,622 [INFO] LinkSync AI: Full shutdown initiated...
+2026-08-03 15:50:19,627 [INFO] src.storage.database: SQLite connection closed
+2026-08-03 15:50:19,627 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-10 17:42:05,665 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-10 17:42:10,719 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 17:42:10,720 [INFO] src.storage.database: Database initialized at D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 17:42:13,732 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI_Projects\Linksync_AI\data\chroma
+2026-08-10 17:42:13,759 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-10 17:42:13,767 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-10 17:42:13,767 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-10 17:42:14,248 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-10 17:42:20,164 [INFO] src.capture.tab_capture: UIA captured 55 tabs from 6 windows.
+2026-08-10 17:42:25,136 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-08-10 17:42:25,136 [INFO] src.capture.tab_capture: capture_all_browsers: 55 unique tabs across 2 browser(s).
+2026-08-10 17:42:25,136 [INFO] LinkSync AI: Captured 55 tabs from Google Chrome.
+2026-08-10 17:44:27,650 [INFO] LinkSync AI: Full shutdown initiated...
+2026-08-10 17:44:27,660 [INFO] src.storage.database: SQLite connection closed
+2026-08-10 17:44:27,660 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-10 17:48:27,087 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-10 17:48:27,872 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 17:48:27,873 [INFO] src.storage.database: Database initialized at D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 17:48:27,925 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI_Projects\Linksync_AI\data\chroma
+2026-08-10 17:48:27,937 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-10 17:48:27,942 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-10 17:48:27,943 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-10 17:48:28,119 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-10 17:48:33,467 [INFO] src.capture.tab_capture: UIA captured 68 tabs from 6 windows.
+2026-08-10 17:48:38,460 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-08-10 17:48:38,460 [INFO] src.capture.tab_capture: capture_all_browsers: 68 unique tabs across 2 browser(s).
+2026-08-10 17:48:38,460 [INFO] LinkSync AI: Captured 68 tabs from Google Chrome.
+2026-08-10 17:49:35,748 [INFO] LinkSync AI: Full shutdown initiated...
+2026-08-10 17:49:35,750 [INFO] src.storage.database: SQLite connection closed
+2026-08-10 17:49:35,750 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-10 18:15:49,830 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-10 18:15:51,335 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:15:51,335 [INFO] src.storage.database: Database initialized at D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:15:51,975 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI_Projects\Linksync_AI\data\chroma
+2026-08-10 18:15:51,991 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-10 18:15:51,996 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-10 18:15:51,996 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-10 18:15:52,262 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-10 18:15:57,845 [INFO] src.capture.tab_capture: UIA captured 91 tabs from 7 windows.
+2026-08-10 18:16:02,813 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-08-10 18:16:02,813 [INFO] src.capture.tab_capture: capture_all_browsers: 91 unique tabs across 2 browser(s).
+2026-08-10 18:16:02,813 [INFO] LinkSync AI: Captured 91 tabs from Google Chrome.
+2026-08-10 18:17:44,532 [INFO] LinkSync AI: Full shutdown initiated...
+2026-08-10 18:17:44,537 [INFO] src.storage.database: SQLite connection closed
+2026-08-10 18:17:44,537 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-10 18:19:15,614 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-10 18:19:16,439 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:19:16,439 [INFO] src.storage.database: Database initialized at D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:19:16,493 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI_Projects\Linksync_AI\data\chroma
+2026-08-10 18:19:16,505 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-10 18:19:16,510 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-10 18:19:16,511 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-10 18:19:16,696 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-10 18:19:22,131 [INFO] src.capture.tab_capture: UIA captured 91 tabs from 7 windows.
+2026-08-10 18:19:27,137 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-08-10 18:19:27,137 [INFO] src.capture.tab_capture: capture_all_browsers: 91 unique tabs across 2 browser(s).
+2026-08-10 18:19:27,137 [INFO] LinkSync AI: Captured 91 tabs from Google Chrome.
+2026-08-10 18:19:48,985 [INFO] LinkSync AI: Full shutdown initiated...
+2026-08-10 18:19:48,988 [INFO] src.storage.database: SQLite connection closed
+2026-08-10 18:19:48,988 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-10 18:25:56,278 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-10 18:25:57,757 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:25:57,758 [INFO] src.storage.database: Database initialized at D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:25:58,390 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI_Projects\Linksync_AI\data\chroma
+2026-08-10 18:25:58,406 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-10 18:25:58,411 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-10 18:25:58,411 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-10 18:25:58,661 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-10 18:26:04,247 [INFO] src.capture.tab_capture: UIA captured 91 tabs from 7 windows.
+2026-08-10 18:26:09,145 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-08-10 18:26:09,145 [INFO] src.capture.tab_capture: capture_all_browsers: 91 unique tabs across 2 browser(s).
+2026-08-10 18:26:09,145 [INFO] LinkSync AI: Captured 91 tabs from Google Chrome.
+2026-08-10 18:26:31,846 [INFO] LinkSync AI: Full shutdown initiated...
+2026-08-10 18:26:31,851 [INFO] src.storage.database: SQLite connection closed
+2026-08-10 18:26:31,851 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-10 18:43:02,975 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-10 18:43:04,420 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:43:04,420 [INFO] src.storage.database: Database initialized at D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:43:05,028 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI_Projects\Linksync_AI\data\chroma
+2026-08-10 18:43:05,045 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-10 18:43:05,050 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-10 18:43:05,050 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-10 18:43:05,310 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-10 18:43:10,945 [INFO] src.capture.tab_capture: UIA captured 91 tabs from 7 windows.
+2026-08-10 18:43:15,914 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-08-10 18:43:15,915 [INFO] src.capture.tab_capture: capture_all_browsers: 91 unique tabs across 2 browser(s).
+2026-08-10 18:43:15,915 [INFO] LinkSync AI: Captured 91 tabs from Google Chrome.
+2026-08-10 18:44:13,090 [INFO] LinkSync AI: Full shutdown initiated...
+2026-08-10 18:44:13,094 [INFO] src.storage.database: SQLite connection closed
+2026-08-10 18:44:13,094 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-10 18:51:49,937 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-10 18:51:50,719 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:51:50,719 [INFO] src.storage.database: Database initialized at D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 18:51:50,779 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI_Projects\Linksync_AI\data\chroma
+2026-08-10 18:51:50,789 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-10 18:51:50,793 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-10 18:51:50,793 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-10 18:51:50,961 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-10 18:51:56,457 [INFO] src.capture.tab_capture: UIA captured 91 tabs from 7 windows.
+2026-08-10 18:52:01,408 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-08-10 18:52:01,408 [INFO] src.capture.tab_capture: capture_all_browsers: 91 unique tabs across 2 browser(s).
+2026-08-10 18:52:01,408 [INFO] LinkSync AI: Captured 91 tabs from Google Chrome.
+2026-08-10 18:52:48,593 [INFO] LinkSync AI: Full shutdown initiated...
+2026-08-10 18:52:48,595 [INFO] src.storage.database: SQLite connection closed
+2026-08-10 18:52:48,595 [INFO] LinkSync AI: === LinkSync AI — Session End ===
+2026-08-10 19:12:31,131 [INFO] LinkSync AI: === LinkSync AI v1.0.0 — Session Start ===
+2026-08-10 19:12:32,035 [INFO] src.storage.database: SQLite connection opened: D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 19:12:32,035 [INFO] src.storage.database: Database initialized at D:\Ivin\AI_Projects\Linksync_AI\data\linksync.db
+2026-08-10 19:12:32,102 [INFO] src.storage.vector_store: ChromaDB client initialized at D:\Ivin\AI_Projects\Linksync_AI\data\chroma
+2026-08-10 19:12:32,114 [INFO] src.storage.vector_store: Collection 'article_embeddings' ready (count=1)
+2026-08-10 19:12:32,119 [INFO] src.storage.vector_store: Collection 'negative_filter' ready (count=1)
+2026-08-10 19:12:32,119 [INFO] src.storage.vector_store: Vector store fully initialized
+2026-08-10 19:12:32,296 [INFO] src.capture.tab_capture: capture_all_browsers: found 2 browser(s): Google Chrome, Microsoft Edge
+2026-08-10 19:12:38,250 [INFO] src.capture.tab_capture: UIA captured 98 tabs from 8 windows.
+2026-08-10 19:12:43,143 [INFO] src.capture.tab_capture: UIA captured 0 tabs from 1 windows.
+2026-08-10 19:12:43,143 [INFO] src.capture.tab_capture: capture_all_browsers: 98 unique tabs across 2 browser(s).
+2026-08-10 19:12:43,143 [INFO] LinkSync AI: Captured 98 tabs from Google Chrome.

@@ -72,13 +72,13 @@ class TabSelectorWindow(ctk.CTkToplevel):
         self.browser_name = browser_name
         self._on_proceed = on_proceed
         self._on_cancel = on_cancel
-        self._checkboxes: list[tuple[ctk.CTkCheckBox, ctk.BooleanVar, dict]] = []
+        self._checkboxes: list[tuple[ctk.CTkCheckBox, ctk.BooleanVar, dict, ctk.CTkFrame]] = []
         self._status_labels: list[ctk.CTkLabel] = []
 
         # Window setup
         self.title(f"{ICON_LINK} {APP_NAME}")
         self.geometry(f"{SELECTOR_WIDTH}x{SELECTOR_HEIGHT}")
-        self.resizable(False, False)
+        self.resizable(True, True)
         self.configure(fg_color=BG_PRIMARY)
         self.attributes("-topmost", True)
         self.protocol("WM_DELETE_WINDOW", self._handle_close)
@@ -148,6 +148,10 @@ class TabSelectorWindow(ctk.CTkToplevel):
             )
             group_header_frame.pack(fill="x", padx=PAD_SM, pady=(PAD_MD, 2))
 
+            group_container = ctk.CTkFrame(self._scroll_frame, fg_color="transparent")
+            group_container._is_group_container = True
+            group_container.pack(fill="x", padx=0, pady=0)
+
             group_vars = []
             group_var = ctk.BooleanVar(value=True)
 
@@ -174,7 +178,7 @@ class TabSelectorWindow(ctk.CTkToplevel):
             group_cb.pack(side="left", padx=PAD_SM)
 
             for tab in group_tabs:
-                var = self._add_tab_checkbox(tab)
+                var = self._add_tab_checkbox(tab, group_container)
                 domain = tab.get("domain", "")
                 url = tab.get("url", "")
                 if not self._is_blacklisted(url, domain):
@@ -227,7 +231,7 @@ class TabSelectorWindow(ctk.CTkToplevel):
         )
         self._proceed_btn.pack(side="right", padx=PAD_LG, pady=PAD_MD)
 
-    def _add_tab_checkbox(self, tab: dict) -> ctk.BooleanVar:
+    def _add_tab_checkbox(self, tab: dict, parent: ctk.CTkFrame) -> ctk.BooleanVar:
         """Add a single tab checkbox to the scrollable frame and return its variable."""
         domain = tab.get("domain", "")
         title = tab.get("title", "Untitled")
@@ -236,11 +240,26 @@ class TabSelectorWindow(ctk.CTkToplevel):
 
         # Frame for each tab entry
         entry_frame = ctk.CTkFrame(
-            self._scroll_frame,
+            parent,
             fg_color=BG_TERTIARY,
             corner_radius=8,
         )
         entry_frame.pack(fill="x", padx=PAD_SM, pady=3)
+
+        # Add drag handle
+        drag_handle = ctk.CTkLabel(
+            entry_frame, 
+            text=" ☰ ", 
+            font=("Segoe UI", 16), 
+            text_color=TEXT_MUTED, 
+            cursor="hand2"
+        )
+        drag_handle.pack(side="left", padx=(PAD_MD, 0))
+
+        # Bind events for drag-and-drop
+        drag_handle.bind("<Button-1>", lambda e, f=entry_frame, c=parent: self._on_drag_start(e, f, c))
+        drag_handle.bind("<B1-Motion>", lambda e, f=entry_frame, c=parent: self._on_drag_motion(e, f, c))
+        drag_handle.bind("<ButtonRelease-1>", lambda e, f=entry_frame, c=parent: self._on_drag_release(e, f, c))
 
         var = ctk.BooleanVar(value=not is_blacklisted)
 
@@ -270,8 +289,37 @@ class TabSelectorWindow(ctk.CTkToplevel):
             cb.configure(state="disabled")
             var.set(False)
 
-        self._checkboxes.append((cb, var, tab))
+        self._checkboxes.append((cb, var, tab, entry_frame))
         return var
+
+    def _on_drag_start(self, event, frame, container):
+        self._drag_frame = frame
+
+    def _on_drag_motion(self, event, frame, container):
+        if not getattr(self, '_drag_frame', None) or self._drag_frame != frame:
+            return
+        
+        slaves = container.pack_slaves()
+        if frame not in slaves:
+            return
+            
+        current_idx = slaves.index(frame)
+        
+        if current_idx > 0:
+            prev_sibling = slaves[current_idx - 1]
+            if event.y_root < prev_sibling.winfo_rooty() + prev_sibling.winfo_height() / 2:
+                frame.pack(before=prev_sibling)
+                return
+                
+        if current_idx < len(slaves) - 1:
+            next_sibling = slaves[current_idx + 1]
+            if event.y_root > next_sibling.winfo_rooty() + next_sibling.winfo_height() / 2:
+                frame.pack(after=next_sibling)
+                return
+
+    def _on_drag_release(self, event, frame, container):
+        if hasattr(self, '_drag_frame'):
+            del self._drag_frame
 
     def _is_blacklisted(self, url: str, domain: str) -> bool:
         """Check if a URL/domain matches the blacklist."""
@@ -286,12 +334,22 @@ class TabSelectorWindow(ctk.CTkToplevel):
         return False
 
     def _get_selected_tabs(self) -> list[dict]:
-        """Return list of tabs where checkbox is checked."""
-        return [tab for _, var, tab in self._checkboxes if var.get()]
+        """Return list of tabs where checkbox is checked, respecting UI order."""
+        frame_to_data = {frame: (var, tab) for _, var, tab, frame in self._checkboxes}
+        
+        ordered_selected = []
+        for child in self._scroll_frame.winfo_children():
+            if getattr(child, "_is_group_container", False):
+                for entry_frame in child.pack_slaves():
+                    if entry_frame in frame_to_data:
+                        var, tab = frame_to_data[entry_frame]
+                        if var.get():
+                            ordered_selected.append(tab)
+        return ordered_selected
 
     def _get_counter_text(self) -> str:
         """Get the '3 of 7 selected' counter text."""
-        selected = sum(1 for _, var, _ in self._checkboxes if var.get())
+        selected = sum(1 for _, var, _, _ in self._checkboxes if var.get())
         total = len(self._checkboxes)
         return f"{selected} of {total} selected"
 
@@ -304,7 +362,7 @@ class TabSelectorWindow(ctk.CTkToplevel):
         """Toggle all non-blacklisted checkboxes."""
         selected = self._get_selected_tabs()
         selectable = [
-            (cb, var, tab) for cb, var, tab in self._checkboxes
+            (cb, var, tab) for cb, var, tab, _ in self._checkboxes
             if cb.cget("state") != "disabled"
         ]
 
