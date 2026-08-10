@@ -15,7 +15,7 @@
   <img src="https://img.shields.io/badge/LLM-Ollama_(Local)-green?logo=data:image/svg+xml;base64,..." alt="Ollama" />
   <img src="https://img.shields.io/badge/license-MIT-yellow" alt="License" />
   <img src="https://img.shields.io/badge/version-1.0.0-cyan" alt="v1.0.0" />
-</p>
+</np>
 
 ---
 
@@ -28,6 +28,9 @@ LinkSync AI is a **privacy-first**, **local-first** Windows desktop agent that:
 3. **Dispatches** the formatted summaries to a specific **WhatsApp group "ME"**(sample group) — your personal knowledge inbox
 
 No cloud APIs required. No data leaves your machine. Your browser history stays private.
+
+<img width="600" height="949" alt="image" src="https://github.com/user-attachments/assets/483da5d8-64fe-4bf8-9275-4266c7a14c7a" />
+
 
 ---
 
